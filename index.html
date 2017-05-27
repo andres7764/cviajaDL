@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>.: CViajaDeLujo :.</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/full-slider.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">CViajaDeLujo</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Nosotros</a>
+                    </li>
+                    <!--<li>
+                        <a href="#">Services</a>
+                    </li>-->
+                    <li>
+                        <a href="#">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <!--<li data-target="#myCarousel" data-slide-to="3"></li>-->
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+        <!-- Wrapper for Slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('./img/sabrinsky.jpeg');"></div>
+                <div class="carousel-caption">
+                    <h2>Desierto de sabrinsky (Mosquera)</h2>
+                    <p>A 2 horas de distancia de Bogotá es una buena opción para los amantes de la tranquilidad y los paseos en bicicleta.</p>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('./img/elTab.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>El tablazo (Subachoque)</h2>
+                    <p>A dos horas y media de Bogotá saliendo por la autpista norte, un sitio para las personas que buscan respirar aire puro y realizar un poco de ejercicio. </p>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('./img/elEscob.jpeg');"></div>
+                <div class="carousel-caption">
+                    <h2>Cascada el escobo (Vergara)</h2>
+                    <p>Ubicada en nocaima, a dos horas y media de Bogotá saliendo por la calle 80, un plan perfecto para realizar actividades extremas, senderismo y otros tipos de actividades que te harán salir de la rutina.</p>
+                </div>
+            </div>
+            <!--<div class="item">
+                 Set the third background image using inline CSS below. -->
+                <!--<div class="fill" style="background-image:url('./img/aguasCal.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Aguas calientes (El rosal)</h2>
+                </div>
+            </div>-->            
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('./img/1507.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Esto y más</h2>
+                    <p>¿Aún no conoces estos sitios? suscribete para recibir información sobre planes y servicios exclusivos para ti.</p>
+                    <a href="http://www.freepik.es/fotos-vectores-gratis/fondo">Fondo de fotografía creado por Jcomp - Freepik.com</a>
+                </div>
+            </div>
+        </div>
+        <div class="foll">
+                  <h3 style="padding-left:10%;padding-right:10%; padding-top: 50px; text-align: center">Registrate para mantenerte enterado sobre los mejores planes y servicios que tenemos para ti </h3>
+                 <div style="width: 90%; margin-left: 5%; padding:10px">
+            <form id="target">    
+                <label>Nombre</label>
+                <input type="text" id="nombre" class="form-control input-md" placeholder="Nombre" required>
+                <label class="padding">Correo</label>
+                <input type="text" id="correo" class="form-control input-md" placeholder="Correo electrónico" required>
+                <h5 class="padding"><b>¿Cuál de estas actividades te gustaría realizar?</b></h5>
+                <div>
+                <input id="caminata" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
+                <p class="imp"> Caminatas</p>
+                </div>
+                <div>
+                  <input id="Picknic" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
+                  <p class="imp"> Picknic</p>
+                </div>
+                <div>
+                  <input id="sturisticos" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
+                  <p class="imp"> Salidas a sitios turísticos</p>
+                </div>
+                <div>
+                  <input id="avarias" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
+                  <p class="imp"> Actividades varias</p>
+                </div>
+                <div style="margin-top: 30px">
+                 <a href="#planes">¿Que servicio te gustaría tener?</a>
+                 <!-- <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
+                  <input style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style: solid; " type="text" value="">-->
+                </div>
+                <button style="bottom: 5%;position: absolute;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnContact" type="submit" value="">Suscríbete</button>
+                 </div>
+            </form>     
+        </div>
+
+<!--rights:
+ https://allevents.in/events/caminata-cascada-el-escobo/804330253031058 cascade
+ http://fsenderosymemoria.blogspot.com.co/2008/04/cuchilla-del-tablazo-subachoque.html
+ https://es.pinterest.com/pin/372109987938550167/
+ https://www.google.com.co/search?q=museo+botero&oq=museo+botero&aqs=chrome..69i57.2703j0j1&sourceid=chrome&ie=UTF-8
+ -->
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+    <!-- Page Content -->
+    <div class="container" id="planes">
+    <!-- SECTION HEADING -->
+    <div class="colored-line">
+    </div>
+    
+    <div class="sub-heading">
+        <h3>Selecciona el paquete que te gustaría obtener.</h3>
+    </div>
+    
+    <div class="pricing-table">
+        
+        <!-- Values plans -->
+        <div class="row">
+            
+            <!-- PACKAGE ONE -->
+            <div class="col-md-6">
+                <div class="package bgcolor-white">
+                    <div class="header dark-bg">
+                        <h3>Gratuito</h3>
+                        <div class="sub-heading">
+                             <span class="colored-text strong">$0 pesos</span> Al mes
+                        </div>
+                    </div>
+                    <!-- PACKAGE FEATURES -->
+                    <div class="package-features">
+                        <ul>
+                            <li>
+                            <div class="column-9p">
+                                Información de sitios turisticos
+                            </div>
+                            <div class="column-1p"></div>
+                            </li>
+                            <li>
+                            <div class="column-9p">
+                               Ubicación de planes cercanos a ti
+                            </div>
+                            <div class="column-1p">
+                                <span class="icon_check"></span>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="column-9p">
+                                Correos semanales  
+                            </div>
+                            <div class="column-1p">
+                                <span class="icon_check"></span>
+                            </div>
+                            </li>
+                        </ul>
+                        <div class="bottom-row">
+                            <div class="column-7p">
+                                <h6>$0 pesos al mes</h6>
+                            </div>
+                            <div class="column-3p">
+                                <div id="cta-1">
+                                    <a href="#home" class="btn secondary-button">Seleccionar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /END PACKAGE -->
+            
+            <!-- PACKAGE TWO -->
+            <div class="col-md-6">
+                <div class="package bgcolor-white">
+                    <div class="header dark-bg">
+                        <h3>Premium</h3>
+                        <div class="sub-heading">
+                            Desde <span class=" strong">$10.000 pesos</span> al mes
+                        </div>
+                    </div>
+                    
+                    <!-- PACKAGE FEATURES -->
+                    <div class="package-features">
+                        <ul>
+                        <li>
+                            <div class="column-9p">
+                                Promociones en todos los planes 
+                            </div>
+                            <div class="column-1p"></div>
+                        </li>
+                        <li>
+                            <div class="column-9p">
+                                Armado de planes semanales
+                            </div>
+                            <div class="column-1p"></div>
+                        </li>
+                            <li>
+                            <div class="column-9p">
+                                Información de sitios turisticos
+                            </div>
+                            <div class="column-1p"></div>
+                            </li>
+                            <li>
+                            <div class="column-9p">
+                               Ubicación de planes cercanos a ti
+                            </div>
+                            <div class="column-1p">
+                                <span class="icon_check"></span>
+                            </div>
+                            </li>
+                            <li>
+                            <div class="column-9p">
+                                Correos semanales  
+                            </div>
+                            <div class="column-1p">
+                                <span class="icon_check"></span>
+                            </div>
+                            </li>
+                        </ul>
+                        <div class="bottom-row">
+                            <div class="column-7p">
+                                <h6>$10.000 pesos al mes</h6>
+                            </div>
+                            <div class="column-3p">
+                                <div id="cta-1">
+                                    <a href="#home" class="btn secondary-button">Seleccionar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /END PACKAGE -->
+   
+        </div> <!-- /END ROW -->
+    </div> <!-- /END ALL PACKAGE -->
+   <footer class="bgcolor-2">
+    <div class="container">  
+        <div class="footer-logo">
+            <h3>CViajaDeLujo</h3>
+        </div>
+        
+        <div class="copyright">
+             ©2017 CViajaDeLujo todos los derechos reservados.
+        </div>
+        
+        <ul class="social-icons">
+            <li><a href=""><span class="social_facebook_square"></span></a></li>
+            <li><a href=""><span class="social_linkedin_square"></span></a></li>
+        </ul>
+        
+    </div>
+    </footer> 
+</div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
+</html>
