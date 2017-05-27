@@ -14,6 +14,7 @@
 
     <!-- Custom CSS -->
     <link href="css/full-slider.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -72,10 +73,23 @@
         <div class="carousel-inner">
             <div class="item active">
                 <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url('./img/huerta.jpg');"></div>
+                <div class="carousel-caption textCarousel">
+                    <h2>Pa´La Huerta en Vive Orgánico</h2>
+                    <p>Experiencias teórico prácticas. Producción de alimentos limpios (orgánicos)</p>
+                    <p>Horario de 8:30 am a 12:30</p>
+                    <p>Lugar: Calle 1 # 1-49 Barrio Portal, Tabio</p>
+                    <p>Valor: 50.000 pesos</p>
+                    <a href="https://www.facebook.com/GranjaViveOrganico/" style="float: right;">Más información</a>
+                </div>
+            </div>
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
                 <div class="fill" style="background-image:url('./img/sabrinsky.jpeg');"></div>
                 <div class="carousel-caption">
                     <h2>Desierto de sabrinsky (Mosquera)</h2>
                     <p>A 2 horas de distancia de Bogotá es una buena opción para los amantes de la tranquilidad y los paseos en bicicleta.</p>
+                    
                 </div>
             </div>
             <div class="item">
@@ -130,18 +144,18 @@
                 </div>
                 <div>
                   <input id="sturisticos" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p class="imp"> Salidas a sitios turísticos</p>
+                  <p class="imp"> Sitios turísticos</p>
                 </div>
                 <div>
                   <input id="avarias" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
                   <p class="imp"> Actividades varias</p>
                 </div>
-                <div style="margin-top: 30px">
-                 <a href="#planes">¿Que servicio te gustaría tener?</a>
-                 <!-- <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
-                  <input style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style: solid; " type="text" value="">-->
+                <div style="margin-top: 40px">
+                 <!--<a href="#planes">¿Que servicio te gustaría tener?</a>-->
+                 <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
+                  <input id="otro" style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style:solid;border-bottom-width: 1px;" type="text" value="">
                 </div>
-                <button style="bottom: 5%;position: absolute;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnContact" type="submit" value="">Suscríbete</button>
+                <a href="#planes" style="bottom: 5%;position: absolute;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnContact" type="submit" value="">Suscríbete</a>
                  </div>
             </form>     
         </div>
@@ -189,13 +203,13 @@
                         <ul>
                             <li>
                             <div class="column-9p">
-                                Información de sitios turisticos
+                                Información de las mejores actividades y lugares turísticos cerca a tu ciudad
                             </div>
                             <div class="column-1p"></div>
                             </li>
                             <li>
                             <div class="column-9p">
-                               Ubicación de planes cercanos a ti
+                               Información de los mejores planes gratuitos
                             </div>
                             <div class="column-1p">
                                 <span class="icon_check"></span>
@@ -203,7 +217,7 @@
                             </li>
                             <li>
                             <div class="column-9p">
-                                Correos semanales  
+                                Correos cada semana  
                             </div>
                             <div class="column-1p">
                                 <span class="icon_check"></span>
@@ -216,7 +230,7 @@
                             </div>
                             <div class="column-3p">
                                 <div id="cta-1">
-                                    <a href="#home" class="btn secondary-button">Seleccionar</a>
+                                    <a href="#home" id="btnFree" class="btn secondary-button">Seleccionar</a>
                                 </div>
                             </div>
                         </div>
@@ -239,25 +253,28 @@
                         <ul>
                         <li>
                             <div class="column-9p">
-                                Promociones en todos los planes 
+                                Información de las mejores actividades y lugares turísticos cerca a tu ciudad 
                             </div>
                             <div class="column-1p"></div>
                         </li>
                         <li>
                             <div class="column-9p">
-                                Armado de planes semanales
+                                Programación semanal de los mejores planes gratuitos y de pago
                             </div>
                             <div class="column-1p"></div>
                         </li>
                             <li>
                             <div class="column-9p">
-                                Información de sitios turisticos
+                                Promociones y descuentos
                             </div>
                             <div class="column-1p"></div>
                             </li>
                             <li>
                             <div class="column-9p">
-                               Ubicación de planes cercanos a ti
+                                Te armamos el plan de acuerdo a tus intereses
+                            </div>
+                            <div class="column-9p">
+                                Acceso a toda la información sobre los mejores lugares cerca a tu ubicación desde cualquier lugar
                             </div>
                             <div class="column-1p">
                                 <span class="icon_check"></span>
@@ -278,7 +295,7 @@
                             </div>
                             <div class="column-3p">
                                 <div id="cta-1">
-                                    <a href="#home" class="btn secondary-button">Seleccionar</a>
+                                    <a href="#home" id="btnCost" class="btn secondary-button">Seleccionar</a>
                                 </div>
                             </div>
                         </div>
