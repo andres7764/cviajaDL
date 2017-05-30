@@ -15,7 +15,7 @@ $(document).ready(function(){
 		var tmpOtro = ($("#avarias:checked").length > 0)? true +$("#avarias").val()  : false+$("#avarias").val();
 		var f = new Date();
 		$.ajax({ 
-		  url: "http://serverC.boxo.com.co/saveContact",
+		  url: "/saveContact",
 		  method:"POST",
 		  data: {
 		  	nombre: $("#nombre").val(),
