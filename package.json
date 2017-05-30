@@ -1,0 +1,14 @@
+{
+"name": "CViajaDeLujo",
+"scripts": {
+    "start": "node index.js"
+ },
+"description":"Main landing page",
+        "dependencies": {
+                "express": "*",
+                "http": "*",
+                "mongoose": "*",
+                "body-parser": "*",
+                "method-override": "*"
+        }
+}
