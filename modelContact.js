@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+
 //User collection
 contacto = new mongoose.Schema({
   nombre:             { type: String },
@@ -8,4 +9,6 @@ contacto = new mongoose.Schema({
   susCribirsePagos:   { type: Boolean},
   fecha:              { type: Date }
 });
-module.exports = mongoose.model('contactmodel',contacto)
+
+
+module.exports = mongoose.model('contactmodel',contacto);

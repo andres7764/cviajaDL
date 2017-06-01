@@ -48,9 +48,7 @@ $(document).ready(function(){
 	/*
 		$("#target").submit(function(event){
 	var sPagos;
-
 	var tmpOtro = ($("#avarias:checked").length > 0)? true +$("#avarias").val()  : false+$("#avarias").val();
-
 	var f = new Date();
 		$.ajax({ 
 		  url: "http://serverC.boxo.com.co/saveContact",
@@ -72,7 +70,6 @@ $(document).ready(function(){
 			alert(sucs.token);
 				console.log(sucs);
 		})
-
 	});
 	*/
 
