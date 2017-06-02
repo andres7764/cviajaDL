@@ -25,10 +25,13 @@
 
 //Include the models and controllers of the app =======================================
   require('./modelContact');
-  var controller = require('./controllerContact');
+  var controllerContact = require('./controllerContact');
+  require('./modelReservas');
+  var controllerReservas = require('./controllerReservas');
 
 //Create routes by server rest API ====================================================
-app.post('/saveContact', controller.saveContact);
+app.post('/saveContact', controllerContact.saveContact);
+app.post('/saveReserva', controllerReservas.saveReserva);
 
 // application ======================================================================
 	app.get('/', function(req, res) {

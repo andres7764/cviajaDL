@@ -3,3 +3,12 @@
     padding: 40px;
     }
     
+.btnReserve{
+	background: #7da453 !important;
+    color: #fff !important;
+}
+
+.btnReserve:hover{
+	background: #fff !important;
+    color: #7da453 !important;
+}

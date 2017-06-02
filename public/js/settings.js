@@ -29,7 +29,7 @@ $('#fluid-nav').onePageNav({
 
 // Smooth scroll
 
-$(document).ready(function() {
+/*$(document).ready(function() {
 
     $(".scroll-link").click(function() {
         $("html, body").animate({
@@ -41,7 +41,7 @@ $(document).ready(function() {
         return false;
     });
 
-});
+});*/
 
 
 // Selectnav
@@ -169,7 +169,7 @@ $(document).ready(function() {
 		        },
         afterShow: function() {
             // Render tweet button
-            twttr.widgets.load();
+           // twttr.widgets.load();
         },
 		helpers : {
 			title : { type: 'inside' },

@@ -1,47 +1,110 @@
-$(document).ready(function(){
+$(document).ready(function() {
 
-	var campos = ["nombre","correo"];
+	var modalReserve = $("#modalReserve");
+	var campos = ["nombre", "correo"];
+	var camposReserva = ["nombreReserve","correoReserve"];
 
-	function validFields(){
-		for(i in campos){
-			if($("#"+campos[i]).val() === ""){
+	function validFields() {
+		for (i in campos) {
+			if ($("#" + campos[i]).val() === "") {
+				return false;
+			}
+		}
+		return true;
+	}
+	function validFieldsReserve() {
+		for (i in camposReserva) {
+			if ($("#" + camposReserva[i]).val() === "") {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	function sendPost(typeSubcri){
-		var tmpOtro = ($("#avarias:checked").length > 0)? true +$("#avarias").val()  : false+$("#avarias").val();
+	function sendPost(typeSubcri) {
+		var tmpOtro = ($("#avarias:checked").length > 0) ? true + $("#avarias").val() : false + $("#avarias").val();
 		var f = new Date();
-		$.post("/saveContact",{
-		  	nombre: $("#nombre").val(),
-		  	correo: $("#correo").val(),
-		  	opciones: {
-		  		caminata: ($("#caminata:checked").length > 0)? true : false,
-		  		picknic: ($("#Picknic:checked").length > 0)? true : false,
-		  		sturisticos: ($("#sturisticos:checked").length > 0)? true : false,
-		  		otro: tmpOtro
-		  	},
-		  	suscribirseMail: ($("#sMail:checked").length > 0)? true : false,
-		  	susCribirsePagos:  typeSubcri,
-		  	fecha: f
-		  },function(sucs){
-		  	swal("Guardado con exito!",sucs.token,"success");
-		  	modal.style.display = "none";
-		  })
-		.fail(function(err) {
-		  	swal("Opps!",err,"warning");
-		})
+		$.post("/saveContact", {
+				nombre: $("#nombre").val(),
+				correo: $("#correo").val(),
+				opciones: {
+					caminata: ($("#caminata:checked").length > 0) ? true : false,
+					picknic: ($("#Picknic:checked").length > 0) ? true : false,
+					sturisticos: ($("#sturisticos:checked").length > 0) ? true : false,
+					otro: tmpOtro
+				},
+				suscribirseMail: ($("#sMail:checked").length > 0) ? true : false,
+				susCribirsePagos: typeSubcri,
+				fecha: f
+			}, function(sucs) {
+				swal("Guardado con exito!", sucs.token, "success");
+				modal.style.display = "none";
+			})
+			.fail(function(err) {
+				swal("Opps!", err, "warning");
+			})
 	};
 
+	function sendReserve(lugar) {
+		$.post("/saveContact", {
+				nombre: $("#nombreReserve").val(),
+				correo: $("#correoReserve").val(),
+				event: lugar
+			}, function(sucs) {
+				swal("Guardado con exito!", sucs.token, "success");
+				modalReserve.hide();
+			})
+			.fail(function(err) {
+				swal("Opps!", err, "warning");
+			});
+	};
 
-	$("#btnFree").click(function(){
+	function getLugar(id){
+		switch (id) {
+			case 1:
+				return "Choachí";
+				break;
+			case 2:
+				return "Parque jericó"
+				break;
+			case 3:
+				return "Sopó"
+				break;
+			case 4:
+				return "Tocancipá"
+				break;
+			case 5:
+				return "La vega"
+				break;
+			case 6:
+				return "Tobia"
+				break;
+		}
+	}
+
+
+	$("#btnFree").click(function() {
 		validFields() ? sendPost(false) : alert("Debe ingresar su nombre y correo!");
 	});
 
-	$("#btnCost").click(function(){
-		validFields() ? sendPost(true) : alert("Debe ingresar su nombre y correo!");
+	$("#btnCost").click(function() {
+		validFields() ? sendPost(true) : swal("Opps!", "Debe ingresar su nombre y correo!", "warning");
+	});
+
+	$(".btnReserve").click(function() {
+		var lugar = getLugar(parseInt($(this).attr("id").split("_")[1]));
+		console.log(lugar);
+		$("#lugar").html(lugar);
+		modalReserve.show();
+
+	});
+
+	$("#btnNewReserva").click(function(){
+		validFieldsReserve() ? sendReserve($("#lugar").html()) : swal("Opps!", "Debe ingresar su nombre y correo!", "warning");
+	});
+
+	$("#close").click(function(){
+		modalReserve.hide();
 	});
 
 	/*
