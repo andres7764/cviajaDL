@@ -106,6 +106,8 @@
 </style>
 	<!-- Import CSS -->
 	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
+
 	<!--[if lt IE 10]>
 		<link href= "css/ie.css" rel= "stylesheet" media= "all" />
 	<![endif]-->
@@ -430,7 +432,9 @@
                  <!-- <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
                   <input style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style: solid; " type="text" value="">-->
                 </div>
-                <button style="bottom: 5%;width: 100%; background-color:#7ca453" class="btn btn-primary" id="btnCost" type="submit" value="">Suscríbete</button>
+<!--                <a style="bottom: 5%;width: 100%; background-color:#7ca453" class="btn btn-primary" id="btnCost" value="">Suscríbete</a>-->
+                <a href="#" style="text-align:center;bottom: 5%;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnCost">Suscríbete</a>
+
             </div>
         </form>
   </div>
@@ -458,12 +462,10 @@
 	<script src="js/twitter-options.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/ettrics.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/script.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/sweetalert2.min.js"></script> <!-- Twitter Feed Options -->
+
 <script type="text/javascript">
 	// Get the modal
-
-	$("#click").click(function(){
-		alert("si");
-	})
 	var modal = document.getElementById('myModal');
 	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn");

@@ -14,10 +14,7 @@ $(document).ready(function(){
 	function sendPost(typeSubcri){
 		var tmpOtro = ($("#avarias:checked").length > 0)? true +$("#avarias").val()  : false+$("#avarias").val();
 		var f = new Date();
-		$.ajax({ 
-		  url: "/saveContact",
-		  method:"POST",
-		  data: {
+		$.post("/saveContact",{
 		  	nombre: $("#nombre").val(),
 		  	correo: $("#correo").val(),
 		  	opciones: {
@@ -29,10 +26,12 @@ $(document).ready(function(){
 		  	suscribirseMail: ($("#sMail:checked").length > 0)? true : false,
 		  	susCribirsePagos:  typeSubcri,
 		  	fecha: f
-		  }})
-		.done(function(sucs) {
-			alert(sucs.token);
-			console.log(sucs);
+		  },function(sucs){
+		  	swal("Guardado con exito!",sucs.token,"success");
+		  	modal.style.display = "none";
+		  })
+		.fail(function(err) {
+		  	swal("Opps!",err,"warning");
 		})
 	};
 
