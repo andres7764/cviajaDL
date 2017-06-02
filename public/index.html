@@ -1,344 +1,529 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+	<meta charset="utf-8" />
+	
+	<title>.: CViajaDeLujo - Inicio :.</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="HandheldFriendly" content="true">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<style>
+/* The Modal (background) */
+/* Modal Header */
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>.: CViajaDeLujo :.</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
-    <!-- Custom CSS -->
-    <link href="css/full-slider.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #7da453;
+    color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+	<!-- Import CSS -->
+	
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!--[if lt IE 10]>
+		<link href= "css/ie.css" rel= "stylesheet" media= "all" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-100232215-1', 'auto');
+	  ga('send', 'pageview');
+
+</script>
 </head>
 
 <body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">CViajaDeLujo</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">Nosotros</a>
-                    </li>
-                    <!--<li>
-                        <a href="#">Services</a>
-                    </li>-->
-                    <li>
-                        <a href="#">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 
-    <!-- Full Page Image Background Carousel Header -->
-    <header id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <!--<li data-target="#myCarousel" data-slide-to="3"></li>-->
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-        </ol>
-        <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./img/huerta.jpg');"></div>
-                <div class="carousel-caption textCarousel">
-                    <h2>Pa´La Huerta en Vive Orgánico</h2>
-                    <p>Experiencias teórico prácticas. Producción de alimentos limpios (orgánicos)</p>
-                    <p>Horario de 8:30 am a 12:30</p>
-                    <p>Lugar: Calle 1 # 1-49 Barrio Portal, Tabio</p>
-                    <p>Valor: 50.000 pesos</p>
-                    <a href="https://www.facebook.com/GranjaViveOrganico/" style="float: right;">Más información</a>
-                </div>
-            </div>
-            <div class="item active">
-                <!-- Set the first background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./img/sabrinsky.jpeg');"></div>
-                <div class="carousel-caption">
-                    <h2>Desierto de sabrinsky (Mosquera)</h2>
-                    <p>A 2 horas de distancia de Bogotá es una buena opción para los amantes de la tranquilidad y los paseos en bicicleta.</p>
-                    
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the second background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./img/elTab.jpg');"></div>
-                <div class="carousel-caption">
-                    <h2>El tablazo (Subachoque)</h2>
-                    <p>A dos horas y media de Bogotá saliendo por la autpista norte, un sitio para las personas que buscan respirar aire puro y realizar un poco de ejercicio. </p>
-                </div>
-            </div>
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./img/elEscob.jpeg');"></div>
-                <div class="carousel-caption">
-                    <h2>Cascada el escobo (Vergara)</h2>
-                    <p>Ubicada en nocaima, a dos horas y media de Bogotá saliendo por la calle 80, un plan perfecto para realizar actividades extremas, senderismo y otros tipos de actividades que te harán salir de la rutina.</p>
-                </div>
-            </div>
-            <!--<div class="item">
-                 Set the third background image using inline CSS below. -->
-                <!--<div class="fill" style="background-image:url('./img/aguasCal.jpg');"></div>
-                <div class="carousel-caption">
-                    <h2>Aguas calientes (El rosal)</h2>
-                </div>
-            </div>-->            
-            <div class="item">
-                <!-- Set the third background image using inline CSS below. -->
-                <div class="fill" style="background-image:url('./img/1507.jpg');"></div>
-                <div class="carousel-caption">
-                    <h2>Esto y más</h2>
-                    <p>¿Aún no conoces estos sitios? suscribete para recibir información sobre planes y servicios exclusivos para ti.</p>
-                    <a href="http://www.freepik.es/fotos-vectores-gratis/fondo">Fondo de fotografía creado por Jcomp - Freepik.com</a>
-                </div>
-            </div>
-        </div>
-        <div class="foll">
-                  <h3 style="padding-left:10%;padding-right:10%; padding-top: 50px; text-align: center">Registrate para mantenerte enterado sobre los mejores planes y servicios que tenemos para ti </h3>
-                 <div style="width: 90%; margin-left: 5%; padding:10px">
+	<!-- Start Homepage -->
+	<header id="home">
+		<div class="header-bg"></div>
+		<div class="pattern"></div>
+		<div class="container">
+			<div class="row">
+				<div class="span4" style="margin-top: -42px;">
+					<a href="index.html" class="logo"><img src="img/cviajaP.png" alt=""></a>
+				</div>
+				<!-- Navigation -->
+				<nav id="topnav" class="span8">
+					<ul id="fixed-nav" class="visible-desktop">
+						<li class="current scroll-link"><a href="#home">Inicio</a></li>
+						<li><a href="#portfolio">Sitios</a></li>
+						<li><a href="#team">Nosotros</a></li>
+						<!--<li><a class="scroll-link" href="#about">Nosotros</a></li>
+						<li><a class="scroll-link" href="#team">Team</a></li>
+						<li><a class="scroll-link" href="#projects">Projects</a></li>
+						<li><a class="scroll-link" href="#portfolio">Portfolio</a></li>
+						<li><a class="scroll-link" href="#contact">Contact</a></li>
+						<li><a class="external" href="blog.html">Blog</a></li>
+						<li><a class="external" href="features.html">Features</a></li>-->
+					</ul>
+				</nav>
+				<!-- End Navigation -->
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div id="slidecaption">
+						Recibe por tan solo <span class="color-text">$10.000 mensuales</span> las mejores actividades cerca a tu ciudad.
+						<div class="sub-caption">Si te gusta viajar y no sabes a donde ir este es el lugar indicado para ti.</div>
+						<a id="myBtn" class="btn white scroll-link">Suscribirse</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="wrapper">
+	
+		<!-- Start Sticky Navigation -->
+		<nav id="mainnav">
+			<div class="container">
+				<div class="row">
+					<div class="span4">
+						<a href="index.html" class="logo"><img src="" alt=""></a>
+					</div>
+					<div class="span8">
+						<ul id="fluid-nav" class="fluid-navigation visible-desktop">
+							<li class="current"><a href="#home">Inicio</a></li>
+							<li><a href="#portfolio">Sitios</a></li>
+							<li><a href="#team">Nosotros</a></li>
+							<!--<li><a href="#about">About Us</a></li>
+							<li><a href="#projects">Projects</a></li>
+							<li><a href="#contact">Contact</a></li>
+							<li><a class="external" href="blog.html">Blog</a></li>
+							<li><a class="external" href="features.html">Features</a></li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- End Sticky Navigation -->
+		
+		<!-- Start Portfolio Page -->
+		<section id="portfolio" class="page">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<div class="title">Nuestros sitios</div>
+						<hr>
+						<div class="lead-small">Actualmente contamos con los siguientes sitios turísticos, planes y servicios, sin embargo constantemente estamos cargando nuevos sitios con beneficios para nuestros usuarios suscritos, ¡que estas esperando para registrarte?.</div><br>
+					<!--<div class="portfolio-slider flexslider">
+							<ul class="slides">
+								<li>
+									<div class="slider-text">
+										<a href="#" class="slider-title">Porsche Boxster Website</a>
+										<div class="slider-desc">Duis tincidunt erat quam. Etiam placerat sapien elit. Pellentesque egestas ornare sagittis. Sed augue lorem, dignissim eget bibendum vitae, scelerisque eget justo. Class aptent taciti sociosqu ad litora.</div>
+									</div>
+									<img src="img/sliders/portfolio/portfolio1.jpg" alt="" /></li>
+								<li>
+									<div class="slider-text">
+										<a href="#" class="slider-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
+										<div class="slider-desc">Pellentesque egestas ornare sagittis. Sed augue lorem, dignissim eget bibendum vitae, scelerisque eget justo. Class aptent taciti sociosqu ad litora.</div>
+									</div>
+									<img src="img/sliders/portfolio/portfolio2.jpg" alt="" />
+								</li>
+							</ul>
+						</div>-->
+
+						<!-- Start Filters -->
+		                <ul class="option-set" data-option-key="filter">
+					    	<li><a class="selected" href="#filter" data-option-value="*"><span></span>Todos los sitios</a></li>
+							<li><a href="#filter" data-option-value=".app"><span></span>Salida por auto norte</a></li>
+							<li><a href="#filter" data-option-value=".campaign"><span></span>Salida por auto sur</a></li>
+							<li><a href="#filter" data-option-value=".site"><span></span>Salida por calle 80</a></li>
+							<li><a href="#filter" data-option-value=".strategy"><span></span>Salida por oriente</a></li>
+				    	</ul>
+				    	<!-- End Filters -->
+				    	
+				    	<div id="posts" class="row isotope">
+							<!-- Start Project -->
+						  <div class="post item span4 isotope-item strategy">
+			    			<a href="img/projects/bungeeChoachi.jpg" rel="group1" class="project-wrp fancybox" title="Salto de vertigo en choachi">
+			    					<div class="profile-photo">
+				    				 <div class="profile-icon">&#0102;</div>
+				    				<!-- <p><b>Precio:</b> $45.000 COP</p>
+									  <a href="#about" class="btn white">Reservar</a>-->
+									 <img src="img/projects/bungeeChoachi.jpg" alt="Si eres una persona con ganas de realizar una actividad extrema a 1 hora y 30 minutos de bogotá encontraras el salto en bongee desde un puente a 40 mts de altura. Cupos limitados ">
+									 <a id='event_1' class='btn white scroll-link btnReserve'>Reservar</a>
+									</div>
+									<div class="project-client">Salto de vertigo</div>
+									<div class="project-name">Choachí</div>
+									<hr class="mini">
+									<div class="project-date">A 1 Hora y 30 Min Aprox de Boogotá</div>
+			    			</a>
+						  </div>
+		    			<!--<div style="display:none"><a href="img/parallax/bg1.jpg" rel="group1" class="project-wrp fancybox" title="Salto de vertigo en choachí"><img src="img/projects/thumb1.jpg" alt=""></a></div>
+
+		    			<div style="display:none"><a href="img/parallax/bg3.jpg" rel="group1" class="project-wrp fancybox" title="The Makery Consultancy Agency Website"><img src="img/projects/thumb1.jpg" alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac augue at erat hendrerit dictum. Duis tincidunt erat quam. Etiam placerat sapien elit. Pellentesque egestas ornare sagittis. Sed augue lorem, dignissim eget bibendum vitae, scelerisque eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."></a></div>
+		    			<div style="display:none"><a href="img/parallax/bg4.jpg" rel="group1" class="project-wrp fancybox" title="The Makery Consultancy Agency Website"><img src="img/projects/thumb1.jpg" alt="Duis tincidunt erat quam. Etiam placerat sapien elit. Pellentesque egestas ornare sagittis. Sed augue lorem, dignissim eget bibendum vitae, scelerisque eget justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."></a></div>-->
+		    			<div style="display:none"><a href="img/header.jpg" rel="group1" class="project-wrp fancybox" title="The Makery Consultancy Agency Website"><img src="img/projects/thumb1.jpg" alt="¿Que esperas para reservar? haz click aquí"></a></div>
+							<!-- End Project -->
+							
+							<!-- Start Project -->
+							<div class="post item span4 isotope-item site">
+				    			<a href="img/projects/jericoCundi.jpg" class="project-wrp fancybox" rel="group2" title="Parque de jericó Cundinamarca">
+				    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+											<img src="img/projects/jericoCundi.jpg" alt="Con 120 hectareas de espacio, este es un buen sitio para realizar los diversos tipos de actividades que se ofrecen tales como senderismo, pesca deportiva y más. <br><b>Precios:</b> Desde 
+											<br>
+											<a id='event_2' class='btn white scroll-link btnReserve'>Reservar</a>
+											">
+										</div>
+										<div class="project-client">Parque jericó</div>
+										<div class="project-name">San francisco</div>
+										<hr class="mini">
+										<div class="project-date">A 50 Min de Bogotá</div>
+				    			</a>
+			    			</div>
+							<!-- End Project -->
+							
+							<!-- Start Project -->
+							<div class="post item span4 isotope-item app">
+			    			<a href="img/projects/parapenteSopo.jpg" rel="group3" class="project-wrp fancybox" title="Parapente paraiso, Sopó">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+										<img src="img/projects/parapenteSopo.jpg" alt="Desde $120.000 pesos podrás disfrutar la mejor vista de la sabana de Cundinamarca, sopó, ubicado a solo 40 minutos de Bogotá
+										<br>
+										<a id='event_3' class='btn white scroll-link btnReserve'>Reservar</a>
+										">
+									</div>
+									<div class="project-client">Parapente paraiso</div>
+									<div class="project-name">Sopó</div>
+									<hr class="mini">
+									<div class="project-date">A 40 Min saliendo de Bogotá</div>
+			    			</a>
+						</div>
+							<!-- End Project -->
+							
+							<!-- Start Project -->
+							<div class="post item span4 isotope-item app">
+			    			<a href="img/projects/jaimeDTocanc.jpg" rel="group3" class="project-wrp fancybox" title="Parque Jaime Duque (Tocancipá)">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+										<img src="img/projects/jaimeDTocanc.jpg" alt="Ubicado a tan solo 30 minutos de Bogotá, es un sitio ideal para salir en familia 
+										<br>
+										<a id='event_4' class='btn white scroll-link btnReserve'>Reservar</a>
+										">
+									</div>
+									<div class="project-client">Parque Jaime Duque</div>
+									<div class="project-name">Tocancipá</div>
+									<hr class="mini">
+									<div class="project-date">A 30 Min saliendo de Bogotá</div>
+			    			</a>
+						</div>
+							<!-- End Project -->
+							
+							<!-- Start Project -->
+							<div class="post item span4 isotope-item app">
+			    			<a href="img/projects/lagunaTabacalLVega.jpg" rel="group3" class="project-wrp fancybox" title="Laguna el tabacal &nbsp;(La vega)">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+				    					<img src="img/projects/lagunaTabacalLVega.jpg" alt="Laguna ubicada a 20 minutos del municipio de la vega, cuenta con diversidad de plantas y animales además de una historia fascinante que seguro te encantará, <br> <a id='event_5' class='btn white scroll-link btnReserve'>Reservar</a>">
+									</div>
+									<div class="project-client">Laguna el tabacal</div>
+									<div class="project-name">La vega</div>
+									<hr class="mini">
+									<div class="project-date">A 1 Hora y 40 min de Bogotá</div>s
+			    			</a>
+						</div>
+							
+							<!-- End Project -->
+							
+							<!-- Start Project -->
+							<div class="post item span4 isotope-item campaign site">
+			    			<a href="img/projects/extremasTobia.jpg" rel="group5" class="project-wrp fancybox" title="Aquí encontrarás todas esas actividades extremas que siempre quisiste realizar.">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+										<img src="img/projects/extremasTobia.jpg" alt="Desde canotage, Bicimontañismo, Rafting entre otros, Suscríbete y enterate de las promociones que tenemos para este fin de semana.
+										<br>
+										<a id='event_6' class='btn white scroll-link btnReserve'>Reservar</a>
+										">
+									</div>
+									<div class="project-client">Tobia extrema</div>
+									<div class="project-name">Tobia</div>
+									<hr class="mini">
+									<div class="project-date">A 1 Hora y 30 Min de Bogotá</div>
+			    			</a>
+						</div>
+							<!-- End Project -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Portfolio Page -->
+		<!-- Start Team Page -->
+		<section id="team" class="page">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+					<div class="title">Quienes <span class="color-text">somos</span>?</div>
+					<hr>
+					<!--<div class="lead">La mas importante .</div>-->
+					<div class="row">
+											<!-- Start Profile -->
+						<div class="span3 profile">
+							<img src="img/team/profile3.jpg" alt="">
+							<div class="profile-name">Miguel Espinosa</div>
+							<div class="profile-job">Desarrollador de negocio</div>
+							<div class="profile-desc">
+								<p>Ingeniero de sistemas de la universidad de cundinamarca con experiencia en redes, preyectos e infraestructura tecnológica</p>
+							</div>
+							<ul class="profile-social-icons">
+								<li><a href="https://www.linkedin.com/in/miguel-espinosa-6b642694/">&#231;</a></li>
+							</ul>
+						</div>
+						<!-- End Profile -->
+						<!-- Start Profile -->
+						<div class="span3 profile">
+							<img src="img/team/profile1.jpg" alt="">
+							<div class="profile-name">Andrés Valenzuela</div>
+							<div class="profile-job">Desarrollador de producto</div>
+							<div class="profile-desc">
+								<p>Ingeniero de sistemas de la universidad de cundinamarca y desarrollador full-stack con 2 años de experiencia.</p>
+							</div>
+							<ul class="profile-social-icons">
+								<li><a href="https://www.linkedin.com/in/andr%C3%A9s-mauricio-valenzuela-511694105/">&#231;</a></li>
+							</ul>
+						</div>
+						<!-- End Profile -->
+						
+						<!-- Start Profile -->
+						<div class="span3 profile">
+							<img src="img/team/profile2.jpg" alt="">
+							<div class="profile-name">Franklyn Lombana</div>
+							<div class="profile-job">Desarrollador de producto</div>
+							<div class="profile-desc">
+								<p>Ingeniero de sistemas de la universidad de cundinamarca y desarrollador full-stack con 2 años de experiencia.</p>
+							</div>
+							<ul class="profile-social-icons">
+								<li><a href="https://www.linkedin.com/in/franklyn-lombana-molina-593906118/">&#231;</a></li>
+							</ul>
+						</div>
+						<!-- End Profile -->
+
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Team Page -->
+		
+		<section id="copyright">
+			© 2013 Identiq Interactive Ltd. Powered by <a href="#">CViajaDeLujo</a>. <a href="#">Identiq Template</a> by <a href="#">TVDA</a>.
+		</section>
+	</div>
+<div id="myModal" class="modal" style="padding-top: 10px;">
+<!-- Modal content -->
+<div class="modal-content">
+  <div class="modal-header">
+    <span class="close">&times;</span>
+    <h3 style="padding-left:10%;padding-right:10%;text-align: center">Suscríbete para estar enterado sobre los mejores planes y servicios que tenemos para ti </h3>
+  </div>
+  <div class="modal-body">
+        <div style="width: 90%; margin-left: 5%; padding:10px">
             <form id="target">    
                 <label>Nombre</label>
-                <input type="text" id="nombre" class="form-control input-md" placeholder="Nombre" required>
+                <input type="text" id="nombre" style="width: 95%; height: 30px" class="form-control" placeholder="Nombre" required>
                 <label class="padding">Correo</label>
-                <input type="text" id="correo" class="form-control input-md" placeholder="Correo electrónico" required>
+                <input type="text" id="correo" style="width: 95%;height: 30px" placeholder="Correo electrónico" required>
                 <h5 class="padding"><b>¿Cuál de estas actividades te gustaría realizar?</b></h5>
                 <div>
                 <input id="caminata" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                <p class="imp"> Caminatas</p>
+                <p style="padding-top: 5px">&nbsp;&nbsp; Caminatas</p>
                 </div>
                 <div>
                   <input id="Picknic" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p class="imp"> Picknic</p>
+                  <p style="padding-top: 5px">&nbsp;&nbsp; Picknic</p>
                 </div>
                 <div>
                   <input id="sturisticos" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p class="imp"> Sitios turísticos</p>
+                  <p style="padding-top: 5px">&nbsp;&nbsp; Bicimontañismo</p>
                 </div>
                 <div>
                   <input id="avarias" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p class="imp"> Actividades varias</p>
+                  <p style="padding-top: 5px">&nbsp;&nbsp; Actividades poco convencionales</p>
                 </div>
-                <div style="margin-top: 40px">
-                 <!--<a href="#planes">¿Que servicio te gustaría tener?</a>-->
-                 <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
-                  <input id="otro" style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style:solid;border-bottom-width: 1px;" type="text" value="">
+                <div style="margin-top: 30px">
+                <!-- <a href="#planes">¿Que servicio te gustaría tener?</a>-->
+                 <!-- <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
+                  <input style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style: solid; " type="text" value="">-->
                 </div>
-                <a href="#planes" style="bottom: 5%;position: absolute;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnContact" type="submit" value="">Suscríbete</a>
-                 </div>
-            </form>     
-        </div>
-
-<!--rights:
- https://allevents.in/events/caminata-cascada-el-escobo/804330253031058 cascade
- http://fsenderosymemoria.blogspot.com.co/2008/04/cuchilla-del-tablazo-subachoque.html
- https://es.pinterest.com/pin/372109987938550167/
- https://www.google.com.co/search?q=museo+botero&oq=museo+botero&aqs=chrome..69i57.2703j0j1&sourceid=chrome&ie=UTF-8
- -->
-        <!-- Controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span class="icon-prev"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-            <span class="icon-next"></span>
-        </a>
-    </header>
-    <!-- Page Content -->
-    <div class="container" id="planes">
-    <!-- SECTION HEADING -->
-    <div class="colored-line">
-    </div>
-    
-    <div class="sub-heading">
-        <h3>Selecciona el paquete que te gustaría obtener.</h3>
-    </div>
-    
-    <div class="pricing-table">
-        
-        <!-- Values plans -->
-        <div class="row">
-            
-            <!-- PACKAGE ONE -->
-            <div class="col-md-6">
-                <div class="package bgcolor-white">
-                    <div class="header dark-bg">
-                        <h3>Gratuito</h3>
-                        <div class="sub-heading">
-                             <span class="colored-text strong">$0 pesos</span> Al mes
-                        </div>
-                    </div>
-                    <!-- PACKAGE FEATURES -->
-                    <div class="package-features">
-                        <ul>
-                            <li>
-                            <div class="column-9p">
-                                Información de las mejores actividades y lugares turísticos cerca a tu ciudad
-                            </div>
-                            <div class="column-1p"></div>
-                            </li>
-                            <li>
-                            <div class="column-9p">
-                               Información de los mejores planes gratuitos
-                            </div>
-                            <div class="column-1p">
-                                <span class="icon_check"></span>
-                            </div>
-                            </li>
-                            <li>
-                            <div class="column-9p">
-                                Correos cada semana  
-                            </div>
-                            <div class="column-1p">
-                                <span class="icon_check"></span>
-                            </div>
-                            </li>
-                        </ul>
-                        <div class="bottom-row">
-                            <div class="column-7p">
-                                <h6>$0 pesos al mes</h6>
-                            </div>
-                            <div class="column-3p">
-                                <div id="cta-1">
-                                    <a href="#home" id="btnFree" class="btn secondary-button">Seleccionar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- /END PACKAGE -->
-            
-            <!-- PACKAGE TWO -->
-            <div class="col-md-6">
-                <div class="package bgcolor-white">
-                    <div class="header dark-bg">
-                        <h3>Premium</h3>
-                        <div class="sub-heading">
-                            Desde <span class=" strong">$10.000 pesos</span> al mes
-                        </div>
-                    </div>
-                    
-                    <!-- PACKAGE FEATURES -->
-                    <div class="package-features">
-                        <ul>
-                        <li>
-                            <div class="column-9p">
-                                Información de las mejores actividades y lugares turísticos cerca a tu ciudad 
-                            </div>
-                            <div class="column-1p"></div>
-                        </li>
-                        <li>
-                            <div class="column-9p">
-                                Programación semanal de los mejores planes gratuitos y de pago
-                            </div>
-                            <div class="column-1p"></div>
-                        </li>
-                            <li>
-                            <div class="column-9p">
-                                Promociones y descuentos
-                            </div>
-                            <div class="column-1p"></div>
-                            </li>
-                            <li>
-                            <div class="column-9p">
-                                Te armamos el plan de acuerdo a tus intereses
-                            </div>
-                            <div class="column-9p">
-                                Acceso a toda la información sobre los mejores lugares cerca a tu ubicación desde cualquier lugar
-                            </div>
-                            <div class="column-1p">
-                                <span class="icon_check"></span>
-                            </div>
-                            </li>
-                            <li>
-                            <div class="column-9p">
-                                Correos semanales  
-                            </div>
-                            <div class="column-1p">
-                                <span class="icon_check"></span>
-                            </div>
-                            </li>
-                        </ul>
-                        <div class="bottom-row">
-                            <div class="column-7p">
-                                <h6>$10.000 pesos al mes</h6>
-                            </div>
-                            <div class="column-3p">
-                                <div id="cta-1">
-                                    <a href="#home" id="btnCost" class="btn secondary-button">Seleccionar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> <!-- /END PACKAGE -->
-   
-        </div> <!-- /END ROW -->
-    </div> <!-- /END ALL PACKAGE -->
-   <footer class="bgcolor-2">
-    <div class="container">  
-        <div class="footer-logo">
-            <h3>CViajaDeLujo</h3>
-        </div>
-        
-        <div class="copyright">
-             ©2017 CViajaDeLujo todos los derechos reservados.
-        </div>
-        
-        <ul class="social-icons">
-            <li><a href=""><span class="social_facebook_square"></span></a></li>
-            <li><a href=""><span class="social_linkedin_square"></span></a></li>
-        </ul>
-        
-    </div>
-    </footer> 
+<!--                <a style="bottom: 5%;width: 100%; background-color:#7ca453" class="btn btn-primary" id="btnCost" value="">Suscríbete</a>-->
+                <a href="#" style="text-align:center;bottom: 5%;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnCost">Suscríbete</a>
+                </form>
+            </div>
+  </div>
 </div>
-    <!-- /.container -->
+</div>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-    <script src="js/script.js"></script>
+<div id="modalReserve" class="modal" style="padding-top: 10px;">
+<!-- Modal content -->
+<div class="modal-content">
+  <div class="modal-header">
+    <span id="close" class="close">&times;</span>
+    <h3 style="padding-left:10%;padding-right:10%;text-align: center">Suscríbete para estar enterado sobre los mejores planes y servicios que tenemos para ti </h3>
+  </div>
+  <div class="modal-body">
+        <div style="width: 90%; margin-left: 5%; padding:10px">
+            <form id="target">
+            	<h3 id="lugar"></h3>    
+                <label>Nombre</label>
+                <input type="text" id="nombreReserve" style="width: 95%; height: 30px" class="form-control" placeholder="Nombre" required>
+                <label class="padding">Correo</label>
+                <input type="text" id="correoReserve" style="width: 95%;height: 30px" placeholder="Correo electrónico" required>
+                <div style="margin-top: 30px">
+                </div>
+                <a style="text-align:center;bottom: 5%;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnNewReserva">Reservar</a>
+                </form>
+            </div>
+  </div>
+</div>
+</div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="js/jquery.easing.min.js"></script>	
+	<script src="js/jquery.sticky.js"></script><!-- Sticky Navigation -->
+	<script src="js/jquery.scrollTo.js"></script><!-- Smooth Scrolling -->
+	<script src="js/jquery.nav.js"></script><!-- One Page Navigation -->
+	<script src="js/selectnav.min.js"></script><!-- Mobile Navigation -->
+	<script src="js/jquery.flexslider.js"></script><!-- FlexSlider 2 -->
+	<script src="js/jquery.parallax-1.1.3.js"></script><!-- Parallax -->
+	<script src="js/jquery.isotope.min.js"></script><!-- Isotope Portfolio -->
+	<script src="js/mql.js"></script><!-- Isotope Fix -->
+	<script src="js/shortcodes.js"></script> <!-- Shortcodes -->
+	<script src="js/jquery.fancybox.pack.js"></script><!-- Fancybox -->
+	<script src="js/jquery.fancybox-media.js"></script><!-- Fancybox Media Helper -->
+	<script src="js/jflickrfeed.js"></script><!-- Flickr Feed -->
+	<script src="js/settings.js"></script> <!-- JS Options -->
+	<script src="js/contact.js"></script> <!-- Feedback form -->
+	<script src="js/twitter/jquery.tweet.js"></script> <!-- Twitter Feed -->
+	<script src="js/twitter-options.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/ettrics.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/sweetalert2.min.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/script.js"></script> <!-- Twitter Feed Options -->
 
-    <!-- Script to Activate the Carousel -->
-    <script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-    </script>
+<script type="text/javascript">
+	// Get the modal
+	var modal = document.getElementById('myModal');
+	// Get the button that opens the modal
+	var btn = document.getElementById("myBtn");
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+	// When the user clicks on the button, open the modal 
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
 
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+</script>
 </body>
-
 </html>
+<!-- IDENTIQ TEMPLATE BY ILYA SIDELNIKOV AND TVDA - THEMES.TVDA.EU -->
