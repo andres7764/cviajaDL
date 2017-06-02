@@ -12,7 +12,6 @@ $(document).ready(function(){
 	}
 
 	function sendPost(typeSubcri){
-		alert("si");
 		var tmpOtro = ($("#avarias:checked").length > 0)? true +$("#avarias").val()  : false+$("#avarias").val();
 		var f = new Date();
 		$.ajax({ 
