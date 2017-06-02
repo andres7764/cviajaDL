@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 	var modalReserve = $("#modalReserve");
 	var campos = ["nombre", "correo"];
-	var camposReserva = ["nombreReserve","correoReserve"];
+	var camposReserva = ["nombreReserve","correoReserve","activity"];
 
 	function validFields() {
 		for (i in campos) {
@@ -46,10 +46,10 @@ $(document).ready(function() {
 	};
 
 	function sendReserve(lugar) {
-		$.post("/saveContact", {
+		$.post("/saveReserva", {
 				nombre: $("#nombreReserve").val(),
 				correo: $("#correoReserve").val(),
-				event: lugar
+				event:  $("#activity").val()
 			}, function(sucs) {
 				swal("Guardado con exito!", sucs.token, "success");
 				modalReserve.hide();
@@ -79,6 +79,15 @@ $(document).ready(function() {
 			case 6:
 				return "Tobia"
 				break;
+			case 7:
+				return "Tobia"
+				break;
+			case 8:
+				return "Tobia"
+				break;								
+			default:
+				return "all"
+				break;						
 		}
 	}
 
@@ -96,7 +105,6 @@ $(document).ready(function() {
 		console.log(lugar);
 		$("#lugar").html(lugar);
 		modalReserve.show();
-
 	});
 
 	$("#btnNewReserva").click(function(){

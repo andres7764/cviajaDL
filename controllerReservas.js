@@ -4,7 +4,6 @@ var reserva =  mongoose.model('reservasmodel');
 
 //POST - Insert a new user in the Collection
 exports.saveReserva = function(req, res) {
-    console.log(req.body);
     var newReserv = new reserva(req.body);
     newReserv.save(function(err, newUser) {
         if(err) { return res.status(500).send(err.message); }

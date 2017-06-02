@@ -1,7 +1,7 @@
 /* Posts
 ------------------------------- */
 .post img.image { width: 100%; }
-
+.btnReserv { width: 60%; text-align: center; margin-left: 20%; }
 #posts .span4 { padding-top: 20px; width: 300px; height: 291px; }
 
 .project-wrp img { height: 189px; }
@@ -27,6 +27,7 @@
 }
 
 @media (max-width: 767px) {
+.btnReserv { width: 60%; text-align: center; margin-left: 12%; }
 .isotope .item {position: static !important; -webkit-transform: translate(0px, 0px) !important; -moz-transform: translate(0px, 0px) !important; -ms-transform: translate(0px, 0px) !important;  transform: translate(0px, 0px) !important;}
 .isotope-hidden { display: none; }
 #posts .span4 { width: 100%; }
