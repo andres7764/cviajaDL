@@ -19,7 +19,7 @@ exports.saveContact = function(req, res) {
     newUser.save(function(err, newUser) {
         if(err) { return res.status(500).send(err.message); }
         sendMail(req.body.nombre,req.body.correo,random);
-           return res.status(200).send({token: "creado correctamente"});
+           return res.status(200).send({token: "A tu correo hemos enviado el código promocional"});
     });
 }
 

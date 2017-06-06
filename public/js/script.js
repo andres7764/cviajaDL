@@ -41,7 +41,7 @@ $(document).ready(function() {
 				susCribirsePagos: typeSubcri,
 				fecha: f
 			}, function(sucs) {
-				swal("Guardado con exito!", sucs.token, "success");
+				swal("Suscripción completa!", sucs.token, "success");
 				modal.style.display = "none";
 			})
 			.fail(function(err) {
