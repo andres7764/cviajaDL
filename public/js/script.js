@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	setTimeout(function(){
+		modal.style.display = "block";
+	},2000);
+
 	var modalReserve = $("#modalReserve");
 	var campos = ["nombre", "correo"];
 	var camposReserva = ["nombreReserve","correoReserve","activity"];
@@ -91,6 +95,15 @@ $(document).ready(function() {
 		}
 	}
 
+	var sendDSusvcrib = function(){
+		$.post("/cancelSuscription", {correo: $("#fieldDSusc").val()}, function(sucs) {
+			  swal("Información!", sucs.token, "success");
+			  modalReserve.hide();
+			})
+			.fail(function(err) {
+				swal("Opps!", err, "warning");
+			});
+	}
 
 	$("#btnFree").click(function() {
 		validFields() ? sendPost(false) : alert("Debe ingresar su nombre y correo!");
@@ -100,9 +113,8 @@ $(document).ready(function() {
 		validFields() ? sendPost(true) : swal("Opps!", "Debe ingresar su nombre y correo!", "warning");
 	});
 
-	$(".btnReserve").click(function() {
+	$("#main").click(function() {
 		var lugar = getLugar(parseInt($(this).attr("id").split("_")[1]));
-		console.log(lugar);
 		$("#lugar").html(lugar);
 		modalReserve.show();
 	});
@@ -114,6 +126,10 @@ $(document).ready(function() {
 	$("#close").click(function(){
 		modalReserve.hide();
 	});
+
+	$("#cSuscrib").click(function(){
+		($("#fieldDSusc").val() === "")? swal("Opps!", "Debe ingresar su correo para realizar esta acción!", "warning"): sendDSusvcrib();
+	})
 
 	/*
 		$("#target").submit(function(event){

@@ -9,6 +9,7 @@
 }
 
 .btnReserve:hover{
-	background: #fff !important;
+    background: #fff !important;
     color: #7da453 !important;
+    border: 1px solid;
 }

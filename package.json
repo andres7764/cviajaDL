@@ -9,6 +9,7 @@
 		"http": "*",
 		"mongoose": "*",
 		"body-parser": "*",
-		"method-override": "*"
+		"method-override": "*",
+		"sendgrid": "*"
 	}
 }

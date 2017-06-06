@@ -32,7 +32,9 @@
 //Create routes by server rest API ====================================================
 app.post('/saveContact', controllerContact.saveContact);
 app.post('/saveReserva', controllerReservas.saveReserva);
-
+app.post('/cancelSuscription', controllerContact.cancelSuscription);
+app.get('/env',function(req,res){
+})
 // application ======================================================================
 	app.get('/', function(req, res) {
 		res.sendFile('index.html');
@@ -46,4 +48,3 @@ app.post('/saveReserva', controllerReservas.saveReserva);
 	//http.listen(8080, argv.fe_ip);
 	http.listen(5500);
 	console.log("App listening on port 5500");
-

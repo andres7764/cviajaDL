@@ -7,7 +7,9 @@ contacto = new mongoose.Schema({
   opciones:           { type: Object },
   suscribirseMail:    { type: Boolean},
   susCribirsePagos:   { type: Boolean},
-  fecha:              { type: Date }
+  fecha:              { type: Date   },
+  suscripcionActiva:  { type: Boolean},
+  codigo:             { type: String }
 });
 
 
