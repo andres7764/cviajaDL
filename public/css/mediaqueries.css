@@ -422,6 +422,7 @@
 	
 	header .logo {
 		text-align: center;
+		display: none;
 	}
 	
 	body {
