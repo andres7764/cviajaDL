@@ -33,7 +33,7 @@ exports.cancelSuscription = function(req,res) {
 function sendMail(name, mail,random) {
 
     
-var sg = require('sendgrid')("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");
+var sg = require('sendgrid')("");
 var request = sg.emptyRequest({
   method: 'POST',
   path: '/v3/mail/send',
