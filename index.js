@@ -10,7 +10,7 @@
 
 // configuration ======================================================================
 
-	mongoose.connect('mongodb://104.197.252.243:80/cviaja');
+	mongoose.connect('mongodb://35.184.69.152:80/cviaja');
  	//app.use('/public', express.static(__dirname + '/public'));
 // 	app.use(cors());
  	app.use(express.static('public'));
@@ -24,16 +24,21 @@
 	app.use(methodOverride());
 
 //Include the models and controllers of the app =======================================
-  require('./modelContact');
-  var controllerContact = require('./controllerContact');
-  require('./modelReservas');
-  var controllerReservas = require('./controllerReservas');
+  require('./models/modelContact');
+  require('./models/modelReservas');
+  require('./models/modelActivities');
+
+  var controllerContact = require('./controllers/controllerContact');
+  var controllerReservas = require('./controllers/controllerReservas');
+  var controllerActivities = require('./controllers/controllerActivities');
 
 //Create routes by server rest API ====================================================
-app.post('/saveContact', controllerContact.saveContact);
-app.post('/saveReserva', controllerReservas.saveReserva);
-app.post('/cancelSuscription', controllerContact.cancelSuscription);
-app.get('/env',function(req,res){
+	app.post('/saveContact', controllerContact.saveContact);
+	app.post('/saveReserva', controllerReservas.saveReserva);
+	app.post('/cancelSuscription', controllerContact.cancelSuscription);
+	app.post('/uploadActivities',controllerActivities.setActivities);
+	app.post('/getActivities',controllerActivities.getActivities);
+	app.get('/env',function(req,res){
 })
 // application ======================================================================
 	app.get('/', function(req, res) {

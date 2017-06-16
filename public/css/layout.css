@@ -35,12 +35,12 @@
 		-webkit-font-smoothing: antialiased;
 	}
 	
-	::-moz-selection {background: #7da453; color: #fff; }
-	::selection {background: #7da453; color: #fff; }
+	::-moz-selection {background: #228B22; color: #fff; }
+	::selection {background: #228B22; color: #fff; }
 	
-	a { color: #7da453;
+	a { color: #228B22;
 		text-decoration: none;
-		border-bottom: 1px solid #7da453; 
+		border-bottom: 1px solid #228B22; 
 		-webkit-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 		   -moz-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 		    -ms-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
@@ -123,7 +123,7 @@
 	}
 	
 	.color-text {
-		color: #7da453;
+		color: #228B22;
 	}
 	
 	.white-text {
@@ -167,7 +167,7 @@
 	
 	hr {
 		border: 0;
-		border-bottom: 1px solid #7da453;
+		border-bottom: 1px solid #228B22;
 		margin: 10px 0;
 	}
 	
@@ -180,7 +180,7 @@
 	hr.mini {
 		width: 60px;
 		border: 0;
-		border-bottom: 1px solid #7da453;
+		border-bottom: 1px solid #228B22;
 		margin: 10px 0;
 	}
 	
@@ -194,7 +194,7 @@
 	}
 	
 	.pattern {
-		background: url(../img/pattern.png);
+		/*background: url(../img/pattern.png);*/
 		width: 100%;
 		position: absolute;
 	}
@@ -219,7 +219,7 @@
 	header .header-bg {
 		height: 700px;
 		width: 100%;
-		background: url(../img/vignette.png) no-repeat center center fixed;
+	/*	background: url(../img/vignette.png) no-repeat center center fixed;*/
 		background-size: cover;
 		position: absolute;
 	}
@@ -315,20 +315,20 @@
 			}
 			
 			nav #fixed-nav li a:hover {
-				color: #7da453;
+				color: #228B22;
 				text-decoration: none;
 			}
 			
 			nav #fixed-nav li.current a {
 				color: #fff;
 				padding-bottom: 5px;
-				border-bottom: 3px solid #7da453;
+				border-bottom: 3px solid #228B22;
 			}
 					
 			nav#mainnav {
 				width: 100%;
 				height: 50px;
-				background-color: #7da453;
+				background-color: #228B22;
 				overflow: hidden;
 				position: relative;
 				z-index: 999;
@@ -404,7 +404,7 @@
 	}
 	
 	.parallax-title a {
-		border-bottom: 1px solid #7da453;
+		border-bottom: 1px solid #228B22;
 	}
 	
 	.parallax-title a:hover {
@@ -460,7 +460,7 @@
 	}
 		     	
 	#twitter-parallax a:hover {
-		border-bottom: 2px solid #7da453;
+		border-bottom: 2px solid #228B22;
 	}
 	
 	.tweet_list li {
@@ -559,7 +559,7 @@
 	/* About ------------------------------------------ */
 	
 	.services {
-		background: #7da453;
+		background: #228B22;
 		color: #fff;
 		height: 322px;
 		padding: 30px;
@@ -595,7 +595,7 @@
 	.profile {
 		background-color: #f7f7f7;
 		padding-bottom: 20px;
-		border-bottom: 1px solid #7da453;
+		border-bottom: 1px solid #228B22;
 	}
 	
 	.profile img {
@@ -640,7 +640,7 @@
 	}
 	
 	.profile-social-icons li a:hover {
-		color: #7da453;
+		color: #228B22;
 	}
 	
 	
@@ -780,7 +780,7 @@
 	}
 	
 	.project-wrp:hover {
-		background-color: #7da453;
+		background-color: #228B22;
 	}
 	
 	.project-wrp:hover img {
@@ -827,12 +827,12 @@
 	}
 	
 	.option-set li a:hover {
-		color: #7da453;
+		color: #228B22;
 	}
 	
 	.option-set li a.selected {
 		font-weight: 700;
-		color: #7da453;
+		color: #228B22;
 	}
 
 	
@@ -869,7 +869,7 @@
 	}
 	
 	.social-icons li a:hover {
-		color: #7da453;
+		color: #228B22;
 	}
 	
 	#contact label {
@@ -909,7 +909,7 @@
 		
 
 	#copyright {
-		background: #7da453;
+		background: #228B22;
 		color: #fff;
 		text-align: center;
 		font-size: 13px;
@@ -1023,7 +1023,7 @@
 	}
 	
 	a.blog-post-title:hover {
-		color: #7da453;
+		color: #228B22;
 	}
 	
 	.blog-post-info {
@@ -1038,8 +1038,8 @@
 	}
 	
 	.blog-post-info a:hover {
-		color: #7da453;
-		border-bottom: 1px solid #7da453;
+		color: #228B22;
+		border-bottom: 1px solid #228B22;
 	}
 	
 	.blog-post-image {
@@ -1105,7 +1105,7 @@
 		font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
 		text-transform: uppercase;
 		font-size: 24px;
-		border-bottom: 1px solid #7da453;
+		border-bottom: 1px solid #228B22;
 		letter-spacing: 1px;
 		padding-bottom: 10px;
 		margin-top: 52px;
@@ -1135,8 +1135,8 @@
 	}
 	
 	.comment-info a:hover {
-		color: #7da453;
-		border-bottom: 1px solid #7da453;
+		color: #228B22;
+		border-bottom: 1px solid #228B22;
 	}
 	
 	.comment p {

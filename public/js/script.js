@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-	setTimeout(function(){
-		modal.style.display = "block";
-	},2000);
-
 	var modalReserve = $("#modalReserve");
 	var campos = ["nombre", "correo"];
 	var camposReserva = ["nombreReserve","correoReserve","activity"];

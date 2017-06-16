@@ -55,7 +55,7 @@
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #7da453;
+    background-color: #228B22;
     color: white;
 }
 
@@ -129,7 +129,7 @@
 </script>
 </head>
 
-<body>
+<body ng-app="cviaja" ng-controller="activitiesCtrl">
 
 
 	<!-- Start Homepage -->
@@ -146,15 +146,6 @@
 					<ul id="fixed-nav" class="visible-desktop">
 						<li class="current scroll-link"><a href="#home">Inicio</a></li>
 						<li><a href="#portfolio">Sitios</a></li>
-						<li><a href="#team">Nosotros</a></li>
-						<li><a href="#dsuscrib">Suscripción</a></li>
-						<!--<li><a class="scroll-link" href="#about">Nosotros</a></li>
-						<li><a class="scroll-link" href="#team">Team</a></li>
-						<li><a class="scroll-link" href="#projects">Projects</a></li>
-						<li><a class="scroll-link" href="#portfolio">Portfolio</a></li>
-						<li><a class="scroll-link" href="#contact">Contact</a></li>
-						<li><a class="external" href="blog.html">Blog</a></li>
-						<li><a class="external" href="features.html">Features</a></li>-->
 					</ul>
 				</nav>
 				<!-- End Navigation -->
@@ -162,9 +153,9 @@
 			<div class="row">
 				<div class="span12">
 					<div id="slidecaption">
-						Sí te gusta viajar y salir de la rutina, este es el lugar <span class="color-text">indicado </span> para ti.
-						<div class="sub-caption">Suscríbete por solo $10.000 y recibe cada semana los mejores lugares, eventos, talleres y actividades cerca a tu ciudad, el primer mes es ¡gratis! siempre podrás cancelar tu suscripción.</div>
-						<a id="myBtn" class="btn white scroll-link">Suscribirse</a>
+						Encuentra sitios y actividades únicas <span class="color-text">cerca </span> a tu ciudad.
+						<div class="sub-caption">Recibe <span class="color-text">GRATIS </span> cada semana actividades únicas  a menos de 2 horas de Bogotá.</div>
+						<a id="myBtn" class="btn white scroll-link">Suscribete</a>
 					</div>
 				</div>
 			</div>
@@ -184,13 +175,6 @@
 						<ul id="fluid-nav" class="fluid-navigation visible-desktop">
 							<li class="current"><a href="#home">Inicio</a></li>
 							<li><a href="#portfolio">Sitios</a></li>
-							<li><a href="#team">Nosotros</a></li>
-							<li><a href="#dsuscrib">Suscripción</a></li>
-							<!--<li><a href="#about">About Us</a></li>
-							<li><a href="#projects">Projects</a></li>
-							<li><a href="#contact">Contact</a></li>
-							<li><a class="external" href="blog.html">Blog</a></li>
-							<li><a class="external" href="features.html">Features</a></li>-->
 						</ul>
 					</div>
 				</div>
@@ -205,8 +189,8 @@
 					<div class="span12">
 						<div class="title">Nuestros sitios</div>
 						<hr>
-						<div class="lead-small">Actualmente contamos con los siguientes sitios turísticos, planes y servicios, sin embargo constantemente estamos cargando nuevos sitios con beneficios para nuestros usuarios suscritos, ¡que estas esperando para registrarte?.</div><br>
-								<div class="portfolio-slider flexslider">
+						<div class="lead-small">Actualmente contamos con las siguientes actividades, sin embargo constantemente estamos cargando nuevas actividades con beneficios para nuestros usuarios suscritos, </div><br>
+								<!--<div class="portfolio-slider flexslider">
 										<ul class="slides">
 											<li>
 												<div class="slider-text">
@@ -214,39 +198,32 @@
 													<div class="slider-desc">Este fin de semana obten el 10% de descuento en pareja para disfrutar el mejor plan extremo en Vergara Cundinamarca, suscríbete ahora y obten tu código de descuento. <p style="font-size: 12px; color: #fff">(aplican condiciones y restricciones)</p></div>
 												</div>
 												<img src="img/projects/promo.jpg" alt="" /></li>
-											<!--<li>
-												<div class="slider-text">
-													<a href="#" class="slider-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a>
-													<div class="slider-desc">Pellentesque egestas ornare sagittis. Sed augue lorem, dignissim eget bibendum vitae, scelerisque eget justo. Class aptent taciti sociosqu ad litora.</div>
-												</div>
-												<img src="img/sliders/portfolio/portfolio2.jpg" alt="" />
-											</li>-->
 										</ul>
-									</div>
+									</div>-->
 						<!-- Start Filters -->
 		                <ul class="option-set" data-option-key="filter">
-					    	<li><a class="selected" href="#filter" data-option-value="*"><span></span>Todos los sitios</a></li>
-							<li><a href="#filter" data-option-value=".app"><span></span>Salida por auto norte</a></li>
-							<li><a href="#filter" data-option-value=".campaign"><span></span>Salida por auto sur</a></li>
-							<li><a href="#filter" data-option-value=".site"><span></span>Salida por calle 80</a></li>
-							<li><a href="#filter" data-option-value=".strategy"><span></span>Salida por oriente</a></li>
+					    	<li><a class="selected" href="#filter" data-option-value="*"><span></span>Todos las actividades</a></li>
+							<li><a href="#filter" data-option-value=".app"><span></span>En familia</a></li>
+							<li><a href="#filter" data-option-value=".campaign"><span></span>En pareja</a></li>
+							<li><a href="#filter" data-option-value=".site"><span></span>En amigos</a></li>
+							<li><a href="#filter" data-option-value=".strategy"><span></span>Actividades extremas</a></li>
 				    	</ul>
 				    	<!-- End Filters -->
 				    	
-				    	<div id="posts" class="row isotope">
+				    <div id="posts" class="row isotope" >
 							<!-- Start Project -->
-						  <div class="post item span3 span4 isotope-item strategy">
-			    			<a href="img/projects/bungeeChoachi.jpg" rel="group1" class="project-wrp fancybox" title="Salto de vertigo en choachi">
+						  <div ng-repeat="activ in activities" class="post item span3 span4 isotope-item strategy">
+			    			<a href="img/projects/{{activ.image}}" rel="group1" class="project-wrp fancybox" title="{{activ.name}}">
 			    					<div class="profile-photo">
 				    				 <div class="profile-icon">&#0102;</div>
 				    				<!-- <p><b>Precio:</b> $45.000 COP</p>
 									  <a href="#about" class="btn white">Reservar</a>-->
-									 <img src="img/projects/bungeeChoachi.jpg" alt="Si eres una persona con ganas de realizar una actividad extrema a 1 hora y 30 minutos de bogotá encontraras el salto en bongee desde un puente a 40 mts de altura. Cupos limitados ">
+									 <img src="img/projects/{{activ.image}}" alt="{{activ.description}}">
 									</div>
-									<div class="project-client">Salto de vertigo</div>
-									<div class="project-name">Choachí</div>
+									<div class="project-client">{{activ.name}}</div>
+									<div class="project-name">{{activ.location.name}}</div>
 									<hr class="mini">
-									<div class="project-date">A 1 Hora y 30 Min Aprox de Boogotá</div>
+									<div class="project-date">{{activ.name}}</div>
 			    			</a>
 						  </div>
 		    			<div style="display:none"><a href="img/header.jpg" rel="group1" class="project-wrp fancybox" title="The Makery Consultancy Agency Website"><img src="img/projects/thumb1.jpg" alt="¿Que esperas para reservar? haz click aquí"></a></div>
@@ -284,24 +261,6 @@
 									<div class="project-name">Sopó</div>
 									<hr class="mini">
 									<div class="project-date">A 40 Min saliendo de Bogotá</div>
-			    			</a>
-						</div>
-							<!-- End Project -->
-							
-							<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item app">
-			    			<a href="img/projects/jaimeDTocanc.jpg" rel="group3" class="project-wrp fancybox" title="Parque Jaime Duque (Tocancipá)">
-			    					<div class="profile-photo">
-				    					<div class="profile-icon">&#0102;</div>
-										<img src="img/projects/jaimeDTocanc.jpg" alt="Ubicado a tan solo 30 minutos de Bogotá, es un sitio ideal para salir en familia 
-										<br>
-										<a id='event_4' class='btn white scroll-link btnReserve'>Reservar</a>
-										">
-									</div>
-									<div class="project-client">Parque Jaime Duque</div>
-									<div class="project-name">Tocancipá</div>
-									<hr class="mini">
-									<div class="project-date">A 30 Min saliendo de Bogotá</div>
 			    			</a>
 						</div>
 							<!-- End Project -->
@@ -376,15 +335,14 @@
 		</section>
 		<!-- End Portfolio Page -->
 		<!-- Start Team Page -->
-		<section id="team" class="page">
+		<!--<section id="team" class="page">
 			<div class="container">
 				<div class="row">
 					<div class="span12">
 					<div class="title">Quienes <span class="color-text">somos</span>?</div>
 					<hr>
-					<!--<div class="lead">La mas importante .</div>-->
+					
 					<div class="row">
-											<!-- Start Profile -->
 						<div class="span3 profile">
 							<img src="img/team/profile3.jpg" alt="">
 							<div class="profile-name">Miguel Espinosa</div>
@@ -396,8 +354,6 @@
 								<li><a href="https://www.linkedin.com/in/miguel-espinosa-6b642694/">&#231;</a></li>
 							</ul>
 						</div>
-						<!-- End Profile -->
-						<!-- Start Profile -->
 						<div class="span3 profile">
 							<img src="img/team/profile1.jpg" alt="">
 							<div class="profile-name">Andrés Valenzuela</div>
@@ -409,9 +365,6 @@
 								<li><a href="https://www.linkedin.com/in/andr%C3%A9s-mauricio-valenzuela-511694105/">&#231;</a></li>
 							</ul>
 						</div>
-						<!-- End Profile -->
-						
-						<!-- Start Profile -->
 						<div class="span3 profile">
 							<img src="img/team/profile2.jpg" alt="">
 							<div class="profile-name">Franklyn Lombana</div>
@@ -423,13 +376,11 @@
 								<li><a href="https://www.linkedin.com/in/franklyn-lombana-molina-593906118/">&#231;</a></li>
 							</ul>
 						</div>
-						<!-- End Profile -->
-
 					</div>
 				</div>
 				</div>
 			</div>
-		</section>
+		</section>-->
 		<!-- End Team Page -->
 		
 	<!-- Section dsuscrib init -->
@@ -455,7 +406,7 @@
 		<!-- end dsuscrtb section -->
 
 		<section id="copyright">
-			© 2013 Identiq Interactive Ltd. Powered by <a href="#">CViajaDeLujo</a>. <a href="#">Identiq Template</a> by <a href="#">TVDA</a>.
+		  <a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.
 		</section>
 	</div>
 <div id="myModal" class="modal" style="padding-top: 10px;">
@@ -494,8 +445,8 @@
                  <!-- <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
                   <input style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style: solid; " type="text" value="">-->
                 </div>
-<!--                <a style="bottom: 5%;width: 100%; background-color:#7ca453" class="btn btn-primary" id="btnCost" value="">Suscríbete</a>-->
-                <a href="#" style="text-align:center;bottom: 5%;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnCost">Suscríbete</a>
+<!--                <a style="bottom: 5%;width: 100%; background-color:#228B22" class="btn btn-primary" id="btnCost" value="">Suscríbete</a>-->
+                <a href="#" style="text-align:center;bottom: 5%;width: 85%; background-color:#228B22" class="btn btn-primary btn-block" id="btnCost">Suscríbete</a>
                 </form>
             </div>
   </div>
@@ -531,7 +482,7 @@
                 </select>
                 <div style="margin-top: 30px"></div>
 
-                <a style="text-align:center;bottom: 5%;width: 85%; background-color:#7ca453" class="btn btn-primary btn-block" id="btnNewReserva">Reservar</a>
+                <a style="text-align:center;bottom: 5%;width: 85%; background-color:#228B22" class="btn btn-primary btn-block" id="btnNewReserva">Reservar</a>
                 </form>
             </div>
   </div>
@@ -559,6 +510,8 @@
 	<script src="js/ettrics.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/sweetalert2.min.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/script.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/angular.min.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/app.js"></script> <!-- Twitter Feed Options -->
 
 <script type="text/javascript">
 	// Get the modal

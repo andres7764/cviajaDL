@@ -71,7 +71,7 @@
 }
 
 .accordion-wrp h6:hover, .toggle-wrp h6:hover {
-	background: #7da453;
+	background: #228B22;
 	color: white;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .accordion-wrp.current h6:hover, .toggle-wrp.current h6:hover {
-	background: #7da453;
+	background: #228B22;
 }
 
 .accordion-wrp.current .accordion-content, .toggle-wrp.current .toggle-content {
@@ -107,7 +107,7 @@
 	width: 100%;
 	margin: 0;
 	overflow: hidden;
-	border-bottom: 1px solid #7da453;
+	border-bottom: 1px solid #228B22;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -136,7 +136,7 @@
 }
 
 .tabs ul li.current {
-	background: #7da453;
+	background: #228B22;
 	color: white;
 }
 
@@ -292,7 +292,7 @@ button.close {
 blockquote {
 	margin: 30px 0;
 	padding: 10px 0 6px 20px;
-	border-left: 3px solid #7da453;
+	border-left: 3px solid #228B22;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -369,7 +369,7 @@ blockquote.small small {
 	margin: 10px 10px 10px 0;
 	padding: 11px 30px;
 	line-height: 1.5;
-	background: #7da453 !important;
+	background: #228B22 !important;
 	color: #fff !important;
 	font-size: 16px;
 	font-weight: bold;
@@ -394,7 +394,7 @@ blockquote.small small {
 }
 
 .btn.white:hover, .btn.white:hover {
-	background: #7da453;
+	background: #228B22;
 	color: #fff;
 }
 
@@ -1208,6 +1208,6 @@ legend + .control-group {
 
 #shortcodes .title-hr {
 	border: 0;
-	border-bottom: 1px solid #7da453;
+	border-bottom: 1px solid #228B22;
 	margin: 10px 0;
 }
