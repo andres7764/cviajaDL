@@ -10,7 +10,7 @@
 
 // configuration ======================================================================
 
-	mongoose.connect('mongodb://35.184.69.152:80/cviaja');
+	//mongoose.connect('mongodb://35.184.69.152:80/cviaja');
  	//app.use('/public', express.static(__dirname + '/public'));
 // 	app.use(cors());
  	app.use(express.static('public'));

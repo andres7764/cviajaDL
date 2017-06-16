@@ -29,6 +29,11 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+.bullets {
+	font-size: 20px;
+    font-style: italic;
+    padding-left: 20px;
+}
 /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
@@ -109,6 +114,7 @@
 	<link rel="stylesheet" href="css/sweetalert2.min.css">
 	<link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/minimal.css">
 
 	<!--[if lt IE 10]>
 		<link href= "css/ie.css" rel= "stylesheet" media= "all" />
@@ -129,9 +135,7 @@
 </script>
 </head>
 
-<body ng-app="cviaja" ng-controller="activitiesCtrl">
-
-
+<body>
 	<!-- Start Homepage -->
 	<header id="home">
 		<div class="header-bg"></div>
@@ -145,7 +149,7 @@
 				<nav id="topnav" class="span8">
 					<ul id="fixed-nav" class="visible-desktop">
 						<li class="current scroll-link"><a href="#home">Inicio</a></li>
-						<li><a href="#portfolio">Sitios</a></li>
+						<li><a href="#portfolio">Actividades</a></li>
 					</ul>
 				</nav>
 				<!-- End Navigation -->
@@ -154,8 +158,8 @@
 				<div class="span12">
 					<div id="slidecaption">
 						Encuentra sitios y actividades únicas <span class="color-text">cerca </span> a tu ciudad.
-						<div class="sub-caption">Recibe <span class="color-text">GRATIS </span> cada semana actividades únicas  a menos de 2 horas de Bogotá.</div>
-						<a id="myBtn" class="btn white scroll-link">Suscribete</a>
+						<div class="sub-caption">Recibe <span class="color-text"><b>GRATIS </b></span> cada semana actividades únicas  a menos de 2 horas de Bogotá.</div>
+						<a id="myBtn" class="btn white scroll-link">Ver actividades</a>
 					</div>
 				</div>
 			</div>
@@ -163,7 +167,6 @@
 	</header>
 
 	<div class="wrapper">
-	
 		<!-- Start Sticky Navigation -->
 		<nav id="mainnav">
 			<div class="container">
@@ -181,26 +184,34 @@
 			</div>
 		</nav>
 		<!-- End Sticky Navigation -->
-		
-		<!-- Start Portfolio Page -->
+		<section id="team" class="page" style="background-color: #eceaea;">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+					<div class="title">En solo 3 <span class="color-text">pasos</span> tu podrás</div>
+					<div class="row">
+						<div class="span4 profile"><br>
+						  <center><h4>&nbsp; Registrate </h4></center>
+						</div>
+						<div class="span4 profile">
+						  <center><h4>Encuentra actividades cerca a ti</h4></center>
+							
+						</div>
+						<div class="span4 profile">
+							<center><h4>Selecciona la actividad y reserva</h4></center>
+							
+						</div>												
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>		
 		<section id="portfolio" class="page">
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-						<div class="title">Nuestros sitios</div>
-						<hr>
-						<div class="lead-small">Actualmente contamos con las siguientes actividades, sin embargo constantemente estamos cargando nuevas actividades con beneficios para nuestros usuarios suscritos, </div><br>
-								<!--<div class="portfolio-slider flexslider">
-										<ul class="slides">
-											<li>
-												<div class="slider-text">
-													<a href="#" class="slider-title">Obten hasta un 10% de descuento</a>
-													<div class="slider-desc">Este fin de semana obten el 10% de descuento en pareja para disfrutar el mejor plan extremo en Vergara Cundinamarca, suscríbete ahora y obten tu código de descuento. <p style="font-size: 12px; color: #fff">(aplican condiciones y restricciones)</p></div>
-												</div>
-												<img src="img/projects/promo.jpg" alt="" /></li>
-										</ul>
-									</div>-->
-						<!-- Start Filters -->
+						<div class="title">Estas son algunas de las actividades que puedes realizar.</div>
+						<hr><br>
 		                <ul class="option-set" data-option-key="filter">
 					    	<li><a class="selected" href="#filter" data-option-value="*"><span></span>Todos las actividades</a></li>
 							<li><a href="#filter" data-option-value=".app"><span></span>En familia</a></li>
@@ -211,66 +222,13 @@
 				    	<!-- End Filters -->
 				    	
 				    <div id="posts" class="row isotope" >
-							<!-- Start Project -->
-						  <div ng-repeat="activ in activities" class="post item span3 span4 isotope-item strategy">
-			    			<a href="img/projects/{{activ.image}}" rel="group1" class="project-wrp fancybox" title="{{activ.name}}">
-			    					<div class="profile-photo">
-				    				 <div class="profile-icon">&#0102;</div>
-				    				<!-- <p><b>Precio:</b> $45.000 COP</p>
-									  <a href="#about" class="btn white">Reservar</a>-->
-									 <img src="img/projects/{{activ.image}}" alt="{{activ.description}}">
-									</div>
-									<div class="project-client">{{activ.name}}</div>
-									<div class="project-name">{{activ.location.name}}</div>
-									<hr class="mini">
-									<div class="project-date">{{activ.name}}</div>
-			    			</a>
-						  </div>
-		    			<div style="display:none"><a href="img/header.jpg" rel="group1" class="project-wrp fancybox" title="The Makery Consultancy Agency Website"><img src="img/projects/thumb1.jpg" alt="¿Que esperas para reservar? haz click aquí"></a></div>
-							<!-- End Project -->
 							
 							<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item site">
-				    			<a href="img/projects/jericoCundi.jpg" class="project-wrp fancybox" rel="group2" title="Parque de jericó Cundinamarca">
-				    					<div class="profile-photo">
-				    					<div class="profile-icon">&#0102;</div>
-											<img src="img/projects/jericoCundi.jpg" alt="Con 120 hectareas de espacio, este es un buen sitio para realizar los diversos tipos de actividades que se ofrecen tales como senderismo, pesca deportiva y más. <br><b>Precios:</b> Desde 
-											<br>
-											<a id='event_2' class='btn white scroll-link btnReserve'>Reservar</a>
-											">
-										</div>
-										<div class="project-client">Parque jericó</div>
-										<div class="project-name">San francisco</div>
-										<hr class="mini">
-										<div class="project-date">A 50 Min de Bogotá</div>
-				    			</a>
-			    			</div>
-							<!-- End Project -->
-							
-							<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item app">
-			    			<a href="img/projects/parapenteSopo.jpg" rel="group3" class="project-wrp fancybox" title="Parapente paraiso, Sopó">
+						<div class="post item span3 span4 isotope-item site">
+			    			<a href="img/projects/elTabacal.jpg" rel="group3" class="project-wrp fancybox" title="Laguna el tabacal &nbsp;(La vega)">
 			    					<div class="profile-photo">
 				    					<div class="profile-icon">&#0102;</div>
-										<img src="img/projects/parapenteSopo.jpg" alt="Desde $120.000 pesos podrás disfrutar la mejor vista de la sabana de Cundinamarca, sopó, ubicado a solo 40 minutos de Bogotá
-										<br>
-										<a id='event_3' class='btn white scroll-link btnReserve'>Reservar</a>
-										">
-									</div>
-									<div class="project-client">Parapente paraiso</div>
-									<div class="project-name">Sopó</div>
-									<hr class="mini">
-									<div class="project-date">A 40 Min saliendo de Bogotá</div>
-			    			</a>
-						</div>
-							<!-- End Project -->
-							
-							<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item site">
-			    			<a href="img/projects/lagunaTabacalLVega.jpg" rel="group3" class="project-wrp fancybox" title="Laguna el tabacal &nbsp;(La vega)">
-			    					<div class="profile-photo">
-				    					<div class="profile-icon">&#0102;</div>
-				    					<img src="img/projects/lagunaTabacalLVega.jpg" alt="Laguna ubicada a 20 minutos del municipio de la vega, cuenta con diversidad de plantas y animales además de una historia fascinante que seguro te encantará,">
+				    					<img src="img/projects/elTabacal.jpg" alt="Laguna ubicada a 20 minutos del municipio de la vega, cuenta con diversidad de plantas y animales además de una historia fascinante que seguro te encantará,">
 									</div>
 									<div class="project-client">Laguna el tabacal</div>
 									<div class="project-name">La vega</div>
@@ -282,10 +240,10 @@
 							
 							<!-- Start Project -->
 							<div class="post item span3 span4 isotope-item site">
-			    			<a href="img/projects/extremasTobia.jpg" rel="group5" class="project-wrp fancybox" title="Aquí encontrarás todas esas actividades extremas que siempre quisiste realizar.">
+			    			<a href="img/projects/tobiaRapel.jpg" rel="group5" class="project-wrp fancybox" title="Aquí encontrarás todas esas actividades extremas que siempre quisiste realizar.">
 			    					<div class="profile-photo">
 				    					<div class="profile-icon">&#0102;</div>
-										<img src="img/projects/extremasTobia.jpg" alt="Desde canotage, Bicimontañismo, Rafting entre otros, Suscríbete y enterate de las promociones que tenemos para este fin de semana.
+										<img src="img/projects/tobiaRapel.jpg" alt="Desde canotage, Bicimontañismo, Rafting entre otros, Suscríbete y enterate de las promociones que tenemos para este fin de semana.
 										<br>
 										<a id='event_6' class='btn white scroll-link btnReserve'>Reservar</a>
 										">
@@ -314,16 +272,16 @@
 							<!-- End Project -->
 
 														<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item site">
-			    			<a href="img/projects/elEscob.jpeg" rel="group5" class="project-wrp fancybox" title="Cascada el escobo">
-			    					<div class="profile-photo">
-				    					<div class="profile-icon">&#0102;</div>
-										<img src="img/projects/elEscob.jpeg" alt="Ven y conoce con nosotros una de las cascadas mas sorprendentes de Cundinamarca además de disfrutar un día rodeado de naturaleza.">
-									</div>
-									<div class="project-client">Cascada el escobo</div>
-									<div class="project-name">Nocaima</div>
-									<hr class="mini">
-									<div class="project-date">A 2 Horas de Bogotá</div>
+						<div class="post item span3 span4 isotope-item site">
+			    			<a href="img/projects/elEscoboCascada.jpeg" rel="group5" class="project-wrp fancybox" title="Cascada el escobo">
+			    				<div class="profile-photo">
+				    			 <div class="profile-icon">&#0102;</div>
+									<img src="img/projects/elEscoboCascada.jpeg" alt="Ven y conoce con nosotros una de las cascadas mas sorprendentes de Cundinamarca además de disfrutar un día rodeado de naturaleza.">
+								</div>
+								<div class="project-client">Cascada el escobo</div>
+								<div class="project-name">Nocaima</div>
+								<hr class="mini">
+								<div class="project-date">A 2 Horas de Bogotá</div>
 			    			</a>
 						</div>
 							<!-- End Project -->
@@ -331,163 +289,64 @@
 					</div>
 				</div>
 			</div><br>
-				<a id="main" style="margin-top: 35px" class='btnReserv btn white scroll-link'>Reserva tu actividad ahora</a>
+				<!--<a id="main" style="margin-top: 35px" class='btnReserv btn white scroll-link'>Reserva tu actividad ahora</a>-->
 		</section>
-		<!-- End Portfolio Page -->
-		<!-- Start Team Page -->
-		<!--<section id="team" class="page">
+		<section id="benefits" class="page" style="background-color: #eceaea;">
+			<div class="container">
+				<div class="row">
+					<div class="span12">					
+					<div class="row">
+						<div class="span6">
+							<center><h2>Beneficios</h2></center><br>							
+							 <p class="bullets"><b>-</b> Encuentra actividades  cercanas para realizar.</p>
+							 <p class="bullets"><b>-</b> Planes en familia, amigos o en pareja</p>
+							 <p class="bullets"><b>-</b> Variedad en actividades cada semana</p>
+							 <p class="bullets"><b>-</b> Cuatro</p>
+							
+						</div>
+						<div class="span6"><center>
+							<h2>Características</h2></center><br>
+							  <p class="bullets"><b>-</b> Intuitiva</p>
+							  <p class="bullets"><b>-</b> Gratis</p>
+							  <p class="bullets"><b>-</b> Disponibles desde cualquier plataforma</p>
+							  <p class="bullets"><b>-</b> Cuatro</p>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Start haro shoot Page -->
+		<section id="team" class="page">
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-					<div class="title">Quienes <span class="color-text">somos</span>?</div>
-					<hr>
-					
+					<hr>					
 					<div class="row">
-						<div class="span3 profile">
-							<img src="img/team/profile3.jpg" alt="">
-							<div class="profile-name">Miguel Espinosa</div>
-							<div class="profile-job">Desarrollador de negocio</div>
-							<div class="profile-desc">
-								<p>Ingeniero de sistemas de la universidad de cundinamarca con experiencia en redes, preyectos e infraestructura tecnológica</p>
-							</div>
-							<ul class="profile-social-icons">
-								<li><a href="https://www.linkedin.com/in/miguel-espinosa-6b642694/">&#231;</a></li>
-							</ul>
+						<div class="span4 profile">
+							<center><h2 class="odometer" id="nearActivities"></h2>+
+							<p>Actividades cargadas cerca de Bogotá</p></center> 
 						</div>
-						<div class="span3 profile">
-							<img src="img/team/profile1.jpg" alt="">
-							<div class="profile-name">Andrés Valenzuela</div>
-							<div class="profile-job">Desarrollador de producto</div>
-							<div class="profile-desc">
-								<p>Ingeniero de sistemas de la universidad de cundinamarca y desarrollador full-stack con 2 años de experiencia.</p>
-							</div>
-							<ul class="profile-social-icons">
-								<li><a href="https://www.linkedin.com/in/andr%C3%A9s-mauricio-valenzuela-511694105/">&#231;</a></li>
-							</ul>
+						<div class="span4 profile">
+							<center><h2 class="odometer" id="reserv"></h2>+
+							<p>Reservas realizadas con exito</p></center>
 						</div>
-						<div class="span3 profile">
-							<img src="img/team/profile2.jpg" alt="">
-							<div class="profile-name">Franklyn Lombana</div>
-							<div class="profile-job">Desarrollador de producto</div>
-							<div class="profile-desc">
-								<p>Ingeniero de sistemas de la universidad de cundinamarca y desarrollador full-stack con 2 años de experiencia.</p>
-							</div>
-							<ul class="profile-social-icons">
-								<li><a href="https://www.linkedin.com/in/franklyn-lombana-molina-593906118/">&#231;</a></li>
-							</ul>
-						</div>
+						<div class="span4 profile">
+							<center><h2 class="odometer" id="activeUsers"></h2>+
+							<p>Usuarios activos en la aplicación</p></center>
+						</div>												
 					</div>
 				</div>
-				</div>
-			</div>
-		</section>-->
-		<!-- End Team Page -->
-		
-	<!-- Section dsuscrib init -->
-		<section id="dsuscrib" class="page" style="background-color: rgba(158, 158, 158, 0.16);">
-			<div class="container">
-				<div class="row">
-				  <div class="span12">
-					<div class="title">Cancela tu suscripción <span class="color-text">aquí</span></div>
-					<hr>
-					<div class="profile-desc">
-					  <p>Recuerda que al darte de baja no recibirás mas información sobre eventos, sitios y actividades cerca a tu ciudad.</p>
-					</div>
-					<!--<div class="lead">La mas importante .</div>-->
-					<div class="row">					<!-- Start Profile -->
-						  <input type="text" id="fieldDSusc" style="width: 100%" placeholder="P.e fito@paez.com">
-						  <a id="cSuscrib" style="margin-top: 35px" class='btn white scroll-link btnReserve'>Cancelar suscripción</a>
-						<!-- End Profile -->
-					</div>
-				  </div>
 				</div>
 			</div>
 		</section>
-		<!-- end dsuscrtb section -->
+		<!-- End haro shoot Page -->
 
 		<section id="copyright">
 		  <a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.
 		</section>
 	</div>
-<div id="myModal" class="modal" style="padding-top: 10px;">
-<!-- Modal content -->
-<div class="modal-content">
-  <div class="modal-header">
-    <span class="close">&times;</span>
-    <h3 style="padding-left:10%;padding-right:10%;text-align: center">Suscríbete y obtén un 10% de descuento este fin de semana en la ruta del tigre. </h3>
-  </div>
-  <div class="modal-body">
-        <div style="width: 90%; margin-left: 5%; padding:10px">
-            <form id="target">    
-                <label>Nombre</label>
-                <input type="text" id="nombre" style="width: 95%; height: 30px" class="form-control" placeholder="Nombre" required>
-                <label class="padding">Correo</label>
-                <input type="text" id="correo" style="width: 95%;height: 30px" placeholder="Correo electrónico" required>
-                <h5 class="padding"><b>¿Cuál de estas actividades te gustaría realizar?</b></h5>
-                <div>
-                <input id="caminata" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                <p style="padding-top: 5px">&nbsp;&nbsp; Caminatas</p>
-                </div>
-                <div>
-                  <input id="Picknic" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p style="padding-top: 5px">&nbsp;&nbsp; Picknic</p>
-                </div>
-                <div>
-                  <input id="sturisticos" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p style="padding-top: 5px">&nbsp;&nbsp; Bicimontañismo</p>
-                </div>
-                <div>
-                  <input id="avarias" style="float: left;width: 22px;height: 22px" type="checkbox" value="">
-                  <p style="padding-top: 5px">&nbsp;&nbsp; Actividades poco convencionales</p>
-                </div>
-                <div style="margin-top: 30px">
-                <!-- <a href="#planes">¿Que servicio te gustaría tener?</a>-->
-                 <!-- <p style="width:35%; height:22px;float: left; padding: 5px;font-size: 14px;"> ¿Otro? Cual:</p><br>
-                  <input style="float: left;width: 65%;height: 22px; border:none;background-color: #E1E2E1;border-bottom-color: black;border-bottom-style: solid; " type="text" value="">-->
-                </div>
-<!--                <a style="bottom: 5%;width: 100%; background-color:#228B22" class="btn btn-primary" id="btnCost" value="">Suscríbete</a>-->
-                <a href="#" style="text-align:center;bottom: 5%;width: 85%; background-color:#228B22" class="btn btn-primary btn-block" id="btnCost">Suscríbete</a>
-                </form>
-            </div>
-  </div>
-</div>
-</div>
-
-<div id="modalReserve" class="modal" style="padding-top: 10px;">
-<!-- Modal content -->
-<div class="modal-content">
-  <div class="modal-header">
-    <span id="close" class="close">&times;</span>
-    <h3 style="padding-left:10%;padding-right:10%;text-align: center">Reserva aquí las actividades que quieras realizar, buscaremos las mejores opciones para ti.</h3>
-  </div>
-  <div class="modal-body">
-        <div style="width: 90%; margin-left: 5%; padding:10px">
-            <form id="target">
-            	<!--<h3 id="lugar"></h3>-->
-                <label>Nombre</label>
-                <input type="text" id="nombreReserve" style="width: 95%; height: 30px" class="form-control" placeholder="Nombre" required>
-                <label class="padding">Correo</label>
-                <input type="text" id="correoReserve" style="width: 95%;height: 30px" placeholder="Correo electrónico" required>
-                <label>Selecciona la actividad que quieres reservar</label>
-                <select id="activity" style="width: 97%;height: 45px" required>
-                	<option value="todos">Seleccione...</option>
-                	<option value="choachi">Salto en choachi</option>
-                	<option value="jerico">Parque jericó</option>
-                	<option value="sopoParapente">Parapente en Sopó</option>
-                	<option value="jaimeDuque">Parque Jaime Duque</option>
-                	<option value="elTabacal">Laguna el tabacal</option>
-                	<option value="tobiaExtrema">Tobia extrema</option>
-                	<option value="paLaHuerta">Pa' la huerta (nuevo)</option>
-                	<option value="nocaimaCascada">Cascadas en Nocaima</option>
-                </select>
-                <div style="margin-top: 30px"></div>
-
-                <a style="text-align:center;bottom: 5%;width: 85%; background-color:#228B22" class="btn btn-primary btn-block" id="btnNewReserva">Reservar</a>
-                </form>
-            </div>
-  </div>
-</div>
-</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script src="js/jquery.easing.min.js"></script>
@@ -510,11 +369,18 @@
 	<script src="js/ettrics.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/sweetalert2.min.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/script.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/odometer.js"></script> <!-- Twitter Feed Options -->
+	
 	<script src="js/angular.min.js"></script> <!-- Twitter Feed Options -->
 	<script src="js/app.js"></script> <!-- Twitter Feed Options -->
 
 <script type="text/javascript">
 	// Get the modal
+	setTimeout(function(){
+		document.getElementById('nearActivities').innerHTML = 80;
+		document.getElementById('reserv').innerHTML = 500;
+		document.getElementById('activeUsers').innerHTML = 850;
+	},8000);
 	var modal = document.getElementById('myModal');
 	// Get the button that opens the modal
 	var btn = document.getElementById("myBtn");
