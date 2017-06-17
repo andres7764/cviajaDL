@@ -4,9 +4,17 @@ var activities =  mongoose.model('activitiesmodel');
 
 //POST - Insert a new user in the Collection
 exports.getActivities = function(req, res) {
-    activities.find(function(err, activity) {
+    activities.find(function(err, activities) {
         if(err) { return res.status(500).send(err.message); }
-           return res.status(200).send({token: "Datos", data:activity});
+           return res.status(200).send({activities: activities});
+    });
+};
+
+exports.getActivity = function(req, res) {
+    activities.find({"_id":mongoose.Types.ObjectId(req.query.id)},function(err, activity) {
+        console.log(activity);
+        if(err) { return res.status(500).send(err.message); }
+        return res.status(200).send({activity:activity});
     });
 };
 
