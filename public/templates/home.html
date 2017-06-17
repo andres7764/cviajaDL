@@ -76,16 +76,29 @@
 						<hr><br>
 		                <ul class="option-set" data-option-key="filter">
 					    	<li><a class="selected" href="#filter" data-option-value="*"><span></span>Todos las actividades</a></li>
-							<li><a href="#filter" data-option-value=".app"><span></span>En familia</a></li>
+							<li><a href="#filter" data-option-value=".family"><span></span>En familia</a></li>
 							<li><a href="#filter" data-option-value=".campaign"><span></span>En pareja</a></li>
 							<li><a href="#filter" data-option-value=".site"><span></span>En amigos</a></li>
-							<li><a href="#filter" data-option-value=".strategy"><span></span>Actividades extremas</a></li>
+							<li><a href="#filter" data-option-value=".extreme"><span></span>Actividades extremas</a></li>
 				    	</ul>
 				    	<!-- End Filters -->
 				    	
 				    <div id="posts" class="row isotope" >
-							
-							<!-- Start Project -->
+				        
+                        <div class="post item span3 span4 isotope-item {{activity.categories}}" ng-repeat="activity in activities">
+			    			<a ng-src="{{activity.image}}" rel="group3" class="project-wrp fancybox" title="{{activity.name}}">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+                                        <img ng-src="{{activity.image}}" alt="{{activity.description}} <br> <a href='' ng-click='irA(activity._id)'>Reservar</a>">
+									</div>
+									<div class="project-client">{{activity.name}}</div>
+									<div class="project-name">{{activity.location.name}}</div>
+									<hr class="mini">
+									<div class="project-date" >A 1 Hora y 40 min de Bogotá</div>
+			    			</a>
+                            <a class="btnReserv" href="" ng-click="irA(activity._id)">Reservar</a>
+						</div>
+				    <!--
 						<div class="post item span3 span4 isotope-item site">
 			    			<a href="img/projects/elTabacal.jpg" rel="group3" class="project-wrp fancybox" title="Laguna el tabacal &nbsp;(La vega)">
 			    					<div class="profile-photo">
@@ -98,10 +111,8 @@
 									<div class="project-date" >A 1 Hora y 40 min de Bogotá</div>
 			    			</a>
 						</div>
-							<!-- End Project -->
 							
-							<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item site">
+				        <div class="post item span3 span4 isotope-item site">
 			    			<a href="img/projects/tobiaRapel.jpg" rel="group5" class="project-wrp fancybox" title="Aquí encontrarás todas esas actividades extremas que siempre quisiste realizar.">
 			    					<div class="profile-photo">
 				    					<div class="profile-icon">&#0102;</div>
@@ -116,10 +127,8 @@
 									<div class="project-date">A 1 Hora y 30 Min de Bogotá</div>
 			    			</a>
 						</div>
-							<!-- End Project -->
-
-														<!-- Start Project -->
-							<div class="post item span3 span4 isotope-item app">
+				        
+                        <div class="post item span3 span4 isotope-item app">
 			    			<a href="img/projects/plHuert.jpg" rel="group5" class="project-wrp fancybox" title="Pa' la huerta">
 			    					<div class="profile-photo">
 				    					<div class="profile-icon">&#0102;</div>
@@ -131,9 +140,7 @@
 									<div class="project-date">A 50 Minutos de Bogotá</div>
 			    			</a>
 						</div>
-							<!-- End Project -->
-
-														<!-- Start Project -->
+							
 						<div class="post item span3 span4 isotope-item site">
 			    			<a href="img/projects/elEscoboCascada.jpeg" rel="group5" class="project-wrp fancybox" title="Cascada el escobo">
 			    				<div class="profile-photo">
@@ -146,8 +153,9 @@
 								<div class="project-date">A 2 Horas de Bogotá</div>
 			    			</a>
 						</div>
-							<!-- End Project -->
+						-->	
 						</div>
+                        
 					</div>
 				</div>
 			</div><br>
@@ -202,7 +210,10 @@
 				</div>
 				</div>
 			</div>
-            <button ng-click="irA()" >Resrvar</button>
+            <div class="contentBtn">
+                <button type="button" id="btnOpenModal" class="btn btn-success btn-block btnReserve" style="width: 80%;" data-toggle="modal" data-target="#modalReservar">Reservar</button>
+            </div>
+            <!--<button ng-click="irA()" >Resrvar</button>-->
 		</section>
 		<!-- End haro shoot Page -->
 
@@ -210,3 +221,27 @@
 		  <a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.
 		</section>
 	</div>
+
+            <!-- Modal -->
+    <div id="modalReservar" class="modal" role="dialog">
+      <div class="modal-dialog" style="margin-top: 10%;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <center><h4 class="modal-title" style="margin-left: 60px;">Actividades</h4></center>
+          </div>
+          <div class="modal-body">
+              <p align="center"> Elige la actividad que quieres realizar </p>
+              <ul class="list-group">
+                  <li class="list-group-item"ng-repeat="activity in activities">
+                      <a href="" ng-click="irA(activity._id)">{{activity.name}}</a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+

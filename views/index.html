@@ -110,7 +110,7 @@
 }
 </style>
 	<!-- Import CSS -->
-	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/sweetalert2.min.css">
 	<link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -135,10 +135,10 @@
 </script>
 </head>
 
-<body ng-controller="activitiesCtrl">
+<body>
 
     <div ng-view></div>
-
+        
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 	<script src="js/jquery.easing.min.js"></script>
 	<script src="js/jquery.sticky.js"></script><!-- Sticky Navigation -->
@@ -181,9 +181,10 @@
 		document.getElementById('reserv').innerHTML = 500;
 		document.getElementById('activeUsers').innerHTML = 850;
 	},8000);
-	var modal = document.getElementById('myModal');
+	/*
+    var modal = document.getElementById('modalReservar');
 	// Get the button that opens the modal
-	var btn = document.getElementById("myBtn");
+	var btn = document.getElementById("btnOpenModal");
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 	// When the user clicks on the button, open the modal 
@@ -202,6 +203,7 @@
 	        modal.style.display = "none";
 	    }
 	}
+    */
 </script>
 </body>
 </html>
