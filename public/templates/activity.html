@@ -1,0 +1,33 @@
+<!-- Start Homepage -->
+		<div class="pattern"></div>
+        
+            <section id="actividad" class="page" style="background-color: #eceaea;" >
+                <div class="container">
+                    <div class="row">
+                        <div class="span12" style="text-align: center;">
+                           <h2>{{activity.name}}</h2>
+                           <img ng-src="{{image}}"  style="width: 50%;">
+                        </div>
+                    </div>
+                     <div class="row">
+                            <div class="span4">
+                                <center><h3>Descripción</h3></center>
+                                <p align="center">
+                                    {{activity.description}}
+                                </p>
+                            </div>
+                            <div class="span8">
+                                <center><h3>Mapa</h3></center><br>
+                                <div id="map"></div>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="span12" style="text-align: center;">
+                            <button type="button" class="btn btn-success btn-block btnReserve" style="width: 100%;">Reservar</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="copyright">
+              <a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.
+            </section>

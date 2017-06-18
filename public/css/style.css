@@ -1,4 +1,4 @@
-    .textCarousel{
+.textCarousel{
     background-color: rgba(0,0,0,.5);
     padding: 40px;
     }
@@ -12,4 +12,37 @@
     background: #fff !important;
     color: #7da453 !important;
     border: 1px solid;
+}
+
+#actividad{
+    height: 75vh;
+    width: 100%;
+}
+
+#map {
+    margin-top: -20px;
+    height: 25vh;
+    width: 100%;
+    background-color: grey;
+}
+
+.contentBtn{
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal{
+    background-color: rgba(0, 255, 255, 0) !important;
+    border: none !important;
+    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,0);
+    -moz-box-shadow: 0 0px 0px rgba(0,0,0,0);
+     box-shadow: 0 3px 0px rgba(0,0,0,0); 
+}
+
+.btnReserv{
+    position: relative;
+    z-index: 1000;
+    float: right;
 }

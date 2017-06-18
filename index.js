@@ -5,18 +5,24 @@
 	var mongoose = require('mongoose');
 	var bodyParser = require('body-parser');
 	var methodOverride = require('method-override');
+    var cons  = require("consolidate");
 //	var argv = require('optimist').argv;
   	var http = require('http').Server(app);
 
 // configuration ======================================================================
 
-	//mongoose.connect('mongodb://35.184.69.152:80/cviaja');
+	mongoose.connect('mongodb://35.184.69.152:80/cviaja');
  	//app.use('/public', express.static(__dirname + '/public'));
 // 	app.use(cors());
- 	app.use(express.static('public'));
+// 	app.engine("html", cons.swig); //Template engine...
+    app.engine("html", require("ejs").renderFile);
+    app.set('view engine', 'html');
+    app.set("views", __dirname + "/views");
+    app.use(express.static('public'));
+
  	//app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname + "/public/photos" }));
- 	app.use(express.static('/'));
- 	app.use('/bower_components', express.static(__dirname + '/bower_components'));
+ 	//app.use(express.static('/'));
+ 	//app.use('/bower_components', express.static(__dirname + '/bower_components'));
 	//app.use(morgan('dev')); 										// log every request to the console
 	app.use(bodyParser.urlencoded({ extended : true})); 			// parse application/x-www-form-urlencoded
 	app.use(bodyParser.json()); 									// parse application/json
@@ -37,13 +43,21 @@
 	app.post('/saveReserva', controllerReservas.saveReserva);
 	app.post('/cancelSuscription', controllerContact.cancelSuscription);
 	app.post('/uploadActivities',controllerActivities.setActivities);
-	app.post('/getActivities',controllerActivities.getActivities);
-	app.get('/env',function(req,res){
-})
+	app.get('/getActivities',controllerActivities.getActivities);
+    app.get('/getActivity',controllerActivities.getActivity);  
+	app.get('/env',function(req,res){});
 // application ======================================================================
-	app.get('/', function(req, res) {
-		res.sendFile('index.html');
+   /* app.get('/catalogo', function(req, res){
+        res.render('activity',{ activity: req.query.activity });
+        console.log(req.query);
+        //res.sendfile('./views/activity.html',{ activity: req.query.activity });
+    });*/
+    app.get('/', function(req, res) {
+		res.render('index');
+        //res.sendfile('./views/index.html');
 	});
+    
+   
 
   /*app.post('/saveContact',function(req,res){
     res.render('home.html');
