@@ -4,11 +4,15 @@
     cviaja.config(function($routeProvider) {
       $routeProvider.
         when('/', {
-          templateUrl: 'templates/home.html',
+          templateUrl: '../templates/home.html',
+          controller: 'activitiesCtrl'
+        })
+        .when('/catalogo/', {
+          templateUrl: '../templates/catalog.html',
           controller: 'activitiesCtrl'
         })
         .when('/catalogo/:activity', {
-          templateUrl: 'templates/activity.html',
+          templateUrl: '../templates/activity.html',
           controller: 'activityCtrl'
         })
         .otherwise({ redirectTo : "/" });
@@ -16,27 +20,28 @@
     
     cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams', function($scope,$q,$http,$timeout,$routeParams) {
         $scope.actividad = {};
+        $scope.reserv = {};
+        $scope.reserv.qty = 1;
         $scope.image = '';
-        console.log($routeParams.activity);
         var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $scope.activity = result.data.activity[0];
             $scope.image = $scope.activity.image;
             createMap($scope.activity.location);
-            console.log(  $scope.activity  );
         });
         
         function createMap(location){
-            var latLng  = {lat: location.lat, lng: location.lng};
+            var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
             var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 12,
+              zoom: 16,
               center: latLng
             });
             var marker = new google.maps.Marker({
               position: latLng,
               map: map
             });
+            
         };
         
     }]);
@@ -60,9 +65,9 @@
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
         // When the user clicks on the button, open the modal 
-        btn.onclick = function() {
+        /*btn.onclick = function() {
             modal.style.display = "block";
-        }
+        } 
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -74,7 +79,7 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }
+        }*/
         
 	});
     
