@@ -1,29 +1,22 @@
 <div class="container-fluid">
+ <header style="padding-top: 50px">
   <div class="row">
-	<div class="col-md-8 col-xs-12" style="padding-left: 35px">
+	<div class="col-md-10 col-xs-12" style="padding-left: 35px">
 	  <div class="input-group">
 		<span class="input-group-addon" id="basic-addon3">Busca tu actividad</span>
 		<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
 	  </div>
 	</div>
-	<div class="col-md-4 col-xs-12">
-	  <!-- Split button -->
-		<div class="btn-group">
-		  <button type="button" class="btn btn-danger">Filtros</button>
-		  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    <span class="caret"></span>
-		    <span class="sr-only">Toggle Dropdown</span>
-		  </button>
-		  <ul class="dropdown-menu">
-		    <li><a href="#">Action</a></li>
-		    <li><a href="#">Another action</a></li>
-		    <li><a href="#">Something else here</a></li>
-		    <li role="separator" class="divider"></li>
-		    <li><a href="#">Separated link</a></li>
-		  </ul>
-		</div>
+	<div class="col-md-2 col-xs-12">
+	  <select class="form-control">
+	  	<option>Actividades en familia</option>
+	  	<option>En pareja</option>
+	  	<option>Pana de amigos</option>
+	  	<option>Actividades extremas</option>
+	  </select>
 	</div>
   </div>
+ </header>
   <div class="row" style="padding-top: 20px; padding-left: 20px">
 	<div ng-repeat="activity in activities" class="col-md-3 col-xs-3" style="padding-bottom: 30px">
 	 <div class="thumbnail">
@@ -36,4 +29,5 @@
      </div>
 	</div>
   </div>
+   <div class="panel-footer text-center btn-success"><a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.</div>
 </div>

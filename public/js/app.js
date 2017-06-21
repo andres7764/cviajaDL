@@ -22,11 +22,13 @@
         $scope.actividad = {};
         $scope.reserv = {};
         $scope.reserv.qty = 1;
+        $scope.reserv.complete = false;
         $scope.image = '';
         var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $scope.activity = result.data.activity[0];
+            $scope.reserv.mount = $scope.activity.mount;
             $scope.image = $scope.activity.image;
             createMap($scope.activity.location);
         });
@@ -41,9 +43,31 @@
               position: latLng,
               map: map
             });
-            
         };
         
+        $scope.more = function(op){
+            $scope.reserv.qty = (op === 1)?$scope.reserv.qty+1:$scope.reserv.qty-1;
+            $scope.reserv.mount = $scope.activity.mount*$scope.reserv.qty;
+        }
+
+        $scope.reservA = function(){
+            console.log(activity);
+            $http.post('/saveReserva',{
+                nombre: $scope.reserv.name,
+                correo: $scope.reserv.mail,
+                event:  activity,
+                quantity: $scope.reserv.qty,
+                mount: $scope.reserv.mount
+            })
+            .then(function(result){
+                swal("Información!", result.data.token+" estaremos en contacto contigo para confirmar fecha y hora", "success");
+                $scope.reserv.complete = false;
+            })
+        }
+
+        $scope.show = function(){
+          $scope.reserv.complete = true;
+        }
     }]);
 
 	cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
