@@ -1,4 +1,4 @@
-var sg = require('sendgrid')('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');
+var sg = require('sendgrid')('');
 
 module.exports = {
 
