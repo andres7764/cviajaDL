@@ -1,70 +1,43 @@
 //document.write();
 // set up ==============================================================================
-	var express  = require('express');
-	var app      = express();
-	var mongoose = require('mongoose');
-	var bodyParser = require('body-parser');
-	var methodOverride = require('method-override');
-    var cons  = require("consolidate");
-//	var argv = require('optimist').argv;
-  	var http = require('http').Server(app);
+var express  = require('express');
+var app      = express();
+var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var multipart = require('connect-multiparty');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var passport = require('passport');
+    
+var http = require('http').Server(app);
+
+
+var env = process.env.NODE_ENV || 'development';
+var config = require('./config/config')[env];
 
 // configuration ======================================================================
 
-	mongoose.connect('mongodb://35.184.69.152:80/cviaja');
- 	//app.use('/public', express.static(__dirname + '/public'));
-// 	app.use(cors());
-// 	app.engine("html", cons.swig); //Template engine...
-    app.engine("html", require("ejs").renderFile);
-    app.set('view engine', 'html');
-    app.set("views", __dirname + "/views");
-    app.use(express.static('public'));
+mongoose.connect(config.db);
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended : true})); 			// parse application/x-www-form-urlencoded
+app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
+app.use(methodOverride());
+app.use(cookieParser('DPlan'));
+app.use(session({secret: '#Dplan56950fe494af8e88204adf6d', resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(multipart());
 
- 	//app.use(express.bodyParser({ keepExtensions: true, uploadDir: __dirname + "/public/photos" }));
- 	//app.use(express.static('/'));
- 	//app.use('/bower_components', express.static(__dirname + '/bower_components'));
-	//app.use(morgan('dev')); 										// log every request to the console
-	app.use(bodyParser.urlencoded({ extended : true})); 			// parse application/x-www-form-urlencoded
-	app.use(bodyParser.json()); 									// parse application/json
-	app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-	app.use(methodOverride());
+app.route('./config/routes');
 
-//Include the models and controllers of the app =======================================
-  require('./models/modelContact');
-  require('./models/modelReservas');
-  require('./models/modelActivities');
-
-  var controllerContact = require('./controllers/controllerContact');
-  var controllerReservas = require('./controllers/controllerReservas');
-  var controllerActivities = require('./controllers/controllerActivities');
-
-//Create routes by server rest API ====================================================
-	app.post('/saveContact', controllerContact.saveContact);
-	app.post('/saveReserva', controllerReservas.saveReserva);
-	app.post('/cancelSuscription', controllerContact.cancelSuscription);
-	app.post('/uploadActivities',controllerActivities.setActivities);
-	app.get('/getActivities',controllerActivities.getActivities);
-  app.get('/getActivity',controllerActivities.getActivity);  
-	app.post('/updateQtyActivity',controllerActivities.updateQty);
-  app.get('/env',function(req,res){});
-// application ======================================================================
-   /* app.get('/catalogo', function(req, res){
-        res.render('activity',{ activity: req.query.activity });
-        console.log(req.query);
-        //res.sendfile('./views/activity.html',{ activity: req.query.activity });
-    });*/
-    app.get('/', function(req, res) {
-		res.render('index');
-        //res.sendfile('./views/index.html');
-	});
-    
-   
-
-  /*app.post('/saveContact',function(req,res){
-    res.render('home.html');
-  })*/
-
+require('./config/routes')(app);
+require('./config/passport')();
+ 
 // listen (start app with node server.js) ===========================================
 	//http.listen(8080, argv.fe_ip);
-	http.listen(5500);
+	http.listen(config.port);
 	console.log("App listening on port 5500");
