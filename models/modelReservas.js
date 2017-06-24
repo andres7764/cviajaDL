@@ -8,7 +8,7 @@ reservas = new mongoose.Schema({
   fecha:              { type: Date, default: new Date() },
   quantity: 		  { type: Number },
   mount: 			  { type: Number },
-  wasPayment:    	  { type: false, default: false} 
+  wasPayment:    	  { type: Boolean, default: false}
 });
 
 module.exports = mongoose.model('reservasmodel',reservas);
