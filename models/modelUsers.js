@@ -10,7 +10,9 @@ var usuarios = new mongoose.Schema({
     fechaCreate:    { type: Date, default: new Date() },
     salt:           { type: String },
     hashPass:       { type: String },
-    notification:   { type: Boolean, default: true }
+    notification:   { type: Boolean, default: true },
+    foto:           { type: String, default: 'https://cdn3.iconfinder.com/data/icons/outdoor-and-camping/80/Camping_icons-10-512.png' },
+    rol:            { type: Number, default: 1 }
 });
 
 usuarios.method({
