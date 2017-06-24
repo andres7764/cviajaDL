@@ -14,6 +14,7 @@ var controllerContact = require('../controllers/controllerContact');
 var controllerReservas = require('../controllers/controllerReservas');
 var controllerActivities = require('../controllers/controllerActivities');
 var controllerUsers = require('../controllers/controllerUsers');
+var controllerAdmin = require('../controllers/controllerAdmin');
 
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -62,15 +63,25 @@ module.exports = function(app) {
     app.get('/getReservas',controllerReservas.getReservas);
     app.get('/getReserva',controllerReservas.getReserva);
     
-    
+    // Admin
+    app.post('/LoginAdmin',controllerAdmin.LoginAdmin);
     
 
-    // application ======================================================================
+    // application web ======================================================================
     app.get('/', function(req, res) {
-        res.render('index');
+        res.render('index.ejs');
+    });
+    
+    // application admin
+    app.get('/admin', function(req, res) {
+        res.render('admin.ejs');
+    });
+    
+    app.get('/login', function(req,res){
+        res.render('login.ejs');
     });
 
     app.get('*', function (req, res) {
-        res.render('page_404');
+        res.send('page_404');
     });
 };

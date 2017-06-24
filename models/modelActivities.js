@@ -12,7 +12,8 @@ activities = new mongoose.Schema({
   prefixDiscountCodes: { type: String  },
   availablePersons:    { type: Number  },
   categories:    	     { type: String  },
-  image:               { type: String  }
+  image:               { type: String  },
+  url:                  { type: String }
 });
 
 

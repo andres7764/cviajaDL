@@ -1,0 +1,64 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><span>DPlan</span>Admin</a>
+				<ul class="user-menu">
+					<li class="dropdown pull-right">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li class="Salir"><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Cerrar Sesión</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+							
+		</div><!-- /.container-fluid -->
+	</nav>
+		
+	<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+		<form role="search">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Search">
+			</div>
+		</form>
+		<ul class="nav menu">
+			<li><a href="#!usuarios"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>Usuarios</a></li>
+            <li class="active"><a ng-href="#!reservas"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>Reservas</a></li>
+            <li><a class="active" ng-href="#!actividades"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>Actividades</a></li>
+			<li role="presentation" class="divider"></li>
+			<li><a href="#" class="Salir"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Cerrar Sesión</a></li>
+		</ul>
+	</div><!--/.sidebar-->
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1>Actividades</h1>
+    <div class="table-responsive">
+                <table id="TablaUsuarios" data-toggle="table" class="table table-striped toggle-circle-filled"> 
+                    <thead>
+                        <tr>
+                            <th data-toggle="phone,tablet">Nombres</th>
+                            <th data-toggle="true">Correo</th>
+                            <th>Rol</th>
+                            <th data-hide="phone,tablet">Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="user in users">
+                                <td>{{user.nombre}}</td>
+                                <td>{{user.correo}}</td>
+                                <td>{{user.rol}}</td>
+                                <td>{{user.fechaCreate | date}}</td>
+                                <td><button type="button" ng-click="verUser(user._id)" class="btn btn-primary btn-xs">ver más</button></td>
+                            </tr>
+                        </tbody>
+                </table>
+    </div>
+    <div id="contentLoader"><div class="loader"></div></div>
+    <div class="error" ng-if="err != ''" ><h3>{{err}}</h3></div>
+</div>

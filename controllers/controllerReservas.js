@@ -27,10 +27,10 @@ exports.saveReserva = function(req, res) {
 };
 
 exports.getReservas = function(req, res) {
-    reserva.find({},function(err, reservas) {
+    reserva.find({}).populate('event', 'name').exec(function(err, reservas) {
         if (!err) return res.status(200).json({reservas: reservas});
         return res.status(500).json({err: err});
-    })
+    });
 };
 
 exports.getReserva = function(req, res) {
