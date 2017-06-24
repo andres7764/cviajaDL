@@ -32,7 +32,6 @@ exports.cancelSuscription = function(req,res) {
 
 function sendMail(name, mail,random) {
 
-    
 var sg = require('sendgrid')("");
 var request = sg.emptyRequest({
   method: 'POST',

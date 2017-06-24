@@ -9,9 +9,8 @@ var multipart = require('connect-multiparty');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
-    
-var http = require('http').Server(app);
 
+var http = require('http').Server(app);
 
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config/config')[env];
@@ -24,8 +23,8 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended : true})); 			// parse application/x-www-form-urlencoded
-app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
+app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.json({type: 'application/json'})); 
 app.use(methodOverride());
 app.use(cookieParser('DPlan'));
 app.use(session({secret: '#Dplan56950fe494af8e88204adf6d', resave: true, saveUninitialized: true}));
@@ -33,12 +32,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(multipart());
 
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
 app.route('./config/routes');
 
 require('./config/routes')(app);
 require('./config/passport')();
- 
+
 // listen (start app with node server.js) ===========================================
-	//http.listen(8080, argv.fe_ip);
-	http.listen(config.port);
-	console.log("App listening on port 5500");
+//http.listen(8080, argv.fe_ip);
+http.listen(config.port);
+console.log('App listening on port 5500');
