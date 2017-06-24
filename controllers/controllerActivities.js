@@ -12,7 +12,6 @@ exports.getActivities = function(req, res) {
 
 exports.getActivity = function(req, res) {
     activities.find({"_id":mongoose.Types.ObjectId(req.query.id)},function(err, activity) {
-        console.log(activity);
         if(err) { return res.status(500).send(err.message); }
         return res.status(200).send({activity:activity});
     });

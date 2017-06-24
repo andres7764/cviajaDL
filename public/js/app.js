@@ -19,32 +19,20 @@
     }); 
     
     cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams', function($scope,$q,$http,$timeout,$routeParams) {
-        $scope.actividad = {};
         $scope.reserv = {};
         $scope.reserv.qty = 1;
         $scope.reserv.complete = false;
         $scope.image = '';
+        var directionsService,directionsDisplay;
         var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $scope.activity = result.data.activity[0];
             $scope.reserv.mount = $scope.activity.mount;
             $scope.image = $scope.activity.image;
-            createMap($scope.activity.location);
+            initAutocomplete($scope.activity.location);
         });
-        
-        function createMap(location){
-            var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
-              center: latLng
-            });
-            var marker = new google.maps.Marker({
-              position: latLng,
-              map: map
-            });
-        };
-        
+                
         $scope.more = function(op){
             $scope.reserv.qty = (op === 1)?$scope.reserv.qty+1:$scope.reserv.qty-1;
             $scope.reserv.mount = $scope.activity.mount*$scope.reserv.qty;
@@ -68,6 +56,64 @@
         $scope.show = function(){
           $scope.reserv.complete = true;
         }
+
+    $scope.paintRoute = function(lat,lng) {
+      marker = [];
+        var init = new google.maps.LatLng(lat, lng);
+        var destin = new google.maps.LatLng(parseFloat($scope.activity.location.lat),parseFloat($scope.activity.location.lng));
+        var request = {
+           origin:      init,
+           destination: destin,
+           travelMode: google.maps.DirectionsTravelMode['DRIVING'],
+           unitSystem: google.maps.DirectionsUnitSystem['METRIC'],
+           provideRouteAlternatives: false
+        };
+      directionsDisplay.addListener('directions_changed', function() {
+          var myroute = directionsDisplay.getDirections().routes[0];
+          $scope.activity.distance = myroute.legs[0].distance.text;
+          $scope.activity.distanceValue = myroute.legs[0].distance.value / 1000;
+        });
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setMap($scope.map);
+              directionsDisplay.setPanel($("#panel_ruta").get(0));
+              directionsDisplay.setDirections(response);
+          }
+        });
+    }
+
+     function initAutocomplete(location) {
+        var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
+            $scope.map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              center: latLng
+            });
+            var marker = new google.maps.Marker({
+              position: latLng,
+              map: $scope.map
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        $scope.map.addListener('bounds_changed', function() {
+          searchBox.setBounds($scope.map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+          directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+          $scope.paintRoute(places[0].geometry.location.lat(),places[0].geometry.location.lng());
+        });
+      }
+
     }]);
 
 	cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){

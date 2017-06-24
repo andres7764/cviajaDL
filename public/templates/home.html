@@ -18,13 +18,14 @@
   </div>
  </header>
   <div class="row" style="padding-top: 20px; padding-left: 20px">
-	<div ng-repeat="activity in activities" class="col-md-3 col-xs-3" style="padding-bottom: 30px">
-	 <div class="thumbnail">
+	<div ng-repeat="activity in activities" class="col-md-3 col-xs-6" style="padding-bottom: 30px">
+	 <div class="thumbnail" style="min-height: 480px">
 		<img style="width: 280px;height: 260px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
         <h3>{{activity.name}}</h3>
-        <p>...</p>
-		<button ng-click="irA(activity._id)" type="button" class="btn btn-success">Ver más</button>
+        <span class="ptop glyphicon glyphicon-glyphicon glyphicon-map-marker"> {{activity.location.name}}</span>
+        <span class="ptop glyphicon glyphicon-road"> Salida por la {{activity.exitBy}}</span><br>
+		<button ng-click="irA(activity._id)" type="button" class="btn btn-success" style="    position: absolute;bottom: 55px;">Ver más</button>
       </div>
      </div>
 	</div>
