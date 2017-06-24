@@ -1,15 +1,23 @@
 {
-"name": "CViajaDeLujo",
-"description":"Main landing page",
- "scripts": {
+  "name": "CViajaDeLujo",
+  "description": "Main landing page",
+  "scripts": {
     "start": "node index.js"
   },
-	"dependencies": {
-		"express": "*",
-		"http": "*",
-		"mongoose": "*",
-		"body-parser": "*",
-		"method-override": "*",
-		"sendgrid": "*"
-	}
+  "dependencies": {
+    "body-parser": "*",
+    "connect-multiparty": "^2.0.0",
+    "cookie-parser": "^1.4.3",
+    "crypto": "0.0.3",
+    "express": "*",
+    "express-session": "^1.15.3",
+    "http": "*",
+    "jwt-simple": "^0.5.1",
+    "method-override": "*",
+    "moment": "^2.18.1",
+    "mongoose": "*",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "sendgrid": "*"
+  }
 }
