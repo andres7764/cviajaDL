@@ -10,6 +10,7 @@ reservas = new mongoose.Schema({
     mount: 		   {type: Number},
     typePayment:   {type: String},
     wasPayment:    {type: Boolean, default: false}
+
 });
 
 module.exports = mongoose.model('reservasmodel',reservas);

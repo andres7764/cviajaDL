@@ -1,5 +1,5 @@
 <!-- Start Homepage -->
-
+<div class="container-fluid">
     <div class="row">
       <div class="navbar-header col-lg-12">
         <a class="navbar-brand" href="#">
@@ -15,21 +15,23 @@
       <div class="col-md-4 col-xs-5" style="margin-top: -25px">
         <h1>{{activity.name}}</h1>
         <p><b>Etiquetas:</b> {{activity.categories}} </p>
-        <p><b>Cupos disponibles: {{activity.available}}</b></p>
-        <p><b>Valor:</b> ${{reserv.mount}}</p>
+        <p><b>Ubicación:</b> {{activity.location.name}}</p>
+        <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
+        <p><b>Cupos disponibles: </b> {{activity.availablePersons}}</p>
         <div class="input-group">
         <label>Cupos a reservar:</label>
           <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2)"></span>
           <span class="input-group-addon" aria-label="cantidad de reservas">{{reserv.qty}}</span>
           <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1)"></span>
         </div><br>
+        <p><b>Valor:</b> ${{reserv.mount}}</p>
         <div ng-show="reserv.complete">
         <label>Tu nombre</label>
         <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/>
         <label>Correo</label>
         <input type="email" class="form-control" ng-model="reserv.mail" placeholder="p.e juanito@correo.com"/>
         </div><br>
-        <button type="button" class="btn btn-success btn-block btnReserve btn-block" ng-mouseover="show()" ng-click="reservA()">Reservar</button>
+        <button type="button" class="animated tada btn btn-success btn-block btnReserve btn-block" ng-mouseover="show()" ng-click="reservA()">Reservar</button>
       </div>
      <div class="col-md-2 col-xs-2"></div>
     </div>
@@ -44,10 +46,13 @@
     </div>
     <div class="row">
         <div class="col-md-2 col-xs-1"></div> 
-         <div class="col-md-8 col-xs-10">
-            <h2>Ubicación</h2>
+         <div class="col-md-6 col-xs-10">
+            <h2>¿Cómo llegar?</h2><br>
+             <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
             <div id="map" style="width: 100% !important;height: 350px !important;margin-bottom: 20px;"></div>
         </div>
-        <div class="col-md-2 col-xs-1"></div>
+        <div class="col-md-3 col-xs-10" style="overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta"></div>
+        <div class="col-md-1 col-xs-1"></div>
     </div>
     <div class="panel-footer text-center btn-success"><a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.</div>
+</div>
