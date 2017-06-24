@@ -13,6 +13,7 @@ require('../models/modelActivities');
 var controllerContact = require('../controllers/controllerContact');
 var controllerReservas = require('../controllers/controllerReservas');
 var controllerActivities = require('../controllers/controllerActivities');
+var controllerUsers = require('../controllers/controllerUsers');
 
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -39,14 +40,29 @@ module.exports = function(app) {
     //************************** APP *************************************
     app.post('/auth/SignupUsuarios', authApps.SignupUsuarios);
     app.post('/auth/LoginUsuarios', authApps.LoginUsuarios);
+    app.post('/auth/userAvailable',authApps.userAvailable);
+    app.post('/updateUsuario',controllerUsers.updateUsuario);
+    app.get('/getUsuarios',controllerUsers.getUsuarios);
+    app.get('/getUsuario',controllerUsers.getUsuario);
+    
+    
 
     //Create routes by server rest API ====================================================
     app.post('/saveContact', controllerContact.saveContact);
-    app.post('/saveReserva', controllerReservas.saveReserva);
     app.post('/cancelSuscription', controllerContact.cancelSuscription);
+    
+    // Actividades
     app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
+    
+    // Reservas
+    app.post('/saveReserva', controllerReservas.saveReserva);
+    app.post('/updateReserva',controllerReservas.updateReserva);
+    app.get('/getReservas',controllerReservas.getReservas);
+    app.get('/getReserva',controllerReservas.getReserva);
+    
+    
     
 
     // application ======================================================================
