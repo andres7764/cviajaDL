@@ -40,7 +40,6 @@ module.exports = function(app) {
     app.post('/auth/SignupUsuarios', authApps.SignupUsuarios);
     app.post('/auth/LoginUsuarios', authApps.LoginUsuarios);
 
-
     //Create routes by server rest API ====================================================
     app.post('/saveContact', controllerContact.saveContact);
     app.post('/saveReserva', controllerReservas.saveReserva);
@@ -48,9 +47,7 @@ module.exports = function(app) {
     app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
-    app.get('/env',function(req,res) {});
-
-
+    
 
     // application ======================================================================
     app.get('/', function(req, res) {
