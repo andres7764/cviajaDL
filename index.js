@@ -16,7 +16,6 @@ var http = require('http').Server(app);
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config/config')[env];
 
-
 // configuration ======================================================================
 
 mongoose.connect(config.db);
