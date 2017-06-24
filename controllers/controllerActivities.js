@@ -36,3 +36,10 @@ exports.setActivities = function(req, res) {
            return res.status(200).send({token: "Actividad Guardada"});
     });
 }
+
+exports.updateQty = function(req,res){
+  activities.update({_id: req.body.id}, {$set: {availablePersons: req.body.qty}},function(err, response){
+    if(err) { return res.status(500).send(err.message); }
+        return res.status(200).send({token:"actividad guardada correctamente"});
+  })
+}

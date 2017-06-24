@@ -44,8 +44,9 @@
 	app.post('/cancelSuscription', controllerContact.cancelSuscription);
 	app.post('/uploadActivities',controllerActivities.setActivities);
 	app.get('/getActivities',controllerActivities.getActivities);
-    app.get('/getActivity',controllerActivities.getActivity);  
-	app.get('/env',function(req,res){});
+  app.get('/getActivity',controllerActivities.getActivity);  
+	app.post('/updateQtyActivity',controllerActivities.updateQty);
+  app.get('/env',function(req,res){});
 // application ======================================================================
    /* app.get('/catalogo', function(req, res){
         res.render('activity',{ activity: req.query.activity });

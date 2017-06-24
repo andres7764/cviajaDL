@@ -7,7 +7,8 @@ reservas = new mongoose.Schema({
   event: 			  {	type: Schema.ObjectId, ref: "activitiesmodel"},
   fecha:              { type: Date, default: new Date() },
   quantity: 		  { type: Number },
-  mount: 			  { type: Number }
+  mount: 			  { type: Number },
+  wasPayment:    	  { type: false, default: false} 
 });
 
 module.exports = mongoose.model('reservasmodel',reservas);

@@ -28,18 +28,26 @@
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $scope.activity = result.data.activity[0];
+            $scope.cantidadReal = $scope.activity.availablePersons;
             $scope.reserv.mount = $scope.activity.mount;
             $scope.image = $scope.activity.image;
             initAutocomplete($scope.activity.location);
         });
                 
         $scope.more = function(op){
+             if(op === 1) {
+                $scope.activity.availablePersons = $scope.activity.availablePersons-1;
+            } else {
+            console.log($scope.activity.availablePersons); 
+                if($scope.activity.availablePersons+1 <= $scope.cantidadReal)
+                $scope.activity.availablePersons += 1;
+            }
+
             $scope.reserv.qty = (op === 1)?$scope.reserv.qty+1:$scope.reserv.qty-1;
             $scope.reserv.mount = $scope.activity.mount*$scope.reserv.qty;
         }
 
         $scope.reservA = function(){
-            console.log(activity);
             $http.post('/saveReserva',{
                 nombre: $scope.reserv.name,
                 correo: $scope.reserv.mail,
@@ -50,39 +58,51 @@
             .then(function(result){
                 swal("Información!", result.data.token+" estaremos en contacto contigo para confirmar fecha y hora", "success");
                 $scope.reserv.complete = false;
+                $scope.reserv.name = $scope.reserv.mail = "";
+                $scope.reserv.qty = 0;
             })
+            updateQty();
         }
 
         $scope.show = function(){
           $scope.reserv.complete = true;
         }
 
-    $scope.paintRoute = function(lat,lng) {
-      marker = [];
-        var init = new google.maps.LatLng(lat, lng);
-        var destin = new google.maps.LatLng(parseFloat($scope.activity.location.lat),parseFloat($scope.activity.location.lng));
-        var request = {
-           origin:      init,
-           destination: destin,
-           travelMode: google.maps.DirectionsTravelMode['DRIVING'],
-           unitSystem: google.maps.DirectionsUnitSystem['METRIC'],
-           provideRouteAlternatives: false
-        };
-      directionsDisplay.addListener('directions_changed', function() {
-          var myroute = directionsDisplay.getDirections().routes[0];
-          $scope.activity.distance = myroute.legs[0].distance.text;
-          $scope.activity.distanceValue = myroute.legs[0].distance.value / 1000;
-        });
-        directionsService.route(request, function(response, status) {
-          if (status == google.maps.DirectionsStatus.OK) {
-              directionsDisplay.setMap($scope.map);
-              directionsDisplay.setPanel($("#panel_ruta").get(0));
-              directionsDisplay.setDirections(response);
-          }
-        });
-    }
+        $scope.paintRoute = function(lat,lng) {
+          marker = [];
+            var init = new google.maps.LatLng(lat, lng);
+            var destin = new google.maps.LatLng(parseFloat($scope.activity.location.lat),parseFloat($scope.activity.location.lng));
+            var request = {
+               origin:      init,
+               destination: destin,
+               travelMode: google.maps.DirectionsTravelMode['DRIVING'],
+               unitSystem: google.maps.DirectionsUnitSystem['METRIC'],
+               provideRouteAlternatives: false
+            };
+          directionsDisplay.addListener('directions_changed', function() {
+              var myroute = directionsDisplay.getDirections().routes[0];
+              $scope.activity.distance = myroute.legs[0].distance.text;
+              $scope.activity.distanceValue = myroute.legs[0].distance.value / 1000;
+            });
+            directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                  directionsDisplay.setMap($scope.map);
+                  directionsDisplay.setPanel($("#panel_ruta").get(0));
+                  directionsDisplay.setDirections(response);
+              }
+            });
+        }
 
-     function initAutocomplete(location) {
+       function updateQty(){
+        console.log($scope.activity._id);
+        $http.post('/updateQtyActivity',{
+            id: $scope.activity._id,
+            qty: $scope.activity.availablePersons
+        }).then(function(response){
+            console.log(response);
+        })
+       }
+       function initAutocomplete(location) {
         var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
             $scope.map = new google.maps.Map(document.getElementById('map'), {
               zoom: 16,
