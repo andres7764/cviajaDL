@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 //User collection
 reservas = new mongoose.Schema({
-
     nombre:     {type: String},
     correo:     {type: String},
     event: 		{type: Schema.ObjectId, ref: 'activitiesmodel'},
