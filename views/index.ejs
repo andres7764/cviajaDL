@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	
+	<title>.: DPlan - Inicio :.</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="HandheldFriendly" content="true">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<style>
+/* The Modal (background) */
+/* Modal Header */
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.bullets {
+	font-size: 20px;
+    font-style: italic;
+    padding-left: 20px;
+}
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #228B22;
+    color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    height: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top: -300px; opacity: 0} 
+    to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+	<!-- Import CSS -->
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/minimal.css">
+
+	<!--[if lt IE 10]>
+		<link href= "css/ie.css" rel= "stylesheet" media= "all" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-100232215-1', 'auto');
+	  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+		<!-- Start Homepage -->
+
+	<header id="home">
+		<div class="header-bg"></div>
+		<div class="pattern"></div>
+		<div class="container">
+			<div class="row">
+				<div class="span4" style="margin-top: -42px;">
+					<a href="index.html" class="logo"><img src="img/cviajaP.png" alt=""></a>
+				</div>
+				<!-- Navigation -->
+				<nav id="topnav" class="span8">
+					<ul id="fixed-nav" class="visible-desktop">
+						<li class="current scroll-link"><a href="#home">Inicio</a></li>
+						<li><a href="#portfolio">Actividades</a></li>
+					</ul>
+				</nav>
+				<!-- End Navigation -->
+			</div>
+			<div class="row">
+				<div class="span12">
+					<div id="slidecaption">
+						Encuentra sitios y actividades únicas <span class="color-text">cerca </span> a tu ciudad.
+						<div class="sub-caption">Recibe <span class="color-text"><b>GRATIS </b></span> cada semana actividades únicas  a menos de 2 horas de Bogotá.</div>
+						<a href="./catalogo/" id="myBtn" class="btn white scroll-link">Ver actividades</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="wrapper">
+		<!-- Start Sticky Navigation -->
+		<nav id="mainnav">
+			<div class="container">
+				<div class="row">
+					<div class="span4">
+						<a href="index.html" class="logo"><img src="" alt=""></a>
+					</div>
+					<div class="span8">
+						<ul id="fluid-nav" class="fluid-navigation visible-desktop">
+							<li class="current"><a href="#home">Inicio</a></li>
+							<li><a href="#portfolio">Sitios</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		<!-- End Sticky Navigation -->
+<!--		<section id="team" class="page" style="background-color: #eceaea;">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+					<div class="title">En solo 3 <span class="color-text">pasos</span> tu podrás</div>
+					<div class="row">
+						<div class="span4 profile"><br>
+						  <center><h4>&nbsp; Registrate </h4></center>
+						</div>
+						<div class="span4 profile">
+						  <center><h4>Encuentra actividades cerca a ti</h4></center>
+							
+						</div>
+						<div class="span4 profile">
+							<center><h4>Selecciona la actividad y reserva</h4></center>
+							
+						</div>												
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>-->
+		<section id="portfolio" class="page">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<div class="title">Estas son algunas de las actividades que puedes realizar.</div>
+						<hr><br>
+		                <ul class="option-set" data-option-key="filter">
+					    	<li><a class="selected" href="#filter" data-option-value="*"><span></span>Todos las actividades</a></li>
+							<li><a href="#filter" data-option-value=".family"><span></span>En familia</a></li>
+							<li><a href="#filter" data-option-value=".campaign"><span></span>En pareja</a></li>
+							<li><a href="#filter" data-option-value=".site"><span></span>En amigos</a></li>
+							<li><a href="#filter" data-option-value=".extreme"><span></span>Actividades extremas</a></li>
+				    	</ul>
+				    	<!-- End Filters -->
+				    	
+				    <div id="posts" class="row isotope" style="position: relative;overflow: hidden; min-height: 361px;">
+                    <!--<div class="post item span3 span4 isotope-item {{activity.categories}}" ng-repeat="activity in activities | limitTo: 4">
+			    			<a ng-src="{{activity.image}}" rel="group3" class="project-wrp fancybox" title="{{activity.name}}">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+                                        <img ng-src="{{activity.image}}" alt="{{activity.description}} <br> <a href='' ng-click='irA(activity._id)'>Reservar</a>">
+									</div>
+									<div class="project-client">{{activity.name}}</div>
+									<div class="project-name">{{activity.location.name}}</div>
+									<hr class="mini">
+									<div class="project-date" >A 1 Hora y 40 min de Bogotá</div>
+			    			</a>
+                            <a class="btnReserv" href="" ng-click="irA(activity._id)">Reservar</a>
+						</div>-->
+						<div class="post item span3 span4 isotope-item site">
+			    			<a href="./catalogo/#!/catalogo/59431cf6a2bf7c1f18aeee39" rel="group3" class="project-wrp fancybox" title="Laguna el tabacal &nbsp;(La vega)">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+				    					<img src="img/projects/elTabacal.jpg" alt="Laguna ubicada a 20 minutos del municipio de la vega, cuenta con diversidad de plantas y animales además de una historia fascinante que seguro te encantará, ">
+									</div>
+									<div class="project-client">Laguna el tabacal</div>
+									<div class="project-name">La vega</div>
+									<hr class="mini">
+									<div class="project-date" >A 1 Hora y 40 min de Bogotá</div>
+			    			</a>
+			    			<a href="./catalogo/#!/catalogo/59431cf6a2bf7c1f18aeee39" class="btn">Reservar</a>
+						</div>
+							
+				        <div class="post item span3 span4 isotope-item site">
+			    			<a href="./catalogo/#!/catalogo/59431e74a2bf7c1f18aeee3b" rel="group5" class="project-wrp fancybox" title="Aquí encontrarás todas esas actividades extremas que siempre quisiste realizar.">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+										<img src="img/projects/tobiaRapel.jpg" alt="Desde canotage, Bicimontañismo, Rafting entre otros, Suscríbete y enterate de las promociones que tenemos para este fin de semana.
+										<br>
+										<a id='event_6' class='btn white scroll-link btnReserve'>Reservar</a>
+										">
+									</div>
+									<div class="project-client">Tobia extrema</div>
+									<div class="project-name">Tobia</div>
+									<hr class="mini">
+									<div class="project-date">A 1 Hora y 30 Min de Bogotá</div>
+			    			</a>
+			    			<a href="./catalogo/#!/catalogo/59431e74a2bf7c1f18aeee3b" class="btn" >Reservar</a>
+						</div>
+				        
+                        <div class="post item span3 span4 isotope-item app">
+			    			<a href="./catalogo/#!/catalogo/594315bb5c00d02b14f4fd96" rel="group5" class="project-wrp fancybox" title="Pa' la huerta">
+			    					<div class="profile-photo">
+				    					<div class="profile-icon">&#0102;</div>
+										<img src="img/projects/plHuert.jpg" alt="Donde aprenderás Experiencias teórico prácticas. Producción de alimentos limpios (orgánicos)">
+									</div>
+									<div class="project-client">Pa' la huerta</div>
+									<div class="project-name">Tabio</div>
+									<hr class="mini">
+									<div class="project-date">A 50 Minutos de Bogotá</div>
+			    			</a>
+			    			<a href="./catalogo/#!/catalogo/594315bb5c00d02b14f4fd96" class="btn">Reservar</a>			    			
+						</div>
+							
+						<div class="post item span3 span4 isotope-item site">
+			    			<a href="./catalogo/#!/catalogo/59431d66a2bf7c1f18aeee3a" rel="group5" class="project-wrp fancybox" title="Cascada el escobo">
+			    				<div class="profile-photo">
+				    			 <div class="profile-icon">&#0102;</div>
+									<img src="img/projects/elEscoboCascada.jpeg" alt="Ven y conoce con nosotros una de las cascadas mas sorprendentes de Cundinamarca además de disfrutar un día rodeado de naturaleza.">
+								</div>
+								<div class="project-client">Cascada el escobo</div>
+								<div class="project-name">Nocaima</div>
+								<hr class="mini">
+								<div class="project-date">A 2 Horas de Bogotá</div>
+			    			</a>
+			    			<a href="./catalogo/#!/catalogo/59431d66a2bf7c1f18aeee3a" class="btn">Reservar</a>			    			
+						</div>
+						
+						</div>
+                        
+					</div>
+				</div>
+			</div><br>
+				<!--<a id="main" style="margin-top: 35px" class='btnReserv btn white scroll-link'>Reserva tu actividad ahora</a>-->
+            <div class="contentBtn">
+			 <a href="./catalogo/" id="myBtn" class="btn white scroll-link">Ver mas actividades</a>
+            </div>
+		</section>
+		<section id="benefits" class="page" style="background-color: #eceaea;">
+			<div class="container">
+				<div class="row">
+					<div class="span12">					
+					<div class="row">
+						<div class="span6">
+							<center><h2>Beneficios</h2></center><br>							
+							 <p class="bullets"><b>-</b> Encuentra actividades  cercanas para realizar.</p>
+							 <p class="bullets"><b>-</b> Planes en familia, amigos o en pareja</p>
+							 <p class="bullets"><b>-</b> Variedad en actividades cada semana</p>
+						</div>
+						<div class="span6"><center>
+							<h2>Características</h2></center><br>
+							  <p class="bullets"><b>-</b> Fácil de usar</p>
+							  <p class="bullets"><b>-</b> Gratis</p>
+							  <p class="bullets"><b>-</b> Disponibles desde cualquier plataforma</p>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Start haro shoot Page -->
+		<section id="team" class="page">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+					<hr>					
+					<div class="row">
+						<div class="span4 profile">
+							<center><h2 class="odometer" id="nearActivities"></h2>+
+							<p>Actividades cargadas cerca de Bogotá</p></center> 
+						</div>
+						<div class="span4 profile">
+							<center><h2 class="odometer" id="reserv"></h2>+
+							<p>Reservas realizadas con exito</p></center>
+						</div>
+						<div class="span4 profile">
+							<center><h2 class="odometer" id="activeUsers"></h2>+
+							<p>Usuarios activos en la aplicación</p></center>
+						</div>												
+					</div>
+				</div>
+				</div>
+			</div>
+            <!--<button ng-click="irA()" >Resrvar</button>-->
+		</section>
+		<!-- End haro shoot Page -->
+
+		<section id="copyright">
+		  <a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.
+		</section>
+	</div>
+
+            <!-- Modal -->
+    <div id="modalReservar" class="modal" role="dialog">
+      <div class="modal-dialog" style="margin-top: 10%;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <center><h4 class="modal-title" style="margin-left: 60px;">Actividades</h4></center>
+          </div>
+          <div class="modal-body">
+              <p align="center"> Elige la actividad que quieres realizar </p>
+              <ul class="list-group">
+                  <li class="list-group-item"ng-repeat="activity in activities">
+                      <a href="" ng-click="irA(activity._id)">{{activity.name}}</a>
+                  </li>
+              </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="js/selectnav.min.js"></script><!-- Mobile Navigation -->
+	<script src="js/jquery.easing.min.js"></script>
+	<script src="js/jquery.sticky.js"></script><!-- Sticky Navigation -->
+	<script src="js/jquery.scrollTo.js"></script><!-- Smooth Scrolling -->
+	<script src="js/jquery.nav.js"></script><!-- One Page Navigation -->
+	<script src="js/jquery.flexslider.js"></script><!-- FlexSlider 2 -->
+	<script src="js/jquery.parallax-1.1.3.js"></script><!-- Parallax -->
+	<script src="js/jquery.isotope.min.js"></script><!-- Isotope Portfolio -->
+	<script src="js/jquery.fancybox.pack.js"></script><!-- Fancybox -->
+	<script src="js/jquery.fancybox-media.js"></script><!-- Fancybox Media Helper -->
+	<script src="js/mql.js"></script><!-- Isotope Fix -->
+	<script src="js/shortcodes.js"></script> <!-- Shortcodes -->
+	<script src="js/jflickrfeed.js"></script><!-- Flickr Feed -->
+	<script src="js/settings.js"></script> <!-- JS Options -->
+	<script src="js/contact.js"></script> <!-- Feedback form -->
+	<script src="js/twitter/jquery.tweet.js"></script> <!-- Twitter Feed -->
+	<script src="js/twitter-options.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/ettrics.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/sweetalert2.min.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/script.js"></script> <!-- Twitter Feed Options -->
+	<script src="js/odometer.js"></script> <!-- Twitter Feed Options -->
+<script type="text/javascript">
+	// Get the modal
+	setTimeout(function(){
+		document.getElementById('nearActivities').innerHTML = 30;
+		document.getElementById('reserv').innerHTML = 200;
+		document.getElementById('activeUsers').innerHTML = 450;
+	},8000);
+</script>
+</body>
+</html>

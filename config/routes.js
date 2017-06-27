@@ -13,6 +13,8 @@ require('../models/modelActivities');
 var controllerContact = require('../controllers/controllerContact');
 var controllerReservas = require('../controllers/controllerReservas');
 var controllerActivities = require('../controllers/controllerActivities');
+var controllerUsers = require('../controllers/controllerUsers');
+var controllerAdmin = require('../controllers/controllerAdmin');
 
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -39,22 +41,48 @@ module.exports = function(app) {
     //************************** APP *************************************
     app.post('/auth/SignupUsuarios', authApps.SignupUsuarios);
     app.post('/auth/LoginUsuarios', authApps.LoginUsuarios);
+    app.post('/auth/userAvailable',authApps.userAvailable);
+    app.post('/updateUsuario',controllerUsers.updateUsuario);
+    app.get('/getUsuarios',controllerUsers.getUsuarios);
+    app.get('/getUsuario',controllerUsers.getUsuario);
+    
+    
 
     //Create routes by server rest API ====================================================
     app.post('/saveContact', controllerContact.saveContact);
-    app.post('/saveReserva', controllerReservas.saveReserva);
     app.post('/cancelSuscription', controllerContact.cancelSuscription);
+    
+    // Actividades
+    app.post('/createActivity', controllerActivities.createActivity);
     app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
     
+    // Reservas
+    app.post('/saveReserva', controllerReservas.saveReserva);
+    app.post('/updateReserva',controllerReservas.updateReserva);
+    app.get('/getReservas',controllerReservas.getReservas);
+    app.get('/getReserva',controllerReservas.getReserva);
+    
+    // Admin
+    app.post('/LoginAdmin',controllerAdmin.LoginAdmin);
+    
 
-    // application ======================================================================
+    // application web ======================================================================
     app.get('/', function(req, res) {
-        res.render('index');
+        res.render('index.ejs');
+    });
+    
+    // application admin
+    app.get('/admin', function(req, res) {
+        res.render('admin.ejs');
+    });
+    
+    app.get('/login', function(req,res){
+        res.render('login.ejs');
     });
 
     app.get('*', function (req, res) {
-        res.render('page_404');
+        res.send('page_404');
     });
 };
