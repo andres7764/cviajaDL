@@ -531,10 +531,11 @@ function  fecha(){
   var Fecha = new Date();
   return Fecha.getDate()+"/"+(Fecha.getMonth()+1)+"/"+Fecha.getFullYear()+" "+Fecha.getHours()+":"+Fecha.getMinutes();   
 }
+/*
 $(".Salir").click(function(e){
   e.preventDefault();
   localStorage.removeItem("firstname");
   window.location.href = "/logeo";
-});
+});*/
 
 });
