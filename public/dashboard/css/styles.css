@@ -956,6 +956,19 @@ h1.page-header {
     text-align: center;
 }
 
+#foto{
+    width: 50%;
+}
+
+.contentImg{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#btnCreate{
+    margin-bottom: 15px;
+}
 
 
 

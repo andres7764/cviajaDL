@@ -32,11 +32,15 @@
             <li class="active"><a ng-href="#!reservas"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>Reservas</a></li>
             <li><a ng-href="#!actividades"><svg class="glyph stroked home"><use xlink:href="#stroked-home"/></svg>Actividades</a></li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="#" class="Salir"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Cerrar Sesión</a></li>
+			<li><a ng-click="closeSession()" href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Cerrar Sesión</a></li>
 		</ul>
 	</div><!--/.sidebar-->
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
     <h1>Reservas</h1>
+    <div class="form-group">
+      <label for="usr">Buscar: </label>
+      <input type="text" class="form-control" ng-model="search">
+    </div>
     <div class="table-responsive">
                 <table id="TablaUsuarios" data-toggle="table" class="table table-striped toggle-circle-filled"> 
                     <thead>
@@ -52,7 +56,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="reserva in reservas">
+                            <tr ng-repeat="reserva in reservas | filter:search">
                                 <td>{{reserva.nombre}}</td>
                                 <td>{{reserva.correo}}</td>
                                 <td>{{reserva.event.name}}</td>
@@ -60,7 +64,7 @@
                                 <td>{{reserva.value}}</td>
                                 <td>{{reserva.wasPayment}}</td>
                                 <td>{{reserva.fecha | date}}</td>
-                                <td><button type="button" ng-click="verUser(reserva._id)" class="btn btn-primary btn-xs">ver más</button></td>
+                                <td><button type="button" ng-click="verReserva(reserva._id)" class="btn btn-primary btn-xs">ver más</button></td>
                             </tr>
                         </tbody>
                 </table>

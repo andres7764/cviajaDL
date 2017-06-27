@@ -53,6 +53,7 @@ module.exports = function(app) {
     app.post('/cancelSuscription', controllerContact.cancelSuscription);
     
     // Actividades
+    app.post('/createActivity', controllerActivities.createActivity);
     app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
