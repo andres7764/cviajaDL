@@ -35,12 +35,12 @@
 		-webkit-font-smoothing: antialiased;
 	}
 	
-	::-moz-selection {background: #228B22; color: #fff; }
-	::selection {background: #228B22; color: #fff; }
+	::-moz-selection {background: #64dd17; color: #fff; }
+	::selection {background: #64dd17; color: #fff; }
 	
-	a { color: #228B22;
+	a { color: #64dd17;
 		text-decoration: none;
-		border-bottom: 1px solid #228B22; 
+		border-bottom: 1px solid #64dd17; 
 		-webkit-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 		   -moz-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 		    -ms-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
@@ -123,7 +123,7 @@
 	}
 	
 	.color-text {
-		color: #228B22;
+		color: #64dd17;
 	}
 	
 	.white-text {
@@ -167,7 +167,7 @@
 	
 	hr {
 		border: 0;
-		border-bottom: 1px solid #228B22;
+		border-bottom: 1px solid #64dd17;
 		margin: 10px 0;
 	}
 	
@@ -180,7 +180,7 @@
 	hr.mini {
 		width: 60px;
 		border: 0;
-		border-bottom: 1px solid #228B22;
+		border-bottom: 1px solid #64dd17;
 		margin: 10px 0;
 	}
 	
@@ -315,20 +315,20 @@
 			}
 			
 			nav #fixed-nav li a:hover {
-				color: #228B22;
+				color: #64dd17;
 				text-decoration: none;
 			}
 			
 			nav #fixed-nav li.current a {
 				color: #fff;
 				padding-bottom: 5px;
-				border-bottom: 3px solid #228B22;
+				border-bottom: 3px solid #64dd17;
 			}
 					
 			nav#mainnav {
 				width: 100%;
 				height: 50px;
-				background-color: #228B22;
+				background-color: #64dd17;
 				overflow: hidden;
 				position: relative;
 				z-index: 999;
@@ -404,7 +404,7 @@
 	}
 	
 	.parallax-title a {
-		border-bottom: 1px solid #228B22;
+		border-bottom: 1px solid #64dd17;
 	}
 	
 	.parallax-title a:hover {
@@ -460,7 +460,7 @@
 	}
 		     	
 	#twitter-parallax a:hover {
-		border-bottom: 2px solid #228B22;
+		border-bottom: 2px solid #64dd17;
 	}
 	
 	.tweet_list li {
@@ -559,7 +559,7 @@
 	/* About ------------------------------------------ */
 	
 	.services {
-		background: #228B22;
+		background: #64dd17;
 		color: #fff;
 		height: 322px;
 		padding: 30px;
@@ -595,7 +595,7 @@
 	.profile {
 		background-color: #f7f7f7;
 		padding-bottom: 20px;
-		border-bottom: 1px solid #228B22;
+		border-bottom: 1px solid #64dd17;
 	}
 	
 	.profile img {
@@ -640,7 +640,7 @@
 	}
 	
 	.profile-social-icons li a:hover {
-		color: #228B22;
+		color: #64dd17;
 	}
 	
 	
@@ -780,7 +780,7 @@
 	}
 	
 	.project-wrp:hover {
-		background-color: #228B22;
+		background-color: #64dd17;
 	}
 	
 	.project-wrp:hover img {
@@ -827,12 +827,12 @@
 	}
 	
 	.option-set li a:hover {
-		color: #228B22;
+		color: #64dd17;
 	}
 	
 	.option-set li a.selected {
 		font-weight: 700;
-		color: #228B22;
+		color: #64dd17;
 	}
 
 	
@@ -869,7 +869,7 @@
 	}
 	
 	.social-icons li a:hover {
-		color: #228B22;
+		color: #64dd17;
 	}
 	
 	#contact label {
@@ -909,7 +909,7 @@
 		
 
 	#copyright {
-		background: #228B22;
+		background: #64dd17;
 		color: #fff;
 		text-align: center;
 		font-size: 13px;
@@ -1023,7 +1023,7 @@
 	}
 	
 	a.blog-post-title:hover {
-		color: #228B22;
+		color: #64dd17;
 	}
 	
 	.blog-post-info {
@@ -1038,8 +1038,8 @@
 	}
 	
 	.blog-post-info a:hover {
-		color: #228B22;
-		border-bottom: 1px solid #228B22;
+		color: #64dd17;
+		border-bottom: 1px solid #64dd17;
 	}
 	
 	.blog-post-image {
@@ -1105,7 +1105,7 @@
 		font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
 		text-transform: uppercase;
 		font-size: 24px;
-		border-bottom: 1px solid #228B22;
+		border-bottom: 1px solid #64dd17;
 		letter-spacing: 1px;
 		padding-bottom: 10px;
 		margin-top: 52px;
@@ -1135,8 +1135,8 @@
 	}
 	
 	.comment-info a:hover {
-		color: #228B22;
-		border-bottom: 1px solid #228B22;
+		color: #64dd17;
+		border-bottom: 1px solid #64dd17;
 	}
 	
 	.comment p {

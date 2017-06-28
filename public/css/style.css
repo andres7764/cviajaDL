@@ -1,9 +1,59 @@
+
+/*-------------------------------------------------------- */
+.title { 
+    color: #333;
+    font-size: 13px;
+    text-transform: uppercase;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+ .completeF {
+    font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+ } 
+
+.wrp {
+  display: block;
+  background-color: #f7f7f7;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 16px;
+  border: none;
+}
 .btn {
-  background-color: #228B22 !important;
+  background-color: #64dd17 !important;
+  color: #fff;
 }
 
+hr.mini {
+    margin-left: 20px;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+}
+
+hr.mini {
+    width: 60px;
+    border: 0;
+    border-bottom: 1px solid #64dd17;
+    margin: 10px 0;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid #64dd17;
+    margin: 10px 0;
+}
 .bkBody {
-  background: rgba(226,226,226,1);
+ /* background: rgba(226,226,226,1);*/
 }
 
 .textCarousel{

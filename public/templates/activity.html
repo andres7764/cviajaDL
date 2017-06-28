@@ -1,18 +1,25 @@
 <!-- Start Homepage -->
 <div class="container-fluid">
-    <div class="row">
-      <div class="navbar-header col-lg-12">
-        <a class="navbar-brand" href="#">
-         <img alt="Volver" src="">
-        </a>
-      </div>
+  <div class="row" style="padding-top: 25px; background-color: #64dd17; min-height: 80px">
+    <div class="col-md-1 col-xs-4" style="padding-left: 35px">
+      <a href="index.html"><img style="width: 80px;height: 80px;margin-bottom: 25px" src="../img/cviaja.png" alt=""></a>
     </div>
-    <div class="row">
+    <div class="col-md-8 col-xs-2 " style="padding-left: 35px"></div>
+    <div class="col-md-3 col-xs-6" style="padding-top: 20px; padding-left: 15px">
+    <ul class="nav nav-pills">
+     <li role="presentation"><a style="color: #fff;" href="#">Registrate</a></li>
+     <li role="presentation"><a style="color: #fff;" href="#">Inicia sesión</a></li>
+    </ul>
+    </div>
+  </div>
+    <div class="row" style="padding-top:35px">
      <div class="col-md-2 col-xs-1"></div>
-      <div class="col-md-4 col-xs-4">
+      <div class="col-md-4 col-xs-10"><center>
         <img ng-src="{{image}}" style="width: 320px;height: 300px">
-      </div>
-      <div class="col-md-4 col-xs-5" style="margin-top: -25px">
+      </center></div>
+     <div class="col-xs-2"></div>
+      <div class="col-md-4 col-xs-10" style="margin-top: -25px; margin-left: 50px">
+       <br>
         <h1>{{activity.name}}</h1>
         <p><b>Etiquetas:</b> {{activity.categories}} </p>
         <p><b>Ubicación:</b> {{activity.location.name}}</p>
@@ -27,11 +34,11 @@
         <p><b>Valor:</b> ${{reserv.mount}}</p>
         <div ng-show="reserv.complete">
         <label>Tu nombre</label>
-        <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/>
+        <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/><br>
         <label>Correo</label>
         <input type="email" class="form-control" ng-model="reserv.mail" placeholder="p.e juanito@correo.com"/>
         </div><br>
-        <button type="button" class="animated tada btn btn-success btn-block btnReserve btn-block" ng-mouseover="show()" ng-click="reservA()">Reservar</button>
+        <button type="button" class="animated tada btn btnReserve btn-block" ng-mouseover="show()" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>
       </div>
      <div class="col-md-2 col-xs-2"></div>
     </div>
@@ -45,14 +52,26 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-2 col-xs-1"></div>
+        <div class="col-md-8 col-xs-10">
+          <h2>Planes</h2>
+          <p style="text-align:justify"></p>
+        </div>
+        <div class="col-md-2 col-xs-1">
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-2 col-xs-1"></div> 
          <div class="col-md-6 col-xs-10">
             <h2>¿Cómo llegar?</h2><br>
              <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
             <div id="map" style="width: 100% !important;height: 350px !important;margin-bottom: 20px;"></div>
-        </div>
-        <div class="col-md-3 col-xs-10" style="overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta"></div>
-        <div class="col-md-1 col-xs-1"></div>
+         </div>
+         <div class="col-md-1 col-xs-2"></div>
+        <div class="col-md-3 col-xs-10" style="margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta"></div>
+         <div class="col-md-1 col-xs-1"></div> 
     </div>
-    <div class="panel-footer text-center btn-success"><a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.</div>
+  <div class="row">  
+   <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
+  </div>
 </div>

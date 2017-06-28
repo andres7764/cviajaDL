@@ -1,34 +1,32 @@
 <div class="container-fluid">
- <header style="padding-top: 50px">
-  <div class="row">
-	<div class="col-md-10 col-xs-12" style="padding-left: 35px">
-	  <div class="input-group">
-		<span class="input-group-addon" id="basic-addon3">Busca tu actividad</span>
-		<input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-	  </div>
+<!-- <header style="padding-top: 50px; background-color: #64dd17">-->
+  <div class="row" style="padding-top: 25px; background-color: #64dd17; min-height: 80px">
+	<div class="col-md-1 col-xs-4" style="padding-left: 35px">
+		<a href="index.html"><img style="width: 80px;height: 80px;margin-bottom: 25px" src="../img/cviaja.png" alt=""></a>
 	</div>
-	<div class="col-md-2 col-xs-12">
-	  <select class="form-control">
-	  	<option>Actividades en familia</option>
-	  	<option>En pareja</option>
-	  	<option>Pana de amigos</option>
-	  	<option>Actividades extremas</option>
-	  </select>
+	<div class="col-md-8 col-xs-2 " style="padding-left: 35px"></div>
+	<div class="col-md-3 col-xs-6" style="padding-top: 20px; padding-left: 15px">
+	<ul class="nav nav-pills">
+	 <li role="presentation"><a style="color: #fff;" href="#">Registrate</a></li>
+	 <li role="presentation"><a style="color: #fff;" href="#">Inicia sesión</a></li>
+	</ul>
 	</div>
   </div>
- </header>
+<!-- </header>-->
   <div class="row" style="padding-top: 20px; padding-left: 20px">
-	<div ng-repeat="activity in activities" class="col-md-3 col-xs-6 animated bounceInLeft" style="padding-bottom: 30px">
-	 <div class="thumbnail" style="min-height: 480px">
-		<img style="width: 280px;height: 260px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
+	<div ng-repeat="activity in activities" class="col-md-3 col-xs-6 animated bounceInLeft completeF" style="padding-bottom: 30px;">
+	 <div class="thumbnail wrp" style="min-height: 480px;">
+		<img style="width: 300px;height: 260px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
-        <h3>{{activity.name}}</h3>
-        <span class="ptop glyphicon glyphicon-glyphicon glyphicon-map-marker"> {{activity.location.name}}</span>
-        <span class="ptop glyphicon glyphicon-road"> Salida por la {{activity.exitBy}}</span><br>
-		<button ng-click="irA(activity._id)" type="button" class="btn btn-success" style="    position: absolute;bottom: 55px;">Ver más</button>
+        <h3 class="title">{{activity.name}}</h3>
+		<hr class="mini">
+        <span class="completeF ptop glyphicon" style="color:#aaa;font-size: 11px!important; height: 60px;overflow: hidden;"> {{activity.description}}</span>
+		<button ng-click="irA(activity._id)" type="button" class="btn" style="position: absolute;bottom: 15px;left: 10px;">Ver más</button>
       </div>
      </div>
 	</div>
   </div>
-   <div class="panel-footer text-center btn-success"><a href="#">CViajaDeLujo</a>© 2017. Todos los derechos reservados.</div>
+  <div class="row">	
+   <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
+  </div>
 </div>
