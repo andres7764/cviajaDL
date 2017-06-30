@@ -1,77 +1,112 @@
 <!-- Start Homepage -->
 <div class="container-fluid">
-  <div class="row" style="padding-top: 25px; background-color: #64dd17; min-height: 80px">
-    <div class="col-md-1 col-xs-4" style="padding-left: 35px">
-      <a href="index.html"><img style="width: 80px;height: 80px;margin-bottom: 25px" src="../img/cviaja.png" alt=""></a>
-    </div>
-    <div class="col-md-8 col-xs-2 " style="padding-left: 35px"></div>
-    <div class="col-md-3 col-xs-6" style="padding-top: 20px; padding-left: 15px">
-    <ul class="nav nav-pills">
-     <li role="presentation"><a style="color: #fff;" href="#">Registrate</a></li>
-     <li role="presentation"><a style="color: #fff;" href="#">Inicia sesión</a></li>
-    </ul>
-    </div>
+ <div class="row" style="padding-top: 25px; background-color: #64dd17; min-height: 60px">
+  <div class="col-md-2 col-xs-4" style="padding-left: 35px">
+    <a href="index.html"><img style="width: 80px;height: 80px;margin-bottom: 25px;margin-left: 30px" src="../img/cviaja.png" alt=""></a>
   </div>
-    <div class="row" style="padding-top:35px">
-     <div class="col-md-2 col-xs-1"></div>
-      <div class="col-md-4 col-xs-10"><center>
-        <img ng-src="{{image}}" style="width: 320px;height: 300px">
-      </center></div>
-     <div class="col-xs-2"></div>
-      <div class="col-md-4 col-xs-10" style="margin-top: -25px; margin-left: 50px">
+  <div class="col-md-7 col-xs-2 " style="padding-left: 35px"></div>
+  <div class="col-md-3 col-xs-6" style="padding-top: 20px; padding-left: 15px">
+  <ul class="nav nav-pills">
+   <li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>
+   <!--<li role="presentation"><a style="color: #fff;" href="#">Registrate</a></li>
+   <li role="presentation"><a style="color: #fff;" href="#">Inicia sesión</a></li>-->
+  </ul>
+  </div>
+ </div>
+  <div class="row" style="padding-top:25px">
+     <div class="col-md-1 col-xs-0"></div>
+     <div class="col-md-4 col-xs-12 completeF" style="margin-top: -25px;">
        <br>
         <h1>{{activity.name}}</h1>
-        <p><b>Etiquetas:</b> {{activity.categories}} </p>
+        <hr class="mini" style="width: 130px"><br>
         <p><b>Ubicación:</b> {{activity.location.name}}</p>
         <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
-        <p><b>Cupos disponibles: </b> {{activity.availablePersons}}</p>
-        <div class="input-group">
-        <label>Cupos a reservar:</label>
-          <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2)"></span>
-          <span class="input-group-addon" aria-label="cantidad de reservas">{{reserv.qty}}</span>
-          <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1)"></span>
-        </div><br>
-        <p><b>Valor:</b> ${{reserv.mount}}</p>
-        <div ng-show="reserv.complete">
-        <label>Tu nombre</label>
-        <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/><br>
-        <label>Correo</label>
-        <input type="email" class="form-control" ng-model="reserv.mail" placeholder="p.e juanito@correo.com"/>
-        </div><br>
-        <button type="button" class="animated tada btn btnReserve btn-block" ng-mouseover="show()" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>
+        <p style="text-align:justify"><b>Qué harás: </b>{{activity.description}}</p>
+        <p><b>Categoría: </b> {{activity.categories}}</p>
+        <p><b>Precio desde: </b> ${{reserv.mount}}</p>
+        <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
       </div>
-     <div class="col-md-2 col-xs-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-md-2 col-xs-1"></div>
-        <div class="col-md-8 col-xs-10">
-          <h2>Descripción</h2>
-          <p style="text-align:justify">{{activity.description}}</p>
+      <div class="col-md-6 col-xs-10" style="padding-top: 25px">
+       <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="{{image}}" alt="descripcion">
+          </div>
+          <div class="item">
+            <img src="{{image}}" alt="descripcion">
+          </div>
+          <div class="item">
+            <img src="{{image}}" alt="descripcion">
+          </div>
         </div>
-        <div class="col-md-2 col-xs-1">
-        </div>
-    </div>
+       </div>
+      </div> 
+     <div class="col-md-1 col-xs-2"></div>
+  </div>
     <div class="row">
-        <div class="col-md-2 col-xs-1"></div>
-        <div class="col-md-8 col-xs-10">
+        <div class="col-md-1 col-xs-1"></div>
+        <div class="col-md-10 col-xs-10">
           <h2>Planes</h2>
-          <p style="text-align:justify"></p>
-        </div>
+        <hr class="mini" style="width: 130px"><br>
+          <div ng-repeat="opts in activity.options" class="row">
+            <div class="col-md-7 col-xs-12">
+              <h3>{{opts.name}}</h3>
+             <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
+              <p><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</p>
+            </div>
+            <div class="col-md-3" style="padding-top: 35px">
+              <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">COP {{opts.price}}</button>
+            </div>
+          </div>
+          </div>
         <div class="col-md-2 col-xs-1">
         </div>
-    </div>
+      </div>
     <div class="row">
-        <div class="col-md-2 col-xs-1"></div> 
+        <div class="col-md-1 col-xs-1"></div> 
          <div class="col-md-6 col-xs-10">
             <h2>¿Cómo llegar?</h2><br>
              <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
             <div id="map" style="width: 100% !important;height: 350px !important;margin-bottom: 20px;"></div>
          </div>
-         <div class="col-md-1 col-xs-2"></div>
-        <div class="col-md-3 col-xs-10" style="margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta"></div>
-         <div class="col-md-1 col-xs-1"></div> 
+        <div class="col-md-4 col-xs-10" style="margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta"></div>
+         <div class="col-md-1 col-xs-1"></div>
+        <div class="col-md-1 col-xs-1"></div> 
     </div>
-  <div class="row">  
+    <div class="row">
+        <div class="col-md-1 col-xs-1"></div> 
+         <div class="col-md-10 col-xs-10">
+            <h2>Pagar</h2>
+            <hr class="mini" style="width: 130px"><br>
+            <form action="">
+              <label>Su nombre</label>
+              <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/><br>
+              <label>Correo</label>
+              <input type="email" class="form-control" ng-model="reserv.mail" placeholder="p.e juanito@correo.com"/><br>
+         <div class="input-group">             
+          <span class="input-group-addon" id="basic-addon3">Actividad seleccionada/</span>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+         </div><br>
+             <div class="input-group">
+              <label>Cupos a reservar:</label>
+                <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2)"></span>
+                <span class="input-group-addon" aria-label="cantidad de reservas">{{reserv.qty}}</span>
+                <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1)"></span>
+             </div><br>
+            <p><b>Total: </b> ${{reserv.mount}}</p>
+          <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>
+            </form>
+         </div>
+        <div class="col-md-1 col-xs-1"></div> 
+    </div>
+         <br><br>
+  <div class="row">
    <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
   </div>
 </div>

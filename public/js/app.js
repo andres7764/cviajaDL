@@ -47,7 +47,8 @@
             $scope.reserv.mount = $scope.activity.mount*$scope.reserv.qty;
         }
 
-        $scope.reservA = function(){
+        $scope.reservA = function(value){
+
             $http.post('/saveReserva',{
                 nombre: $scope.reserv.name,
                 correo: $scope.reserv.mail,
