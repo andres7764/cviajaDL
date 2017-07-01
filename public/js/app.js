@@ -15,61 +15,69 @@
           templateUrl: '../templates/activity.html',
           controller: 'activityCtrl'
         })
+        .when('/checkout', {
+          templateUrl: '../templates/checkout.html',
+          controller: 'checkoutCtrl'
+        })
         .otherwise({ redirectTo : "/" });
     }); 
     
-    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', function($scope,$q,$http,$timeout,$routeParams,$rootScope) {
+    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location) {
         $rootScope.checkOut = [];
         $scope.reserv = {};
         $scope.reserv.qty0 = 1;
         $scope.reserv.complete = false;
         $scope.image = '';
+        $rootScope.qtyCheckOut = 0;
         if(JSON.parse(localStorage.getItem("checkOut")) !== null)
           $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
         var directionsService,directionsDisplay;
         var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
-            $scope.activity = result.data.activity[0];
-            $scope.cantidadReal = $scope.activity.availablePersons;
-            $scope.reserv.mount = $scope.activity.mount;
-            $scope.image = $scope.activity.image;
+            $rootScope.activity = result.data.activity[0];
+            $scope.cantidadReal = $rootScope.activity.availablePersons;
+            $scope.reserv.mount = $rootScope.activity.mount;
+            $scope.image = $rootScope.activity.image;
             initAutocomplete($scope.activity.location);
         });
+        
         function checkRealQty(index) {
-         if($scope.activity.options[index].numAvailabe > $scope.activity.options[index].qtyReal || $scope.activity.options[index].numAvailabe < 1) {
-          swal('Opps','Uso indebido de las reservas ','warning');
-          $scope.activity.options[index].numAvailabe = $scope.activity.options[index].qtyReal;
-          $scope.activity.options[index].price = $scope.activity.options[index].valueReal;
-          $scope.activity.options[index].qtyReserv = 0;
-          return true;
-         }
-          return false;
-        }
+             var activity = $rootScope.activity.options[index];
+             if(activity.numAvailabe > activity.qtyReal || activity.numAvailabe < 1) {
+              swal('Opps','Uso indebido de las reservas ','warning');
+              $rootScope.activity.options[index].numAvailabe = $rootScope.activity.options[index].qtyReal;
+              $rootScope.activity.options[index].price = $rootScope.activity.options[index].valueReal;
+              $rootScope.activity.options[index].qtyReserv = 0;
+              return true;
+             }
+              return false;
+            }
 
         function updateValues() {
 
         }
+        
 
         $scope.more = function(op,index) {
            var selected = document.getElementById("selected"+index);
            if($scope.activity.options[index].qtyReserv === undefined) {
-             $scope.activity.options[index].qtyReserv = 0;
-             $scope.activity.options[index].qtyReal = $scope.activity.options[index].numAvailabe;
-             $scope.activity.options[index].valueReal = $scope.activity.options[index].price;
+             $rootScope.activity.options[index].qtyReserv = 0;
+             $rootScope.activity.options[index].qtyReal = $rootScope.activity.options[index].numAvailabe;
+             $rootScope.activity.options[index].valueReal = $rootScope.activity.options[index].price;
            }
            checkRealQty(index);
           if(op === 1) {
            //Aumenta
-           $scope.activity.options[index].numAvailabe = $scope.activity.options[index].numAvailabe-1;
-           $scope.activity.options[index].qtyReserv = $scope.activity.options[index].qtyReserv+1;
+           $rootScope.activity.options[index].numAvailabe = $rootScope.activity.options[index].numAvailabe-1;
+           $rootScope.activity.options[index].qtyReserv = $rootScope.activity.options[index].qtyReserv+1;
           } else {
               //Disminuye
-           $scope.activity.options[index].numAvailabe = $scope.activity.options[index].numAvailabe+1;
-           $scope.activity.options[index].qtyReserv = $scope.activity.options[index].qtyReserv-1;
+           $rootScope.activity.options[index].numAvailabe = $rootScope.activity.options[index].numAvailabe+1;
+           $rootScope.activity.options[index].qtyReserv = $rootScope.activity.options[index].qtyReserv-1;
           }
-          selected.innerHTML = $scope.activity.options[index].qtyReserv;
-          $scope.activity.options[index].price = $scope.activity.options[index].valueReal*$scope.activity.options[index].qtyReserv;
+          selected.innerHTML = $rootScope.activity.options[index].qtyReserv;
+          $rootScope.activity.options[index].price = $rootScope.activity.options[index].valueReal*$scope.activity.options[index].qtyReserv;
         }
 /* $http.post('/saveReserva',{
                 nombre: $scope.reserv.name,
@@ -86,18 +94,36 @@
             })
             updateQty(); */
         $scope.reservA = function(value) {
-            console.log($rootScope.checkOut);
-          if(!checkRealQty(value)) {
-            $rootScope.checkOut = $rootScope.checkOut.push($scope.activity.options[value]); 
-            //updateValues();
-            console.log($rootScope.checkOut.length);
+            var activity =  $rootScope.activity.options[value];
+          if(!checkRealQty(value) && activity.qtyReserv) {
+                $rootScope.checkOut.push(activity); 
+                $rootScope.qtyCheckOut = $rootScope.checkOut.length;
+                confirmAddToCart();
           }
-
-        }
+        };
+        
+        function confirmAddToCart(){
+            swal({
+                text: "El plan se a agregado correctamente al carrito !",
+                imageUrl: "../img/dplan.png",
+                showCancelButton: true,
+                confirmButtonColor: '#64dd17',
+                confirmButtonText: 'Pagar',
+                cancelButtonText: "Ver más",
+            }).then(function (isPagar) {
+                $scope.toCheckOut();
+            },function(){ });
+        };
 
         $scope.show = function(){
           $scope.reserv.complete = true;
-        }
+        };
+        
+        $scope.toCheckOut = function(){
+            if($rootScope.qtyCheckOut > 0){
+                window.location = '/catalogo/#!/checkout';
+            }
+        };
 
         $scope.paintRoute = function(lat,lng) {
           marker = [];
@@ -112,8 +138,8 @@
             };
           directionsDisplay.addListener('directions_changed', function() {
               var myroute = directionsDisplay.getDirections().routes[0];
-              $scope.activity.distance = myroute.legs[0].distance.text;
-              $scope.activity.distanceValue = myroute.legs[0].distance.value / 1000;
+              $rootScope.activity.distance = myroute.legs[0].distance.text;
+              $rootScope.activity.distanceValue = myroute.legs[0].distance.value / 1000;
             });
             directionsService.route(request, function(response, status) {
               if (status == google.maps.DirectionsStatus.OK) {
@@ -127,8 +153,8 @@
        function updateQty(){
         console.log($scope.activity._id);
         $http.post('/updateQtyActivity',{
-            id: $scope.activity._id,
-            qty: $scope.activity.availablePersons
+            id: $rootScope.activity._id,
+            qty: $rootScope.activity.availablePersons
         }).then(function(response){
             console.log(response);
         })
@@ -203,6 +229,21 @@
         }*/
         
 	});
+    
+    cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
+        console.log($rootScope.checkOut);
+        console.log($rootScope.activity);
+        $scope.total = 0;
+        
+        (function(){
+            if($rootScope.checkOut && $rootScope.checkOut.length > 0 ){
+                for(i in $rootScope.checkOut){
+                    $scope.total += $rootScope.checkOut[i].price;
+                }
+            } 
+        })();
+    });
+    
     
     cviaja.directive('dynamicElement', ['$compile', function ($compile) {
       return { 

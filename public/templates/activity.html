@@ -1,19 +1,20 @@
 <!-- Start Homepage -->
 <div class="container-fluid">
- <div class="row" style="padding-top: 25px; background-color: #64dd17; min-height: 60px">
+ <div class="row theHeader">
   <div class="col-md-2 col-xs-4" style="padding-left: 35px">
     <a href="index.html"><img style="width: 80px;height: 80px;margin-bottom: 25px;margin-left: 30px" src="../img/cviaja.png" alt=""></a>
   </div>
   <div class="col-md-7 col-xs-2 " style="padding-left: 35px"></div>
-  <div class="col-md-3 col-xs-6" style="padding-top: 20px; padding-left: 15px">
+  <div class="col-md-4 col-xs-6 theMenu">
   <ul class="nav nav-pills">
    <!--<li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>-->
-   <li role="presentation"><a style="color: #fff;" href="#">Registrate</a></li>
-   <li role="presentation"><a style="color: #fff;" href="#">Inicia sesión</a></li>
+   <li class="option" role="presentation"><a  ng-click="toCheckOut()"  >Checkout: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li>
+   <li class="option" role="presentation"><a  href="#">Registrate</a></li>
+   <li class="option" role="presentation"><a href="#">Inicia sesión</a></li>
   </ul>
   </div>
  </div>
-  <div class="row" style="padding-top:25px">
+  <div class="row" style="padding-top:160px">
      <div class="col-md-1 col-xs-0"></div>
      <div class="col-md-4 col-xs-12 completeF" style="margin-top: -25px;">
        <br>
@@ -59,17 +60,18 @@
               <h3>{{opts.name}}</h3>
              <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
               <p id="qty$index"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</p>
+                <p><b>Precio: </b> COP {{opts.price}}</p>
             </div>
             <div class="col-md-3 col-xs-12" style="padding-top: 35px">
               <div class="input-group">
               <label>Cantidad:</label>
                 <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2,$index)"></span>
-                <span id="selected{{$index}}" class="input-group-addon" aria-label="cantidad de reservas">1</span>
+                <span id="selected{{$index}}" class="input-group-addon" aria-label="cantidad de reservas">0</span>
                 <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1,$index)"></span>
              </div>
             </div>
             <div class="col-md-2" style="padding-top: 35px">
-              <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important;">COP {{opts.price}}</button>
+              <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important;">Agregar al carrito</button>
             </div>
           </div>
           </div>

@@ -154,3 +154,77 @@ hr {
       #target {
         width: 345px;
       }
+
+.theHeader {
+    padding-top: 25px;
+    background-color: #64dd17;
+    min-height: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.theMenu{
+    position: relative;
+    padding-top: 20px;
+    padding-left: 15px;
+    float: right;
+}
+.theMenu b{
+    font-size: 15px;
+    color: #262b30;
+}
+
+.option a{
+    color:white;
+}
+
+.option a:hover{
+    color: #64dd17;
+}
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#btnPagar{
+    width: 60%;
+    margin: 0 auto;
+}
+#btnPagar button{
+    font-size: 20px;
+    background: #64dd17 !important;
+    color: #fff !important;
+}
+#btnPagar button:hover{
+    color: #64dd17 !important;
+    background-color: white !important;
+    border-color: #64dd17 !important;
+}
+
+#emptyCart{
+    width: 100%;
+    text-align: center;
+    padding-top: 10%;
+}
+
+#emptyCart img{
+    width: contain;
+}
+
+#imgActivity{
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#imgActivity img{
+    width: 100%;
+}
+
+.totales{
+    width: 80%;
+    margin: 0 auto;
+}
