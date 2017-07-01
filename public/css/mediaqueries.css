@@ -358,7 +358,7 @@
 	}
 	
 	nav#mainnav .logo {
-		display: none;
+		display: block;
 	}
 	
 	.bg1, .bg2, .bg3, .bg4 {

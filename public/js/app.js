@@ -18,11 +18,14 @@
         .otherwise({ redirectTo : "/" });
     }); 
     
-    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams', function($scope,$q,$http,$timeout,$routeParams) {
+    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', function($scope,$q,$http,$timeout,$routeParams,$rootScope) {
+        $rootScope.checkOut = [];
         $scope.reserv = {};
-        $scope.reserv.qty = 1;
+        $scope.reserv.qty0 = 1;
         $scope.reserv.complete = false;
         $scope.image = '';
+        if(JSON.parse(localStorage.getItem("checkOut")) !== null)
+          $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
         var directionsService,directionsDisplay;
         var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
         $http.defaults.headers.post["Content-Type"] = "application/json";
@@ -33,36 +36,63 @@
             $scope.image = $scope.activity.image;
             initAutocomplete($scope.activity.location);
         });
-                
-        $scope.more = function(op){
-             if(op === 1) {
-                $scope.activity.availablePersons = $scope.activity.availablePersons-1;
-            } else {
-            console.log($scope.activity.availablePersons); 
-                if($scope.activity.availablePersons+1 <= $scope.cantidadReal)
-                $scope.activity.availablePersons += 1;
-            }
-
-            $scope.reserv.qty = (op === 1)?$scope.reserv.qty+1:$scope.reserv.qty-1;
-            $scope.reserv.mount = $scope.activity.mount*$scope.reserv.qty;
+        function checkRealQty(index) {
+         if($scope.activity.options[index].numAvailabe > $scope.activity.options[index].qtyReal || $scope.activity.options[index].numAvailabe < 1) {
+          swal('Opps','Uso indebido de las reservas ','warning');
+          $scope.activity.options[index].numAvailabe = $scope.activity.options[index].qtyReal;
+          $scope.activity.options[index].price = $scope.activity.options[index].valueReal;
+          $scope.activity.options[index].qtyReserv = 0;
+          return true;
+         }
+          return false;
         }
 
-        $scope.reservA = function(value){
+        function updateValues() {
 
-            $http.post('/saveReserva',{
+        }
+
+        $scope.more = function(op,index) {
+           var selected = document.getElementById("selected"+index);
+           if($scope.activity.options[index].qtyReserv === undefined) {
+             $scope.activity.options[index].qtyReserv = 0;
+             $scope.activity.options[index].qtyReal = $scope.activity.options[index].numAvailabe;
+             $scope.activity.options[index].valueReal = $scope.activity.options[index].price;
+           }
+           checkRealQty(index);
+          if(op === 1) {
+           //Aumenta
+           $scope.activity.options[index].numAvailabe = $scope.activity.options[index].numAvailabe-1;
+           $scope.activity.options[index].qtyReserv = $scope.activity.options[index].qtyReserv+1;
+          } else {
+              //Disminuye
+           $scope.activity.options[index].numAvailabe = $scope.activity.options[index].numAvailabe+1;
+           $scope.activity.options[index].qtyReserv = $scope.activity.options[index].qtyReserv-1;
+          }
+          selected.innerHTML = $scope.activity.options[index].qtyReserv;
+          $scope.activity.options[index].price = $scope.activity.options[index].valueReal*$scope.activity.options[index].qtyReserv;
+        }
+/* $http.post('/saveReserva',{
                 nombre: $scope.reserv.name,
                 correo: $scope.reserv.mail,
                 event:  activity,
                 quantity: $scope.reserv.qty,
                 mount: $scope.reserv.mount
-            })
+})
             .then(function(result){
                 swal("Información!", result.data.token+" estaremos en contacto contigo para confirmar fecha y hora", "success");
                 $scope.reserv.complete = false;
                 $scope.reserv.name = $scope.reserv.mail = "";
                 $scope.reserv.qty = 0;
             })
-            updateQty();
+            updateQty(); */
+        $scope.reservA = function(value) {
+            console.log($rootScope.checkOut);
+          if(!checkRealQty(value)) {
+            $rootScope.checkOut = $rootScope.checkOut.push($scope.activity.options[value]); 
+            //updateValues();
+            console.log($rootScope.checkOut.length);
+          }
+
         }
 
         $scope.show = function(){
