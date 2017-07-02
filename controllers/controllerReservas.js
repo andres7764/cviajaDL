@@ -47,6 +47,13 @@ exports.updateReserva = function(req, res) {
     });
 };
 
+exports.createTansaction = function(req, res) {
+   console.log(req.body);
+};
+
+
+
+
 //Helpers
 function addReservation(correo, reserva, next) {
     User.findOne({correo: correo},function(err,user) {

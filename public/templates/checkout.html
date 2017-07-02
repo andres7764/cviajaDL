@@ -1,0 +1,89 @@
+<!-- Start Homepage -->
+<div class="container-fluid">
+ <div class="row theHeader">
+  <div class="col-md-2 col-xs-4" style="padding-left: 35px">
+    <a href="index.html"><img style="width: 80px;height: 80px;margin-bottom: 25px;margin-left: 30px" src="../img/cviaja.png" alt=""></a>
+  </div>
+  <div class="col-md-7 col-xs-2 " style="padding-left: 35px"></div>
+  <div class="col-md-4 col-xs-6 theMenu">
+  <ul class="nav nav-pills">
+   <!--<li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>-->
+   <li class="option" role="presentation"><a>Checkout: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li>
+   <li class="option" role="presentation"><a  href="#">Registrate</a></li>
+   <li class="option" role="presentation"><a href="#">Inicia sesión</a></li>
+  </ul>
+  </div>
+ </div>
+  <div id="theBody" class="row">
+      <div ng-if="total == 0" id="emptyCart">
+          <img src="../img/cartEmpty.png">
+          <button id="btnGoBack" type="button" class="animated tada btn btn-block" ng-click="goBack()">Volver</button>
+      </div>
+      <div ng-if="total !== 0">
+        <div>
+            <center><h1>CHECKOUT</h1></center>
+            <center><h2>{{activity.name}}</h2></center>
+            <div id="imgActivity">
+                <img ng-src="{{activity.image}}"> 
+            </div>
+        </div>
+        <div class="table-responsive totales">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th># Reservas</th>
+                <th>Precio</th>
+                <th>Valor</th>
+                <th> - </th>
+              </tr>
+            </thead>
+              <tbody>
+                  <tr ng-repeat="co in checkOut">
+                    <td>{{$index+1}}</td>
+                    <td>{{co.name}}</td>
+                    <td>{{co.description}}</td>
+                    <td>{{co.qtyReserv}}</td>
+                    <td>{{co.valueReal | currency: $:0}}</td>
+                    <td>{{co.price | currency: $:0}}</td>
+                    <td><a ng-click="deletePlan($index)"><span class="glyphicon glyphicon-trash"></span></a></td>
+                  </tr>
+                </tbody>
+          </table>
+      </div>
+      <div id="btnPagar" ng-if="!showBtnPay">
+          <form name="infoUser">
+                <label>Su nombre</label>
+                <input type="text" class="form-control" ng-model="user.name" placeholder="" required/><br>
+                <label>Correo</label>
+                <input type="email" class="form-control" ng-model="user.mail" placeholder="p.e juanito@correo.com" required/><br>
+                <button type="button" class="animated tada btn btn-block" ng-click="pay(infoUser.$valid)">Pagar {{total | currency: $:0}}</button>
+          </form>
+      </div>
+          <div id="btnEpayco" ng-if="showBtnPay">
+              <h3>Solo falta 1 paso: </h3>
+                    <script
+                    src="https://s3-us-west-2.amazonaws.com/epayco/v1.0/checkoutEpayco.js"
+                    class="epayco-button"
+                    data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png"
+                    data-epayco-key=""
+                    data-epayco-amount="{{total}}"
+                    data-epayco-name="{{activity.name}}"
+                    data-epayco-description="{{activity.description}}"
+                    data-epayco-currency="cop"
+                    data-epayco-country="co"
+                    data-epayco-test="true"
+                    data-epayco-response="http://localhost:5500/confirmcheckout" 
+                    data-epayco-confirmation="http://localhost:5500/confirmcheckout">
+                </script>
+                </div> 
+          
+      </div>
+    </div>
+         <br><br>
+  <div class="row footer">
+   <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
+  </div>
+</div>

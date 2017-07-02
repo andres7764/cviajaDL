@@ -98,8 +98,14 @@
           if(!checkRealQty(value) && activity.qtyReserv) {
                 $rootScope.checkOut.push(activity); 
                 $rootScope.qtyCheckOut = $rootScope.checkOut.length;
+                saveLocalStorage($rootScope.checkOut);
                 confirmAddToCart();
           }
+        };
+        
+        function saveLocalStorage(checkOut){
+            window.localStorage.setItem('checkout',JSON.stringify(checkOut));
+            window.localStorage.setItem('activity',JSON.stringify($rootScope.activity));
         };
         
         function confirmAddToCart(){
@@ -231,17 +237,82 @@
 	});
     
     cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
-        console.log($rootScope.checkOut);
-        console.log($rootScope.activity);
+        $scope.user = {};
         $scope.total = 0;
+        $rootScope.transaction = {};
+        $scope.showBtnPay = false; 
         
         (function(){
+            getCheckOut();  
+        })();
+        
+        
+        function getCheckOut(){
+            if(!$rootScope.checkOut && !$rootScope.activity){
+                var checkout = window.localStorage.getItem('checkout');
+                var activity = window.localStorage.getItem('activity');
+                $rootScope.checkOut = checkout ? JSON.parse(checkout) : [];
+                $rootScope.activity = activity ? JSON.parse(activity) : {};
+                calculateTotal();
+            }else{
+                calculateTotal();
+            }
+        };
+        
+        $scope.deletePlan = function(index){
+            $rootScope.checkOut.splice(index,1);
+            calculateTotal();
+            updateLocalStorage();
+        };
+        
+        function calculateTotal(){
             if($rootScope.checkOut && $rootScope.checkOut.length > 0 ){
                 for(i in $rootScope.checkOut){
                     $scope.total += $rootScope.checkOut[i].price;
                 }
+            }else{
+                $scope.total = 0;
+                $rootScope.qtyCheckOut = $rootScope.checkOut ? $rootScope.checkOut.length : 0;
+                console.log($rootScope.qtyCheckOut);
             } 
-        })();
+        };
+        
+        function updateLocalStorage(){
+            if($rootScope.checkOut.length === 0){
+                window.localStorage.setItem('checkout', null);
+                window.localStorage.setItem('activity',null);
+            }else{
+                window.localStorage.setItem('checkout', JSON.stringify($rootScope.checkOut));
+            }
+        };
+        
+        $scope.pay = function(formValid){ 
+            if(formValid){
+                sendEpayco();
+            }else{
+                swal(
+                  'Oops...',
+                  'Debes ingresar tu nombre y un correo valido!',
+                  'error'
+                );
+            }
+        };
+        
+        function sendEpayco(){
+            //.. send epayco
+            // exito
+             $rootScope.transaction = {
+                 user: $scope.user,
+                 activity: $rootScope.activity,
+                 checkout: $rootScope.checkOut
+             };
+            
+            $scope.showBtnPay = true;
+        };
+        
+        $scope.goBack = function() {
+            window.history.back();
+        };
     });
     
     
