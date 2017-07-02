@@ -57,9 +57,7 @@ module.exports = function(app) {
     app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
-    
-    app.post('/confirmcheckout', controllerReservas.createTansaction);
-    
+        
     // Reservas
     app.post('/saveReserva', controllerReservas.saveReserva);
     app.post('/updateReserva',controllerReservas.updateReserva);

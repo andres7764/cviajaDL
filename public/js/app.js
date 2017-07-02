@@ -19,6 +19,11 @@
           templateUrl: '../templates/checkout.html',
           controller: 'checkoutCtrl'
         })
+        .when('/response', {
+          templateUrl: '../templates/response.html',
+          controller: 'responseCtrl'
+        })
+        
         .otherwise({ redirectTo : "/" });
     }); 
     
@@ -314,7 +319,22 @@
             window.history.back();
         };
     });
-    
+
+    cviaja.controller('responseCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
+        console.log($location.search());
+        $scope.resultTransaction = {};
+        var ref_payco = $location.search().ref_payco;
+        //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
+        var urlapp = "https://api.secure.payco.co/validation/v1/reference/" + ref_payco;
+        $http.defaults.headers.post["Content-Type"] = "application/json";
+        $http.get(urlapp).then(function(result){
+             $scope.resultTransaction = result.data.data;
+        });
+        
+        $scope.goBack = function() {
+            window.history.back();
+        };
+    });
     
     cviaja.directive('dynamicElement', ['$compile', function ($compile) {
       return { 
