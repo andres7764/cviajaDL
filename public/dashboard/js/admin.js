@@ -75,7 +75,7 @@ function($scope,$q,$http,$timeout,$routeParams) {
             $scope.activity = result.data.activity[0];
             console.log($scope.activity);
             $scope.err = $scope.activities.length > 0 ? '' : 'No se encontraron, datos en la base de datos'
-             $('#myModal').modal('show');
+            $('#myModal').modal('show');
         }); 
     };
     

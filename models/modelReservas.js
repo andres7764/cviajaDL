@@ -9,7 +9,9 @@ reservas = new mongoose.Schema({
     quantity: 	{type: Number},
     mount: 		   {type: Number},
     typePayment:   {type: String},
-    wasPayment:    {type: Boolean, default: false}
+    wasPayment:    {type: Boolean, default: false},
+    status:        {type: String},
+    options:       {type: Array, default: []}
 });
 
 module.exports = mongoose.model('reservasmodel',reservas);
