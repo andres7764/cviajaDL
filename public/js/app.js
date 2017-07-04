@@ -27,7 +27,8 @@
         .otherwise({ redirectTo : "/" });
     }); 
     
-    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location) {
+    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location','$window',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location,$window) {
+        $window.scrollTo(0, 0);
         $rootScope.checkOut = [];
         $scope.reserv = {};
         $scope.reserv.qty0 = 1;
@@ -306,12 +307,13 @@
         function sendEpayco(){
             //.. send epayco
             // exito
+            console.log("sendEpayco");
              $rootScope.transaction = {
                  user: $scope.user,
                  activity: $rootScope.activity,
                  checkout: $rootScope.checkOut
              };
-            
+            console.log($rootScope.transaction);
             $scope.showBtnPay = true;
         };
         
@@ -328,12 +330,32 @@
         var urlapp = "https://api.secure.payco.co/validation/v1/reference/" + ref_payco;
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get(urlapp).then(function(result){
-             $scope.resultTransaction = result.data.data;
+            $scope.resultTransaction = result.data.data;
+            console.log($rootScope.transaction);
+            if($rootScope.transaction){
+                createReserve($rootScope.transaction);
+            }
         });
         
         $scope.goBack = function() {
             window.history.back();
         };
+        
+        function createReserve(transaction){
+            $http.post('/saveReserva',{
+                nombre: transaction.user.name,
+                correo: transaction.user.mail,
+                event:  transaction.activity._id,
+                quantity: 2, // Pendiente revisar
+                mount: $scope.resultTransaction.x_amount,
+                status: $scope.resultTransaction.x_response,
+                options: transaction.checkout
+            })
+            .then(function(result){
+                console.log(result);
+            });
+        }
+        
     });
     
     cviaja.directive('dynamicElement', ['$compile', function ($compile) {
