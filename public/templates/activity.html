@@ -8,7 +8,7 @@
   <div class="col-md-4 col-xs-6 theMenu">
   <ul class="nav nav-pills">
    <!--<li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>-->
-   <li class="option" role="presentation"><a  ng-click="toCheckOut()"  >Checkout: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li>
+   <li class="option" role="presentation"><a  ng-click="toCheckOut()"  >Carrito: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li>
    <li class="option" role="presentation"><a  href="#">Registrate</a></li>
    <li class="option" role="presentation"><a href="#">Inicia sesión</a></li>
   </ul>
@@ -69,7 +69,7 @@
                 <span id="selected{{$index}}" class="input-group-addon" aria-label="cantidad de reservas">0</span>
                 <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1,$index)"></span>
              </div>
-            </div>
+            </div><br>
             <div class="col-md-2" style="padding-top: 35px">
               <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important;">Agregar al carrito</button>
             </div>

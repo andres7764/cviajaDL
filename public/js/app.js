@@ -113,16 +113,17 @@
             window.localStorage.setItem('checkout',JSON.stringify(checkOut));
             window.localStorage.setItem('activity',JSON.stringify($rootScope.activity));
         };
-        
-        function confirmAddToCart(){
+
+        function confirmAddToCart() {
             swal({
-                text: "El plan se a agregado correctamente al carrito !",
+                text: "El plan se ha agregado correctamente al carrito !",
                 imageUrl: "../img/dplan.png",
                 showCancelButton: true,
                 confirmButtonColor: '#64dd17',
                 confirmButtonText: 'Pagar',
                 cancelButtonText: "Ver más",
             }).then(function (isPagar) {
+              console.log(isPagar);
                 $scope.toCheckOut();
             },function(){ });
         };
@@ -217,7 +218,7 @@
         $http.get('/getActivities').then(function(result){
             $scope.activities = result.data.activities; 
         });
-            
+
         var modal = document.getElementById('modalReservar');
         // Get the button that opens the modal
         var btn = document.getElementById("btnOpenModal");
@@ -238,29 +239,27 @@
             if (event.target == modal) {
                 modal.style.display = "none";
             }
-        }*/
-        
+        }*/      
 	});
     
-    cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
+  cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
         $scope.user = {};
         $scope.total = 0;
         $rootScope.transaction = {};
-        $scope.showBtnPay = false; 
-        
+        $scope.showBtnPay = false;
+        $scope.key = "54a93a6995c167b0a1bbc32cb5ada5b1";  
         (function(){
             getCheckOut();  
         })();
-        
-        
-        function getCheckOut(){
+
+        function getCheckOut() {
             if(!$rootScope.checkOut && !$rootScope.activity){
                 var checkout = window.localStorage.getItem('checkout');
                 var activity = window.localStorage.getItem('activity');
                 $rootScope.checkOut = checkout ? JSON.parse(checkout) : [];
                 $rootScope.activity = activity ? JSON.parse(activity) : {};
                 calculateTotal();
-            }else{
+            } else {
                 calculateTotal();
             }
         };
@@ -291,7 +290,7 @@
                 window.localStorage.setItem('checkout', JSON.stringify($rootScope.checkOut));
             }
         };
-        
+
         $scope.pay = function(formValid){ 
             if(formValid){
                 sendEpayco();
@@ -304,16 +303,12 @@
             }
         };
         
-        function sendEpayco(){
-            //.. send epayco
-            // exito
-            console.log("sendEpayco");
+        function sendEpayco() {
              $rootScope.transaction = {
                  user: $scope.user,
                  activity: $rootScope.activity,
                  checkout: $rootScope.checkOut
              };
-            console.log($rootScope.transaction);
             $scope.showBtnPay = true;
         };
         
@@ -326,6 +321,7 @@
         console.log($location.search());
         $scope.resultTransaction = {};
         var ref_payco = $location.search().ref_payco;
+        console.log(ref_payco);
         //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
         var urlapp = "https://api.secure.payco.co/validation/v1/reference/" + ref_payco;
         $http.defaults.headers.post["Content-Type"] = "application/json";
