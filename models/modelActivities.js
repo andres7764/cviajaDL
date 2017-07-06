@@ -13,6 +13,7 @@ activities = new mongoose.Schema({
     availablePersons:       { type: Number  },
     categories:    	        { type: String  },
     image:                  { type: String  },
+    carousel:               { type: Array, default: []},
     url:                    { type: String  },
     options:                { type: Array, default: [
                                 {

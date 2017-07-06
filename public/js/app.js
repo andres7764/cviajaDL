@@ -35,6 +35,11 @@
         $scope.reserv.complete = false;
         $scope.image = '';
         $rootScope.qtyCheckOut = 0;
+        $scope.vm ={}; 
+        $scope.vm.cupos = [0,0,0];
+        $scope.vm.price = [0,0,0]
+        
+        
         if(JSON.parse(localStorage.getItem("checkOut")) !== null)
           $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
         var directionsService,directionsDisplay;
@@ -44,9 +49,29 @@
             $rootScope.activity = result.data.activity[0];
             $scope.cantidadReal = $rootScope.activity.availablePersons;
             $scope.reserv.mount = $rootScope.activity.mount;
+            console.log( $rootScope.activity );
             $scope.image = $rootScope.activity.image;
             initAutocomplete($scope.activity.location);
         });
+        
+        $scope.checkCupo = function(index){
+            $rootScope.checkOut = [];
+            var checkOption = $rootScope.activity.options[index];
+            var dataCheck = {
+                                name: checkOption.name,
+                                numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
+                                description: checkOption.description,
+                                price: checkOption.price * $scope.vm.cupos[index],
+                                qtyReserv: $scope.vm.cupos[index],
+                                qtyReal: checkOption.numAvailabe, 
+                                valueReal: checkOption.price,
+                            };
+            $scope.vm.price[index] = dataCheck.price;
+            $rootScope.checkOut.push(dataCheck);
+            
+            console.log($rootScope.checkOut);
+        };
+        
         
         function checkRealQty(index) {
              var activity = $rootScope.activity.options[index];
@@ -59,11 +84,6 @@
              }
               return false;
             }
-
-        function updateValues() {
-
-        }
-        
 
         $scope.more = function(op,index) {
            var selected = document.getElementById("selected"+index);
@@ -99,13 +119,21 @@
                 $scope.reserv.qty = 0;
             })
             updateQty(); */
-        $scope.reservA = function(value) {
+        /*$scope.reservA = function(value) {
             var activity =  $rootScope.activity.options[value];
           if(!checkRealQty(value) && activity.qtyReserv) {
                 $rootScope.checkOut.push(activity); 
                 $rootScope.qtyCheckOut = $rootScope.checkOut.length;
                 saveLocalStorage($rootScope.checkOut);
                 confirmAddToCart();
+          }
+        };*/
+        
+        $scope.reservA = function(value) {
+          if($rootScope.checkOut.length > 0 ){
+               window.location = '/catalogo/#!/checkout';
+          }else{
+               swal("error", "Debes elegir una fecha y el número de cupos a comprar", "error");
           }
         };
         
@@ -201,7 +229,16 @@
         directionsDisplay = new google.maps.DirectionsRenderer();
           $scope.paintRoute(places[0].geometry.location.lat(),places[0].geometry.location.lng());
         });
-      }
+      };
+        
+        $scope.range = function(min, max, step) {
+            step = step || 1;
+            var input = [];
+            for (var i = min; i <= max; i += step) {
+                input.push(i);
+            }
+            return input;
+        };
 
     }]);
 
