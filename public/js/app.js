@@ -1,4 +1,4 @@
-    
+
     var cviaja = angular.module('cviaja',["ngRoute"]);
     
     cviaja.config(function($routeProvider) {
@@ -24,7 +24,7 @@
           controller: 'responseCtrl'
         })
         
-        .otherwise({ redirectTo : "/" });
+        .otherwise({ redirectTo : "/catalogo" });
     }); 
     
     cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location','$window',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location,$window) {
@@ -131,7 +131,7 @@
         
         $scope.reservA = function(value) {
           if($rootScope.checkOut.length > 0 ){
-               window.location = '/catalogo/#!/checkout';
+               window.location = '/#!/checkout';
           }else{
                swal("error", "Debes elegir una fecha y el número de cupos a comprar", "error");
           }
@@ -162,7 +162,7 @@
         
         $scope.toCheckOut = function(){
             if($rootScope.qtyCheckOut > 0){
-                window.location = '/catalogo/#!/checkout';
+                window.location = '/#!/checkout';
             }
         };
 

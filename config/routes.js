@@ -51,13 +51,13 @@ module.exports = function(app) {
     //Create routes by server rest API ====================================================
     app.post('/saveContact', controllerContact.saveContact);
     app.post('/cancelSuscription', controllerContact.cancelSuscription);
-    
+
     // Actividades
     app.post('/createActivity', controllerActivities.createActivity);
     app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
-        
+
     // Reservas
     app.post('/saveReserva', controllerReservas.saveReserva);
     app.post('/updateReserva',controllerReservas.updateReserva);
@@ -66,7 +66,6 @@ module.exports = function(app) {
     
     // Admin
     app.post('/LoginAdmin',controllerAdmin.LoginAdmin);
-    
 
     // application web ======================================================================
     app.get('/', function(req, res) {

@@ -4,7 +4,7 @@ var Activities =  mongoose.model('activitiesmodel');
 
 //POST - Insert a new user in the Collection
 exports.getActivities = function(req, res) {
-    Activities.find(function(err, activities) {
+    Activities.find({isActive: true},function(err, activities) {
         if (err) { return res.status(500).send(err.message); }
         return res.status(200).send({activities: activities});
     });

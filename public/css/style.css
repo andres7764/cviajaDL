@@ -1,3 +1,12 @@
+#map {
+ height: 40%;
+}
+      /* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 #slidecaption {
     position: absolute;
@@ -36,7 +45,7 @@
   border: none;
 }
 .btn {
-  /* background-color: #64dd17 !important;*/
+ background-color: #64dd17 !important;
   color: #fff;
 }
 

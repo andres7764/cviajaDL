@@ -1150,3 +1150,26 @@
 	.add-comment label {
 		display: none;
 	}
+
+
+@media (max-width: 479px) {
+
+	#slidecaption { 
+		font-size: 20px;
+		top: 36%;
+		padding:  2%;
+	}
+	
+	#slidecaption .sub-caption {
+		font-size: 14px;
+		padding: 0;
+	}
+
+}
+@media (max-width: 767px) {
+#slidecaption {
+    font-size: 28px;
+    top: 35%;
+    padding: 0 2%;
+}
+}
