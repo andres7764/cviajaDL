@@ -9,14 +9,15 @@
   <link rel="shortcut icon" type="image/png" href="../img/dplan.png"/>
   <title>.: DPlan - Catálogo :.</title>
 <script type="" src="../js/jqueryFinal.min.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/sweetalert2.min.css">
 <link rel="stylesheet" type="text/css" href="../css/animate.css">
 <link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="../css/layout.css">
+<link rel="stylesheet" type="text/css" href="../css/mediaqueries.css">
   <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 <style type="text/css">
 	  /* Always set the map height explicitly to define the size of the div
@@ -58,11 +59,21 @@
 	  ga('send', 'pageview');
 
 </script>
+<!-- Facebook Pixel Code -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body class="bkBody" ng-view>
   <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5955690e03bcd486"></script> 
 </body>
+  <script src="../js/odometer.js"></script> <!-- Twitter Feed Options -->
+<script type="text/javascript">
+  // Get the modal
+  setTimeout(function(){
+    document.getElementById('nearActivities').innerHTML = 30;
+    document.getElementById('reserv').innerHTML = 200;
+    document.getElementById('activeUsers').innerHTML = 450;
+  },8000);
+</script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
     <!-- Google Maps -->

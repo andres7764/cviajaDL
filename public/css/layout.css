@@ -105,7 +105,7 @@
 		
 	img {
 		/* Responsive images (ensure images don't scale beyond their parents) */
-		max-width: 100%;
+		/*max-width: 100%;*/
 		/* Part 1: Set a maxium relative to the parent */
 		width: auto\9;
 		/* IE7-8 need help adjusting responsive images */
@@ -141,14 +141,14 @@
 		border-top: 1px solid #e5e5e5;
 	}
 	
-	.title {
+/*	.title {
 		font-family: 'Montserrat', 'Trebuchet MS', sans-serif;
 		font-size: 36px;
 		letter-spacing: 2px;
 		text-transform: uppercase;
 		line-height: 1.1;
 		margin-bottom: 34px;
-	}
+	}*/
 	
 	.lead {
 		font-size: 38px;
@@ -203,7 +203,7 @@
 	
 	header {
 		width: 100%;
-		height: 700px;
+		height: 550px;
 		position: absolute;
 		overflow: hidden;
 		text-align: center;
