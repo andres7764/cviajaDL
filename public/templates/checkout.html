@@ -9,6 +9,7 @@
   <ul class="nav nav-pills">
    <!--<li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>-->
    <!--<li class="option" role="presentation"><a>Checkout: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li> -->
+
    <li class="option" role="presentation"><a  href="#">Registrate</a></li>
    <li class="option" role="presentation"><a href="#">Inicia sesión</a></li>
   </ul>
@@ -68,7 +69,7 @@
                     src="https://s3-us-west-2.amazonaws.com/epayco/v1.0/checkoutEpayco.js"
                     class="epayco-button"
                     data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png"
-                    data-epayco-key=""
+                    data-epayco-key="{{key}}"
                     data-epayco-amount="{{total}}"
                     data-epayco-name="{{activity.name}}"
                     data-epayco-description="{{activity.description}}"
