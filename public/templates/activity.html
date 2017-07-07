@@ -26,7 +26,8 @@
         <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
         <p style="text-align:justify"><b>Qué harás: </b>{{activity.description}}</p>
         <p><b>Categoría: </b> {{activity.categories}}</p>
-        <p><b>Precio desde: </b> ${{reserv.mount}}</p>
+        <p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>
+        <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
         <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
       </div>
       <div class="col-md-4 col-xs-10" style="padding-top: 90px">
@@ -39,13 +40,13 @@
 
         <div class="carousel-inner">
           <div class="item active">
-            <img src="{{activity.carousel[0]}}" alt="descripcion">
+            <img ng-src="{{activity.carousel[0]}}" alt="descripcion">
           </div>
             <div class="item">
-            <img src="{{activity.carousel[1]}}" alt="descripcion">
+            <img ng-src="{{activity.carousel[1]}}" alt="descripcion">
           </div>
             <div class="item">
-            <img src="{{activity.carousel[2]}}" alt="descripcion">
+            <img ng-src="{{activity.carousel[2]}}" alt="descripcion">
           </div>
         </div>
        </div>
@@ -62,7 +63,7 @@
               <h3>{{opts.name}}</h3>
              <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
               <p id="qty$index"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</p>
-                <p><b>Precio: </b> COP {{opts.price}}</p>
+                <p><b>Precio: </b> COP {{opts.price | currency: $:0}}</p>
             </div>
               <div class="col-md-3 col-xs-12" style="padding-top: 35px">
                   <div class="form-group">
