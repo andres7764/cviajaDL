@@ -297,13 +297,6 @@
             }
         };
         
-        /*function sendEpayco() {
-          $rootScope.transaction = {
-            activity: $rootScope.activity,
-            checkout: $rootScope.checkOut
-          };
-        };*/
-        
         $scope.goBack = function() {
             window.history.back();
         };
@@ -321,8 +314,8 @@
             $scope.resultTransaction = result.data.data;
             if($scope.resultTransaction.x_cod_response === 1){
             console.log($scope.resultTransaction);
-                //createReserve($scope.resultTransaction);
-                //updateQty();
+                createReserve($scope.resultTransaction);
+                updateQty();
                 swal("¡Compra exitosa!","Tu transacción ha sido satisfactoria, a tu correo hemos enviado la información completa sobre tu actividad, Disfrútala!!", "success");
             } else if ($scope.resultTransaction.x_cod_response === 2) {
                 swal("¡Compra rechazada!","Tu transacción ha sido rechazada, valida esta información con tu banco y vuelve a intentarlo, no te quedes con las ganas de hacer este plan.", "error");
@@ -343,11 +336,13 @@
             $http.post('/saveReserva',{
                 nombre: transaction.x_business,
                 correo: transaction.x_customer_email,
-                event:  transaction.x_id_invoice,
+                event:  info._id,
                 quantity: info.qtyReserv,
                 mount: transaction.x_amount,
                 status: transaction.x_response,
-                options: transaction.checkout
+                wasPayment: true,
+                options: info,
+                codeTransaction: transaction.x_id_invoice 
             })
             .then(function(result){
                 console.log(result);

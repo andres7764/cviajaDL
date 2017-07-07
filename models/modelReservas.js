@@ -11,7 +11,8 @@ reservas = new mongoose.Schema({
     typePayment:   {type: String},
     wasPayment:    {type: Boolean, default: false},
     status:        {type: String},
-    options:       {type: Array, default: []}
+    options:       {type: Array, default: []},
+    codeTransaction: {type: String}
 });
 
 module.exports = mongoose.model('reservasmodel',reservas);
