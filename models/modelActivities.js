@@ -22,8 +22,11 @@ activities = new mongoose.Schema({
                                     price: {type: Number, default: 0},
                                     description: {type: String, default: ''}
                                 }
-                            ]}
-});
+                            ]},
+    rnt:                    { type: String, default: ""  }, //Registro nacional de turismo
+    imgRnt:                 { type: String, default: ""},
+    msgConfirm:             { type: String, default: "Gracias por su compra" }
+}); 
 
 
 module.exports = mongoose.model('activitiesmodel',activities);
