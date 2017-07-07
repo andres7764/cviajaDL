@@ -81,7 +81,7 @@ function saveReserva(objectReserv, cb){
     newReserv.save(function(err, newreserva){
         if (err) { cb({err:true, message: err.message}); }
         addReservation(objectReserv.correo, newreserva, function(next) {
-            if(objectReserv.status === 'Aprovada'){
+            if(objectReserv.status === 'Aceptada') {
                  updateOptions(objectReserv, function(err){
                     if(!err){
                         sendMail.send(objectReserv.nombre, objectReserv.correo, mensaje);

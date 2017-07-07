@@ -51,6 +51,7 @@ module.exports = function(app) {
     //Create routes by server rest API ====================================================
     app.post('/saveContact', controllerContact.saveContact);
     app.post('/cancelSuscription', controllerContact.cancelSuscription);
+    app.post('/updateQtyActivity', controllerActivities.updateQtyActivity);
 
     // Actividades
     app.post('/createActivity', controllerActivities.createActivity);

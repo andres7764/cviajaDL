@@ -52,10 +52,10 @@ exports.createActivity = function(req, res) {
     });
 };
 
-exports.updateQty = function(req,res) {
+exports.updateQtyActivity = function(req,res) {
     Activities.update({_id: req.body.id}, {$set: {availablePersons: req.body.qty}},function(err, response) {
         if (err) { return res.status(500).send(err.message); }
-        return res.status(200).send({token:'actividad guardada correctamente'});
+        return res.status(200).send({token:'actividad actualizada correctamente'});
     });
 };
 

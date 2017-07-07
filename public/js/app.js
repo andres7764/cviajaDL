@@ -313,7 +313,6 @@
         $http.get(urlapp).then(function(result) {
             $scope.resultTransaction = result.data.data;
             if($scope.resultTransaction.x_cod_response === 1){
-            console.log($scope.resultTransaction);
                 createReserve($scope.resultTransaction);
                 updateQty();
                 swal("¡Compra exitosa!","Tu transacción ha sido satisfactoria, a tu correo hemos enviado la información completa sobre tu actividad, Disfrútala!!", "success");
@@ -332,7 +331,7 @@
         };
         
         function createReserve(transaction){
-            console.log($rootScope.checkout);
+          alert("llegó primero");
             $http.post('/saveReserva',{
                 nombre: transaction.x_business,
                 correo: transaction.x_customer_email,
@@ -349,6 +348,7 @@
             });
         }
         function updateQty(){
+          alert("llegó segundo");
           console.log(info);
           $http.post('/updateQtyActivity',{
               id: info._id,
