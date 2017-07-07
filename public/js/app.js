@@ -77,40 +77,6 @@
             localStorage.setItem("checkOut",JSON.stringify(dataCheck));
         };
         
-        
-/*        function checkRealQty(index) {
-             var activity = $rootScope.activity.options[index];
-             if(activity.numAvailabe > activity.qtyReal || activity.numAvailabe < 1) {
-              swal('Opps','Uso indebido de las reservas ','warning');
-              $rootScope.activity.options[index].numAvailabe = $rootScope.activity.options[index].qtyReal;
-              $rootScope.activity.options[index].price = $rootScope.activity.options[index].valueReal;
-              $rootScope.activity.options[index].qtyReserv = 0;
-              return true;
-             }
-              return false;
-            }
-
-        $scope.more = function(op,index) {
-           var selected = document.getElementById("selected"+index);
-           if($scope.activity.options[index].qtyReserv === undefined) {
-             $rootScope.activity.options[index].qtyReserv = 0;
-             $rootScope.activity.options[index].qtyReal = $rootScope.activity.options[index].numAvailabe;
-             $rootScope.activity.options[index].valueReal = $rootScope.activity.options[index].price;
-           }
-           checkRealQty(index);
-          if(op === 1) {
-           //Aumenta
-           $rootScope.activity.options[index].numAvailabe = $rootScope.activity.options[index].numAvailabe-1;
-           $rootScope.activity.options[index].qtyReserv = $rootScope.activity.options[index].qtyReserv+1;
-          } else {
-              //Disminuye
-           $rootScope.activity.options[index].numAvailabe = $rootScope.activity.options[index].numAvailabe+1;
-           $rootScope.activity.options[index].qtyReserv = $rootScope.activity.options[index].qtyReserv-1;
-          }
-          selected.innerHTML = $rootScope.activity.options[index].qtyReserv;
-          $rootScope.activity.options[index].price = $rootScope.activity.options[index].valueReal*$scope.activity.options[index].qtyReserv;
-        }
-*/        
         $scope.reservA = function(value) {
           if($rootScope.checkOut.length > 0 ){
                window.location = '/#!/checkout';
@@ -119,35 +85,6 @@
           }
         };
         
-/*        function saveLocalStorage(checkOut){
-            window.localStorage.setItem('checkout',JSON.stringify(checkOut));
-            window.localStorage.setItem('activity',JSON.stringify($rootScope.activity));
-        };*/
-
-/*        function confirmAddToCart() {
-            swal({
-                text: "El plan se ha agregado correctamente al carrito !",
-                imageUrl: "../img/dplan.png",
-                showCancelButton: true,
-                confirmButtonColor: '#64dd17',
-                confirmButtonText: 'Pagar',
-                cancelButtonText: "Ver más",
-            }).then(function (isPagar) {
-              console.log(isPagar);
-                $scope.toCheckOut();
-            },function(){ });
-        };
-
-        $scope.show = function(){
-          $scope.reserv.complete = true;
-        };
-        
-        $scope.toCheckOut = function(){
-            if($rootScope.qtyCheckOut > 0){
-                window.location = '/#!/checkout';
-            }
-        };*/
-
         $scope.paintRoute = function(lat,lng) {
           marker = [];
             var init = new google.maps.LatLng(lat, lng);
@@ -235,23 +172,7 @@
         // Get the button that opens the modal
         var btn = document.getElementById("btnOpenModal");
         // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-        // When the user clicks on the button, open the modal 
-        /*btn.onclick = function() {
-            modal.style.display = "block";
-        } 
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }*/      
+        var span = document.getElementsByClassName("close")[0];   
   });
     
   cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
@@ -289,7 +210,6 @@
             }else{
                 $scope.total = 0;
                 $rootScope.qtyCheckOut = $rootScope.checkOut ? $rootScope.checkOut.length : 0;
-                console.log($rootScope.qtyCheckOut);
             } 
         };
         
@@ -310,7 +230,6 @@
     cviaja.controller('responseCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
         $scope.resultTransaction = {};
         let info = JSON.parse(localStorage.getItem("checkOut"));
-        console.log(info);
         var ref_payco = $location.search().ref_payco;
         //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
         var urlapp = "https://api.secure.payco.co/validation/v1/reference/" + ref_payco;
@@ -349,17 +268,13 @@
                 dateReserv: info.dateReserv
             })
             .then(function(result){
-                console.log(result);
             });
         }
         function updateQty(){
-          console.log(info);
           $http.post('/updateQtyActivity',{
               id: info._id,
               obj: info.obj
-          }).then(function(response){
-              console.log(response);
-          })
+          }).then(function(response){})
        }
     });
     
