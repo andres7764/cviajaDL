@@ -55,7 +55,9 @@
         $scope.checkCupo = function(index){
             $rootScope.checkOut = [];
             localStorage.setItem("checkOut",null);
+            var dateReserv = document.getElementById('sel1').value;
             var checkOption = $rootScope.activity.options[index];
+            $rootScope.activity.options[index].numAvailabe = checkOption.numAvailabe - $scope.vm.cupos[index];
             var dataCheck = {
               name: checkOption.name,
               numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
@@ -64,8 +66,12 @@
               qtyReserv: $scope.vm.cupos[index],
               qtyReal: checkOption.numAvailabe, 
               valueReal: checkOption.price,
-              _id: activity
+              dateReserv: dateReserv,
+              _id: activity,
+              index: index,
+              obj: $rootScope.activity.options 
               };
+
             $scope.vm.price[index] = dataCheck.price;
             $rootScope.checkOut.push(dataCheck);
             localStorage.setItem("checkOut",JSON.stringify(dataCheck));
@@ -218,7 +224,6 @@
         $scope.activities = {};
         
         $scope.irA = function(id){
-            console.log(id);
             $location.url('/catalogo/'+id);
         }
         $http.defaults.headers.post["Content-Type"] = "application/json";
@@ -331,7 +336,6 @@
         };
         
         function createReserve(transaction){
-          alert("llegó primero");
             $http.post('/saveReserva',{
                 nombre: transaction.x_business,
                 correo: transaction.x_customer_email,
@@ -341,18 +345,18 @@
                 status: transaction.x_response,
                 wasPayment: true,
                 options: info,
-                codeTransaction: transaction.x_id_invoice 
+                codeTransaction: transaction.x_id_invoice,
+                dateReserv: info.dateReserv
             })
             .then(function(result){
                 console.log(result);
             });
         }
         function updateQty(){
-          alert("llegó segundo");
           console.log(info);
           $http.post('/updateQtyActivity',{
               id: info._id,
-              qty: info.numAvailabe
+              obj: info.obj
           }).then(function(response){
               console.log(response);
           })

@@ -35,9 +35,9 @@ exports.saveReserva = function(req, res) {
     saveReserva(req.body, function(result){
         console.log(result);
         if(!result.err){
-            return res.status(200).send(result);
+           return res.status(200).send(result);
         }else{
-            return res.status(500).send(result);
+           return res.status(500).send(result);
         }
     });
 };
