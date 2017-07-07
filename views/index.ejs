@@ -53,12 +53,14 @@
 <script src="../js/app.js"></script>
 <script src="../js/sweetalert2.min.js"></script>
 <script type="text/javascript">
-  // Get the modal 
+  // Get the modal
+  if(document.getElementById('nearActivities') !== null) {
     setTimeout(function(){
       document.getElementById('nearActivities').innerHTML = 30;
       document.getElementById('reserv').innerHTML = 200;
       document.getElementById('activeUsers').innerHTML = 450;
     },8000);
+  }
 </script>
     <!-- Google Maps -->
 </html>

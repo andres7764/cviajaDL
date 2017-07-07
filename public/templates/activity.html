@@ -1,24 +1,25 @@
 <!-- Start Homepage -->
 <div class="container-fluid">
- <div class="row theHeader">
-  <div class="col-md-2 col-xs-4" style="padding-left: 35px">
-    <a href="/"><img style="width: 80px;height: 80px;margin-bottom: 25px;margin-left: 30px" src="../img/cviaja.png" alt=""></a>
-  </div>
-  <div class="col-md-7 col-xs-2 " style="padding-left: 35px"></div>
-  <div class="col-md-4 col-xs-6 theMenu">
-  <!--<ul class="nav nav-pills">
-   <li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>-->
-   <!--<li class="option" role="presentation"><a  ng-click="toCheckOut()"  >Checkout: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li>
-
-   <li class="option" role="presentation"><a  href="#">Registrate</a></li>
-   <li class="option" role="presentation"><a href="#">Inicia sesión</a></li>
-  </ul>-->
-  </div>
- </div>
+ <div class="row sticky theHeader" id="actividades" style="background-color: #64dd17; min-height: 60px">
+    <nav id="mainnav">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <a href="/" class="logo"><img src="./img/cviajaLt.png" style="margin-top: -12px;width: 60px;margin-left: 0px;" alt=""></a>
+          </div>
+          <div class="span8">
+            <ul id="fluid-nav" class="fluid-navigation visible-desktop">
+              <li class="current"><a href="#home">Inicio</a></li>
+              <li><a href="#portfolio">Actividades</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+   </div>
   <div class="row" style="padding-top:160px">
      <div class="col-md-1 col-xs-0"></div>
      <div class="col-md-6 col-xs-12 completeF" style="margin-top: -25px;">
-       <br>
         <h1>{{activity.name}}</h1>
         <hr class="mini" style="width: 130px"><br>
         <p><b>Ubicación:</b> {{activity.location.name}}</p>
@@ -38,13 +39,13 @@
 
         <div class="carousel-inner">
           <div class="item active">
-            <img ng-src="{{activity.carousel[0]}}" alt="descripcion">
+            <img src="{{activity.carousel[0]}}" alt="descripcion">
           </div>
             <div class="item">
-            <img ng-src="{{activity.carousel[1]}}" alt="descripcion">
+            <img src="{{activity.carousel[1]}}" alt="descripcion">
           </div>
             <div class="item">
-            <img ng-src="{{activity.carousel[2]}}" alt="descripcion">
+            <img src="{{activity.carousel[2]}}" alt="descripcion">
           </div>
         </div>
        </div>
@@ -52,12 +53,12 @@
      <div class="col-md-1 col-xs-2"></div>
   </div>
     <div class="row">
-        <div class="col-md-1 col-xs-1"></div>
-        <div class="col-md-10 col-xs-10">
+      <div class="col-md-1 col-xs-1"></div>
+      <div class="col-md-10 col-xs-10">
           <h2>Planes</h2>
         <hr class="mini" style="width: 130px"><br>
           <div ng-repeat="opts in activity.options track by $index" class="row">
-            <div class="col-md-5 col-xs-12">
+            <div class="col-md-7 col-xs-12">
               <h3>{{opts.name}}</h3>
              <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
               <p id="qty$index"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</p>
@@ -65,7 +66,7 @@
             </div>
               <div class="col-md-3 col-xs-12" style="padding-top: 35px">
                   <div class="form-group">
-                      <label for="sel1">Fecha:</label>
+                      <label for="sel1">Selecciona el día:</label>
                       <select class="form-control" id="sel1">
                         <option>8 de Julio 2017</option>
                         <option>9 de Julio 2017</option>
@@ -82,21 +83,17 @@
                       </select>
                     </div>              
               </div>
-              
-              <div class="col-md-2" style="padding-top: 9%">
-                  <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important;">Comprar {{vm.price[$index] | currency: $:0}}</button>
+              <div class="col-md-2 col-xs-12" style="padding-top: 9%">
+                <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important;">Comprar {{vm.price[$index] | currency: $:0}}</button>
               </div>
-              
-            <!--<div class="col-md-3 col-xs-12" style="padding-top: 35px">
+             <!--<div class="col-md-3 col-xs-12" style="padding-top: 35px">
               <div class="input-group">
               <label>Cantidad:</label>
                 <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2,$index)"></span>
                 <span id="selected{{$index}}" class="input-group-addon" aria-label="cantidad de reservas">0</span>
                 <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1,$index)"></span>
              </div>-->
-
             </div>
-            
           </div>
           </div>
         <div class="col-md-2 col-xs-1">
@@ -124,7 +121,7 @@
               <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/><br>
               <label>Correo</label>
               <input type="email" class="form-control" ng-model="reserv.mail" placeholder="p.e juanito@correo.com"/><br>
-         <div class="input-group">             
+         <div class="input-group">
           <span class="input-group-addon" id="basic-addon3">Actividad seleccionada/</span>
           <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
          </div><br>
