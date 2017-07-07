@@ -1,6 +1,5 @@
-
     var cviaja = angular.module('cviaja',["ngRoute"]);
-    
+
     cviaja.config(function($routeProvider) {
       $routeProvider.
         when('/', {
@@ -49,31 +48,31 @@
             $rootScope.activity = result.data.activity[0];
             $scope.cantidadReal = $rootScope.activity.availablePersons;
             $scope.reserv.mount = $rootScope.activity.mount;
-            console.log( $rootScope.activity );
             $scope.image = $rootScope.activity.image;
             initAutocomplete($scope.activity.location);
         });
         
         $scope.checkCupo = function(index){
             $rootScope.checkOut = [];
+            localStorage.setItem("checkOut",null);
             var checkOption = $rootScope.activity.options[index];
             var dataCheck = {
-                                name: checkOption.name,
-                                numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
-                                description: checkOption.description,
-                                price: checkOption.price * $scope.vm.cupos[index],
-                                qtyReserv: $scope.vm.cupos[index],
-                                qtyReal: checkOption.numAvailabe, 
-                                valueReal: checkOption.price,
-                            };
+              name: checkOption.name,
+              numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
+              description: checkOption.description,
+              price: checkOption.price * $scope.vm.cupos[index],
+              qtyReserv: $scope.vm.cupos[index],
+              qtyReal: checkOption.numAvailabe, 
+              valueReal: checkOption.price,
+              _id: activity
+              };
             $scope.vm.price[index] = dataCheck.price;
             $rootScope.checkOut.push(dataCheck);
-            
-            console.log($rootScope.checkOut);
+            localStorage.setItem("checkOut",JSON.stringify(dataCheck));
         };
         
         
-        function checkRealQty(index) {
+/*        function checkRealQty(index) {
              var activity = $rootScope.activity.options[index];
              if(activity.numAvailabe > activity.qtyReal || activity.numAvailabe < 1) {
               swal('Opps','Uso indebido de las reservas ','warning');
@@ -105,30 +104,7 @@
           selected.innerHTML = $rootScope.activity.options[index].qtyReserv;
           $rootScope.activity.options[index].price = $rootScope.activity.options[index].valueReal*$scope.activity.options[index].qtyReserv;
         }
-/* $http.post('/saveReserva',{
-                nombre: $scope.reserv.name,
-                correo: $scope.reserv.mail,
-                event:  activity,
-                quantity: $scope.reserv.qty,
-                mount: $scope.reserv.mount
-})
-            .then(function(result){
-                swal("Información!", result.data.token+" estaremos en contacto contigo para confirmar fecha y hora", "success");
-                $scope.reserv.complete = false;
-                $scope.reserv.name = $scope.reserv.mail = "";
-                $scope.reserv.qty = 0;
-            })
-            updateQty(); */
-        /*$scope.reservA = function(value) {
-            var activity =  $rootScope.activity.options[value];
-          if(!checkRealQty(value) && activity.qtyReserv) {
-                $rootScope.checkOut.push(activity); 
-                $rootScope.qtyCheckOut = $rootScope.checkOut.length;
-                saveLocalStorage($rootScope.checkOut);
-                confirmAddToCart();
-          }
-        };*/
-        
+*/        
         $scope.reservA = function(value) {
           if($rootScope.checkOut.length > 0 ){
                window.location = '/#!/checkout';
@@ -137,12 +113,12 @@
           }
         };
         
-        function saveLocalStorage(checkOut){
+/*        function saveLocalStorage(checkOut){
             window.localStorage.setItem('checkout',JSON.stringify(checkOut));
             window.localStorage.setItem('activity',JSON.stringify($rootScope.activity));
-        };
+        };*/
 
-        function confirmAddToCart() {
+/*        function confirmAddToCart() {
             swal({
                 text: "El plan se ha agregado correctamente al carrito !",
                 imageUrl: "../img/dplan.png",
@@ -164,7 +140,7 @@
             if($rootScope.qtyCheckOut > 0){
                 window.location = '/#!/checkout';
             }
-        };
+        };*/
 
         $scope.paintRoute = function(lat,lng) {
           marker = [];
@@ -191,15 +167,6 @@
             });
         }
 
-       function updateQty(){
-        console.log($scope.activity._id);
-        $http.post('/updateQtyActivity',{
-            id: $rootScope.activity._id,
-            qty: $rootScope.activity.availablePersons
-        }).then(function(response){
-            console.log(response);
-        })
-       }
        function initAutocomplete(location) {
         var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
             $scope.map = new google.maps.Map(document.getElementById('map'), {
@@ -215,15 +182,10 @@
         var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
         $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-        // Bias the SearchBox results towards current map's viewport.
         $scope.map.addListener('bounds_changed', function() {
           searchBox.setBounds($scope.map.getBounds());
         });
-
         var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
         searchBox.addListener('places_changed', function() {
           var places = searchBox.getPlaces();
           directionsService = new google.maps.DirectionsService();
@@ -243,7 +205,7 @@
 
     }]);
 
-	cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
+  cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
         
         $scope.activities = {};
         
@@ -277,16 +239,15 @@
                 modal.style.display = "none";
             }
         }*/      
-	});
+  });
     
   cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
-        $scope.user = {};
         $scope.total = 0;
         $rootScope.transaction = {};
         $scope.showBtnPay = false;
-        $scope.key = "54a93a6995c167b0a1bbc32cb5ada5b1";  
+        $scope.key = "54a93a6995c167b0a1bbc32cb5ada5b1";
         (function(){
-            getCheckOut();  
+            getCheckOut();
         })();
 
         function getCheckOut() {
@@ -327,27 +288,13 @@
                 window.localStorage.setItem('checkout', JSON.stringify($rootScope.checkOut));
             }
         };
-
-        $scope.pay = function(formValid){ 
-            if(formValid){
-                sendEpayco();
-            }else{
-                swal(
-                  'Oops...',
-                  'Debes ingresar tu nombre y un correo valido!',
-                  'error'
-                );
-            }
-        };
         
-        function sendEpayco() {
-             $rootScope.transaction = {
-                 user: $scope.user,
-                 activity: $rootScope.activity,
-                 checkout: $rootScope.checkOut
-             };
-            $scope.showBtnPay = true;
-        };
+        /*function sendEpayco() {
+          $rootScope.transaction = {
+            activity: $rootScope.activity,
+            checkout: $rootScope.checkOut
+          };
+        };*/
         
         $scope.goBack = function() {
             window.history.back();
@@ -355,40 +302,58 @@
     });
 
     cviaja.controller('responseCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
-        console.log($location.search());
         $scope.resultTransaction = {};
+        let info = JSON.parse(localStorage.getItem("checkOut"));
+        console.log(info);
         var ref_payco = $location.search().ref_payco;
-        console.log(ref_payco);
         //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
         var urlapp = "https://api.secure.payco.co/validation/v1/reference/" + ref_payco;
         $http.defaults.headers.post["Content-Type"] = "application/json";
-        $http.get(urlapp).then(function(result){
+        $http.get(urlapp).then(function(result) {
             $scope.resultTransaction = result.data.data;
-            console.log($rootScope.transaction);
-            if($rootScope.transaction){
-                createReserve($rootScope.transaction);
+            if($scope.resultTransaction.x_cod_response === 1){
+            console.log($scope.resultTransaction);
+                //createReserve($scope.resultTransaction);
+                //updateQty();
+                swal("¡Compra exitosa!","Tu transacción ha sido satisfactoria, a tu correo hemos enviado la información completa sobre tu actividad, Disfrútala!!", "success");
+            } else if ($scope.resultTransaction.x_cod_response === 2) {
+                swal("¡Compra rechazada!","Tu transacción ha sido rechazada, valida esta información con tu banco y vuelve a intentarlo, no te quedes con las ganas de hacer este plan.", "error");
+            } else if ($scope.resultTransaction.x_cod_response === 3) {
+                swal("¡Compra Pendiente!","Tu transacción está en estado Pendiente, te informaremos a vuelta de correo una vez cambie el estado de tu compra.", "warning");
+            } else {
+                swal("¡Compra fallida!","Ha ocurrido un error con tu compra, verifica con tu entidad financiera para mas información", "error");
             }
         });
         
         $scope.goBack = function() {
+          localStorage.setItem("checkOut",null);
             window.history.back();
         };
         
         function createReserve(transaction){
+            console.log($rootScope.checkout);
             $http.post('/saveReserva',{
-                nombre: transaction.user.name,
-                correo: transaction.user.mail,
-                event:  transaction.activity._id,
-                quantity: 2, // Pendiente revisar
-                mount: $scope.resultTransaction.x_amount,
-                status: $scope.resultTransaction.x_response,
+                nombre: transaction.x_business,
+                correo: transaction.x_customer_email,
+                event:  transaction.x_id_invoice,
+                quantity: info.qtyReserv,
+                mount: transaction.x_amount,
+                status: transaction.x_response,
                 options: transaction.checkout
             })
             .then(function(result){
                 console.log(result);
             });
         }
-        
+        function updateQty(){
+          console.log(info);
+          $http.post('/updateQtyActivity',{
+              id: info._id,
+              qty: info.numAvailabe
+          }).then(function(response){
+              console.log(response);
+          })
+       }
     });
     
     cviaja.directive('dynamicElement', ['$compile', function ($compile) {

@@ -1,20 +1,22 @@
 <!-- Start Homepage -->
 <div class="container-fluid">
- <div class="row theHeader">
-  <div class="col-md-2 col-xs-4" style="padding-left: 35px">
-    <a href="/"><img style="width: 80px;height: 80px;margin-bottom: 25px;margin-left: 30px" src="../img/cviaja.png" alt=""></a>
+  <div class="row sticky theHeader" id="actividades" style="background-color: #64dd17; min-height: 60px">
+    <nav id="mainnav">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <a href="/" class="logo"><img src="./img/cviajaLt.png" style="margin-top: -12px;width: 60px;margin-left: 0px;" alt=""></a>
+          </div>
+          <div class="span8">
+            <ul id="fluid-nav" class="fluid-navigation visible-desktop">
+              <li class="current"><a href="#home">Inicio</a></li>
+              <li><a href="#portfolio">Actividades</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-  <div class="col-md-7 col-xs-2 " style="padding-left: 35px"></div>
-  <div class="col-md-4 col-xs-6 theMenu">
-  <ul class="nav nav-pills">
-   <!--<li role="presentation"><a style="color: #fff;" href="#">Suscríbete</a></li>-->
-   <!--<li class="option" role="presentation"><a>Checkout: <b>{{qtyCheckOut}}</b> <span class="glyphicon glyphicon-shopping-cart"></span></a> </li> -->
-
-   <li class="option" role="presentation"><a  href="#">Registrate</a></li>
-   <li class="option" role="presentation"><a href="#">Inicia sesión</a></li>
-  </ul>
-  </div>
- </div>
   <div id="theBody" class="row">
       <div ng-if="total == 0" id="emptyCart">
           <img src="../img/cartEmpty.png">
@@ -64,8 +66,8 @@
           </form>
       </div> -->
           <div id="btnEpayco">
-              <h3>Total: {{total | currency: $:0}} </h3>
-                    <script
+            <h3>Total: {{total | currency: $:0}} </h3>
+            <script
                     src="https://s3-us-west-2.amazonaws.com/epayco/v1.0/checkoutEpayco.js"
                     class="epayco-button"
                     data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png"
@@ -75,11 +77,11 @@
                     data-epayco-description="{{activity.description}}"
                     data-epayco-currency="cop"
                     data-epayco-country="co"
-                    data-epayco-test="true"
-                    data-epayco-response="http://localhost:5500/catalogo/#!/response"
+                    data-epayco-test="false"
+                    data-epayco-response="http://localhost:5500/#!/response"
                    >
-                </script>
-                </div> 
+            </script>
+          </div> 
           
       </div>
     </div>
