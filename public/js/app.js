@@ -202,6 +202,14 @@
             }
             return input;
         };
+        
+        $scope.openRnt =  function(img){
+            swal({
+                  title: 'Registro Nacional De Turismo',
+                  html: '<img src="'+img+'" style="width: 100%;height: 280px;">',
+                  showCancelButton: false
+                });
+        }
 
     }]);
 

@@ -269,3 +269,7 @@ hr {
 #btnEpayco{
     text-align: center;
 }
+
+.carousel-inner {
+    height: 250px !important;
+}
