@@ -26,7 +26,7 @@
         <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
         <p style="text-align:justify"><b>Qué harás: </b>{{activity.description}}</p>
         <p><b>Categoría: </b> {{activity.categories}}</p>
-        <p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>
+        <!--<p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>-->
         <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
         <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
       </div>
@@ -63,7 +63,7 @@
               <h3>{{opts.name}}</h3>
              <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
               <p id="qty$index"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</p>
-                <p><b>Precio: </b> COP {{opts.price | currency: $:0}}</p>
+                <p><b>Precio: </b> COP {{opts.price | currency: $:0}} c/u</p>
             </div>
               <div class="col-md-3 col-xs-12" style="padding-top: 35px">
                   <div class="form-group">
@@ -105,10 +105,11 @@
          <div class="col-md-6 col-xs-10">
             <h2>¿Cómo llegar?</h2>
             <hr class="mini" style="width: 130px"><br><br>
-             <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
             <div id="map" style="width: 100% !important;height: 350px !important;margin-bottom: 20px;"></div>
          </div>
-        <div class="col-md-4 col-xs-10" style="margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta"></div>
+        <div class="col-md-4 col-xs-10" style="margin-top: 80px; margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta">
+          <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
+        </div>
          <div class="col-md-1 col-xs-1"></div>
         <div class="col-md-1 col-xs-1"></div> 
     </div>

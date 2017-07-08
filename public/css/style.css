@@ -273,3 +273,10 @@ hr {
 .carousel-inner {
     height: 250px !important;
 }
+
+header .container {
+    width: 100%;
+    background: rgba(10, 10, 10, 0.28);
+    padding-left: 80px;
+    padding-right: 80px;
+}
