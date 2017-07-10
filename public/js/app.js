@@ -57,7 +57,7 @@
             localStorage.setItem("checkOut",null);
             var dateReserv = document.getElementById('sel1').value;
             var checkOption = $rootScope.activity.options[index];
-            $rootScope.activity.options[index].numAvailabe = checkOption.numAvailabe - $scope.vm.cupos[index];
+            //$rootScope.activity.options[index].numAvailabe = checkOption.numAvailabe - $scope.vm.cupos[index];
             var dataCheck = {
               name: checkOption.name,
               numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
