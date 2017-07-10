@@ -15,17 +15,11 @@ activities = new mongoose.Schema({
     image:                  { type: String  },
     carousel:               { type: Array, default: []},
     url:                    { type: String  },
-    options:                { type: Array, default: [
-                                {
-                                    name: {type: String, default: '' },
-                                    numAvailabe: {type: Number, default: 0},
-                                    price: {type: Number, default: 0},
-                                    description: {type: String, default: ''}
-                                }
-                            ]},
+    options:                { type: Array, default: []},
     rnt:                    { type: String, default: ""  }, //Registro nacional de turismo
     imgRnt:                 { type: String, default: ""},
-    msgConfirm:             { type: String, default: "Gracias por su compra" }
+    msgConfirm:             { type: String, default: "Gracias por su compra" },
+    order:                  { type: Number, default: 0}
 }); 
 
 

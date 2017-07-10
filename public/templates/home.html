@@ -50,7 +50,7 @@
 	<hr><br>
 
    </div>
-	<div ng-repeat="activity in activities" class="col-md-3 col-xs-12 animated bounceInLeft completeF" style="padding-bottom: 30px;">
+	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-xs-12 animated bounceInLeft completeF" style="padding-bottom: 30px;">
 	 <div class="thumbnail wrp" style="min-height: 360px;">
 		<img style="width: 300px;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
