@@ -46,6 +46,7 @@
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $rootScope.activity = result.data.activity[0];
+            console.log($rootScope.activity);
             $scope.cantidadReal = $rootScope.activity.availablePersons;
             $scope.reserv.mount = $rootScope.activity.mount;
             $scope.image = $rootScope.activity.image;
@@ -57,7 +58,7 @@
             localStorage.setItem("checkOut",null);
             var dateReserv = document.getElementById('sel1').value;
             var checkOption = $rootScope.activity.options[index];
-            $rootScope.activity.options[index].numAvailabe = checkOption.numAvailabe - $scope.vm.cupos[index];
+            //$rootScope.activity.options[index].numAvailabe = checkOption.numAvailabe - $scope.vm.cupos[index];
             var dataCheck = {
               name: checkOption.name,
               numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
@@ -152,6 +153,32 @@
                   html: '<img src="'+img+'" style="width: 100%;height: 280px;">',
                   showCancelButton: false
                 });
+        };
+        $scope.contact = {name: "", mail:"" };
+        $scope.suscribir =  function(){
+          if($scope.contact.name !== "" && $scope.contact.mail !== ""){
+            suscribe();
+          }else{
+            swal("error", "Debes ingresar tu nombre y correo", "error");
+          }
+        };
+
+        function suscribe(){
+          $http.post('/saveContact',{
+                nombre:          $scope.contact.name,
+                correo:          $scope.contact.mail,
+                opciones:        {event: activity},
+                suscribirseMail:   true,
+                susCribirsePagos:  false,
+            })
+            .then(function(result){
+              console.log(result);
+              if(result.status !== 200 ){
+                swal("error", "Ocurrio un error al guardar tu información intenta de nuevo o escribenos a devjs.info@gmail.com", "error");
+              }else{
+                swal("Bien", result.data.token, "success");
+              }
+            });
         }
 
     }]);

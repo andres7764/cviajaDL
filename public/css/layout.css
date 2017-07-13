@@ -1169,7 +1169,12 @@
 @media (max-width: 767px) {
 #slidecaption {
     font-size: 28px;
-    top: 35%;
+    top: 37%;
     padding: 0 2%;
 }
+
+header .container {
+	padding-left: 10px;
+}
+
 }
