@@ -185,7 +185,7 @@
 
   cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
         
-        $scope.activities = {};
+        $scope.activities = [];
         
         $scope.irA = function(id){
             $location.url('/catalogo/'+id);

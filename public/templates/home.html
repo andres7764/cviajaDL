@@ -48,12 +48,10 @@
    <div style="padding-left: 15px">
 	<div class="title">Estas son algunas de las actividades que puedes realizar.</div>
 	<hr><br>
-
    </div>
 
 	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-xs-12 animated bounceInLeft completeF" style="padding-bottom: 30px;">
-	 <div class="thumbnail wrp" style="min-height: 360px;">
-
+	 <div class="thumbnail wrp" style="min-height: 360px;cursor:pointer" ng-click="irA(activity._id)">
 		<img style="width: 300px;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
         <h3 class="title">{{activity.name}}</h3>
@@ -64,28 +62,26 @@
      </div>
 	</div>
   </div>
-  <section id="team">
-	<div class="container">
-		<div class="row">
-			<div class="span12">
-				<hr>					
-				<div class="row">
-					<div class="col-md-4 col-md-12 profile">
-						<center><h2 class="odometer" id="nearActivities"></h2>+
+  <section id="team" style="margin-left: 20px">
+	<div class="row">
+		  <div class="col-md-12 col-xs-12">
+			<hr>
+			<div class="row">
+					<div class="col-md-4 col-xs-12 profile">
+						<center><h2 class="odometer" id="nearActivities">30+</h2>
 						<p>Actividades cargadas cerca de Bogotá</p></center> 
 					</div>
-					<div class="col-md-4 col-md-12 profile">
-						<center><h2 class="odometer" id="reserv"></h2>+
+					<div class="col-md-4 col-xs-12 profile">
+						<center><h2 class="odometer" id="reserv">200+</h2>
 						<p>Reservas realizadas con exito</p></center>
 					</div>
-					<div class="col-md-4 col-md-12 profile">
-						<center><h2 class="odometer" id="activeUsers"></h2>+
+					<div class="col-md-4 col-xs-12 profile">
+						<center><h2 class="odometer" id="activeUsers">450+</h2>
 						<p>Usuarios activos en la aplicación</p></center>
 					</div>												
 				</div>
 			</div>
 		</div>
-	</div>
    </section>
    <br>
   <div class="row">	

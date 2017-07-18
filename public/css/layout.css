@@ -209,7 +209,7 @@
 		text-align: center;
 		color: #fff;
 		background: #333 url(../img/header.jpg) no-repeat top center fixed;
-		background-size: 100%;
+		background-size: cover;
 	}
 	
 	header .pattern {

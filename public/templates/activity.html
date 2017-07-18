@@ -24,13 +24,13 @@
         <hr class="mini" style="width: 130px"><br>
         <p><b>Ubicación:</b> {{activity.location.name}}</p>
         <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
-        <p style="text-align:justify"><b>Qué harás: </b>{{activity.description}}</p>
+        <p style="text-align:justify"><b>Que harás: </b>{{activity.description}}</p>
         <p><b>Categoría: </b> {{activity.categories}}</p>
         <!--<p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>-->
         <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
         <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
       </div>
-      <div class="col-md-4 col-xs-10" style="padding-top: 90px">
+      <div class="col-md-4 col-xs-10" style="padding-top: 70px;margin-left: 30px;">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -66,45 +66,38 @@
   </div>
     <div class="row">
       <div class="col-md-1 col-xs-1"></div>
-      <div class="col-md-10 col-xs-10">
-          <h2>Planes</h2>
-        <hr class="mini" style="width: 130px"><br>
+       <div class="col-md-6 col-xs-10" style="margin-top: -35px">
+          <h3>Planes</h3>
+          <hr class="mini" style="width: 120px"><br>
           <div ng-if="activity.options.length > 0" ng-repeat="opts in activity.options track by $index" class="row">
-            <div class="col-md-7 col-xs-12">
-              <h3>{{opts.name}}</h3>
-             <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
-              <p id="qty$index"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</p>
-                <p><b>Precio: </b> COP {{opts.price | currency: $:0}} c/u</p>
-            </div>
-              <div class="col-md-3 col-xs-12" style="padding-top: 35px">
-                  <div class="form-group">
+           <h4>{{opts.name}} </h4><h6 id="qty$index" style="color: #9e9e9e"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</h6>
+            <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
+              <div class="row">    
+                  <div class="form-group col-md-4">
                       <label for="sel1">Selecciona el día:</label>
                       <select class="form-control" id="sel1">
-                        <option>8 de Julio 2017</option>
-                        <option>9 de Julio 2017</option>
-                        <option>17 de Julio 2017</option>
-                        <option>18 de Julio 2017</option>
+                        <option>20 de Julio 2017</option>
+                        <option>21 de Julio 2017</option>
                         <option>22 de Julio 2017</option>
                         <option>23 de Julio 2017</option>
                         <option>29 de Julio 2017</option>
                         <option>30 de Julio 2017</option>
                       </select>
-                      <label for="sel1">Cupos:</label>
-                      <select class="form-control" ng-change="checkCupo($index)" ng-model="vm.cupos[$index]" id="sel1">
+                    </div>
+                  <div class="col-md-2">
+                    <label for="sel1">Cupos:</label>
+                    <select class="form-control" ng-change="checkCupo($index)" ng-model="vm.cupos[$index]" id="sel1" style="width: 60px">
                         <option ng-repeat="n in range(1,opts.numAvailabe)">{{n}}</option>
                       </select>
-                    </div>              
+                  </div>
+                  <div class="col-md-3" style="padding-top: 20px;text-align: right;color: #64dd17">
+                    <h4><b>{{vm.price[$index] | currency: $:0}}</b></h4>
+                  </div>
+                  <div class="col-md-3">
+                    <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important; margin-top: 20px">Comprar</button>
+                  </div> 
               </div>
-              <div class="col-md-2 col-xs-12" style="padding-top: 9%">
-                <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important;min-width: 230px;">Comprar {{vm.price[$index] | currency: $:0}}</button>
-              </div>
-             <!--<div class="col-md-3 col-xs-12" style="padding-top: 35px">
-              <div class="input-group">
-              <label>Cantidad:</label>
-                <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2,$index)"></span>
-                <span id="selected{{$index}}" class="input-group-addon" aria-label="cantidad de reservas">0</span>
-                <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1,$index)"></span>
-             </div>-->
+              <hr style="width: 100%;border: 0;border-bottom: 1px solid #e2e2db;margin: 10px 0;"><br>
             </div>
             <div ng-if="activity.options.length == 0"  class="row">
               <div class="col-md-7 col-xs-12">
@@ -118,55 +111,31 @@
                     <input type="email" class="form-control" ng-model="contact.mail" placeholder="p.e juanito@correo.com"/><br>
                   </div>
                 </div>
-                <div class="col-md-2 col-xs-12" style="padding-top: 6%">
-                  <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;"> Enviar </button>
+                <div class="col-md-2 col-xs-12">
+                  <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;padding-top: 30px"> Enviar </button>
               </div>
             </div>
           </div>
+           <div class="col-md-4 col-xs-10" style="margin:30px">
+            <h3>¿Cómo llegar?</h3>
+            <hr class="mini" style="width: 220px"><br><br>
+            <div id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
+           </div>
           </div>
         <div class="col-md-2 col-xs-1">
         </div>
       </div>
-    <div class="row">
+    <!--<div class="row">
         <div class="col-md-1 col-xs-1"></div> 
-         <div class="col-md-6 col-xs-10">
-            <h2>¿Cómo llegar?</h2>
-            <hr class="mini" style="width: 130px"><br><br>
-            <div id="map" style="width: 100% !important;height: 350px !important;margin-bottom: 20px;"></div>
+         <div class="col-md-6 col-xs-10">      
          </div>
         <div class="col-md-4 col-xs-10" style="margin-top: 80px; margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta">
           <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
         </div>
          <div class="col-md-1 col-xs-1"></div>
         <div class="col-md-1 col-xs-1"></div> 
-    </div>
-    <!--<div class="row">
-        <div class="col-md-1 col-xs-1"></div> 
-         <div class="col-md-10 col-xs-10">
-            <h2>Pagar</h2>
-            <hr class="mini" style="width: 130px"><br>
-            <form action="">
-              <label>Su nombre</label>
-              <input type="text" class="form-control" ng-model="reserv.name" placeholder=""/><br>
-              <label>Correo</label>
-              <input type="email" class="form-control" ng-model="reserv.mail" placeholder="p.e juanito@correo.com"/><br>
-         <div class="input-group">
-          <span class="input-group-addon" id="basic-addon3">Actividad seleccionada/</span>
-          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-         </div><br>
-             <div class="input-group">
-              <label>Cupos a reservar:</label>
-                <span class="input-group-addon glyphicon glyphicon-minus" ng-click="more(2)"></span>
-                <span class="input-group-addon" aria-label="cantidad de reservas">{{reserv.qty}}</span>
-                <span class="input-group-addon glyphicon glyphicon-plus" ng-click="more(1)"></span>
-             </div><br>
-            <p><b>Total: </b> ${{reserv.mount}}</p>
-          <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>
-            </form>
-         </div>
-        <div class="col-md-1 col-xs-1"></div> 
     </div>-->
-         <br><br>
+         <br>
   <div class="row">
    <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
   </div>
