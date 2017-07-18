@@ -3,23 +3,23 @@
     cviaja.config(function($routeProvider) {
       $routeProvider.
         when('/', {
-          templateUrl: '../templates/home.html',
+          templateUrl: 'templates/home.html',
           controller: 'activitiesCtrl'
         })
         .when('/catalogo/', {
-          templateUrl: '../templates/catalog.html',
+          templateUrl: 'templates/catalog.html',
           controller: 'activitiesCtrl'
         })
         .when('/catalogo/:activity', {
-          templateUrl: '../templates/activity.html',
+          templateUrl: 'templates/activity.html',
           controller: 'activityCtrl'
         })
         .when('/checkout', {
-          templateUrl: '../templates/checkout.html',
+          templateUrl: 'templates/checkout.html',
           controller: 'checkoutCtrl'
         })
         .when('/response', {
-          templateUrl: '../templates/response.html',
+          templateUrl: 'templates/response.html',
           controller: 'responseCtrl'
         })
         
@@ -46,7 +46,6 @@
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $rootScope.activity = result.data.activity[0];
-            console.log($rootScope.activity);
             $scope.cantidadReal = $rootScope.activity.availablePersons;
             $scope.reserv.mount = $rootScope.activity.mount;
             $scope.image = $rootScope.activity.image;

@@ -100,19 +100,15 @@
               <hr style="width: 100%;border: 0;border-bottom: 1px solid #e2e2db;margin: 10px 0;"><br>
             </div>
             <div ng-if="activity.options.length == 0"  class="row">
-              <div class="col-md-7 col-xs-12">
-               <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados dejanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
-              </div>
-               <div class="col-md-3 col-xs-12">
-                  <div class="form-group">
+              <div class="col-md-12 col-xs-12">
+               <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados déjanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
+                <div class="form-group">
                   <label>Su nombre</label>
                     <input type="text" class="form-control" ng-model="contact.name" placeholder=""/><br>
                     <label>Correo</label>
                     <input type="email" class="form-control" ng-model="contact.mail" placeholder="p.e juanito@correo.com"/><br>
                   </div>
-                </div>
-                <div class="col-md-2 col-xs-12">
-                  <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;padding-top: 30px"> Enviar </button>
+                <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;"> Enviar </button>
               </div>
             </div>
           </div>
