@@ -16,6 +16,7 @@ height: 180px;
 position: absolute;
 left:50%; top:50%;
 background: url(../img/Blocks.gif) no-repeat center 0;
+background-size: 40px;
 margin:-50px 0 0 -50px;
 }
 
