@@ -185,10 +185,18 @@
   cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
         
         $scope.activities = [];
+        $scope.contactUs = function() {
+          swal({
+            title: "<h3>Contactanos!</h3>",
+            //text: "Escribenos a: <br><span>WhatsApp<span> +057 3016227485 ",
+            imageUrl: "../img/contacto.jpg"
+          });
+        }
         
         $scope.irA = function(id){
             $location.url('/catalogo/'+id);
         }
+
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivities').then(function(result){
             $scope.activities = result.data.activities; 
