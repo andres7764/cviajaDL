@@ -76,12 +76,7 @@
                   <div class="form-group col-md-4">
                       <label for="sel1">Selecciona el día:</label>
                       <select class="form-control" id="sel1">
-                        <option>20 de Julio 2017</option>
-                        <option>21 de Julio 2017</option>
-                        <option>22 de Julio 2017</option>
-                        <option>23 de Julio 2017</option>
-                        <option>29 de Julio 2017</option>
-                        <option>30 de Julio 2017</option>
+                        <option ng-repeat="weekend in weekends">{{weekend}}</option>
                       </select>
                     </div>
                   <div class="col-md-2">

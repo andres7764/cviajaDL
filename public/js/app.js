@@ -36,8 +36,8 @@
         $rootScope.qtyCheckOut = 0;
         $scope.vm ={}; 
         $scope.vm.cupos = [0,0,0];
-        $scope.vm.price = [0,0,0]
-        
+        $scope.vm.price = [0,0,0];
+        $scope.weekends = getWeekends();
         
         if(JSON.parse(localStorage.getItem("checkOut")) !== null)
           $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
@@ -179,11 +179,44 @@
               }
             });
         }
+        
+        function daysInMonth(month,year) {
+            return new Date(year, month, 0).getDate();
+        };
 
+        function getWeekends()
+        {
+            var date = new Date();
+            var weekends=[],
+                weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                month=date.getMonth()+1,
+                year=date.getFullYear();
+            for(var i=date.getDate(),l=daysInMonth(month,year);i<l;i++){
+                var d = new Date(year,month-1,i);
+                if((weekday[d.getDay()] === 'Saturday' || weekday[d.getDay()] === 'Sunday')){
+                    weekends.push(i+' de '+getMonth(month)+' '+year);
+                }    
+            }
+            return weekends;
+        };
+        
+       function getMonth(month){
+           var months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+           return months[month-1];
+       }
+        
     }]);
 
   cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
         
+        $scope.views = 450;
+        
+        (function(){
+            $http.get('/updateCount').then(function(result){
+                $scope.views = result.data.count;
+            });
+        })();
+      
         $scope.activities = [];
         $scope.contactUs = function() {
           swal({
