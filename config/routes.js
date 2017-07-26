@@ -15,6 +15,7 @@ var controllerReservas = require('../controllers/controllerReservas');
 var controllerActivities = require('../controllers/controllerActivities');
 var controllerUsers = require('../controllers/controllerUsers');
 var controllerAdmin = require('../controllers/controllerAdmin');
+var controllerUtils = require('../controllers/controllerUtils')
 
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -64,6 +65,9 @@ module.exports = function(app) {
     app.post('/updateReserva',controllerReservas.updateReserva);
     app.get('/getReservas',controllerReservas.getReservas);
     app.get('/getReserva',controllerReservas.getReserva);
+    
+    // Utils
+    app.get('/updateCount',controllerUtils.updateCount);
     
     // Admin
     app.post('/LoginAdmin',controllerAdmin.LoginAdmin);
