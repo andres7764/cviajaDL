@@ -42,11 +42,15 @@
         if(JSON.parse(localStorage.getItem("checkOut")) !== null)
           $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
         var directionsService,directionsDisplay;
-       // var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
         var activity = $rootScope.idSearch;
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $rootScope.activity = result.data.activity[0];
+            document.title = $rootScope.activity.name;
+//            console.log(document.getElementById("ttleMeta"));
+            $('meta[id=ttleMeta]').attr('content', 'new Meta Description here');
+  
+
             $scope.cantidadReal = $rootScope.activity.availablePersons;
             $scope.reserv.mount = $rootScope.activity.mount;
             $scope.image = $rootScope.activity.image;
