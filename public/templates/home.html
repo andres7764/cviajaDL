@@ -53,14 +53,14 @@
    </div>
 
 	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-xs-12 animated bounceInLeft completeF" style="padding-bottom: 30px;">
-	 <div class="thumbnail wrp" style="min-height: 360px;cursor:pointer" ng-click="irA(activity._id)">
+	 <div class="thumbnail wrp" style="min-height: 360px;cursor:pointer" ng-click="irA(activity._id,activity.name)">
 		<img style="width: 300px;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
         <h3 class="title">{{activity.name}}</h3>
 		<hr class="mini">
         <span class="completeF ptop glyphicon" style="color:#aaa;font-size: 11px!important; height: 60px;overflow: hidden;"> {{activity.description}}</span>
 		<h5 style="position: absolute;left: 10px; bottom: 12px;color: #64dd17;"><b>Desde ${{activity.mount}}</b></h5>
-		<button ng-click="irA(activity._id)" type="button" class="btn" style="position: absolute;right: 10px; bottom: 12px">Ver más</button>
+		<button ng-click="irA(activity._id,activity.name)" type="button" class="btn" style="position: absolute;right: 10px; bottom: 12px">Ver más</button>
       </div>
      </div>
 	</div>

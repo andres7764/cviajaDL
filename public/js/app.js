@@ -42,7 +42,8 @@
         if(JSON.parse(localStorage.getItem("checkOut")) !== null)
           $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
         var directionsService,directionsDisplay;
-        var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
+       // var activity = $routeParams.activity ? $routeParams.activity : "59431cf6a2bf7c1f18aeee39";
+        var activity = $rootScope.idSearch;
         $http.defaults.headers.post["Content-Type"] = "application/json";
         $http.get('/getActivity?id='+activity).then(function(result){
             $rootScope.activity = result.data.activity[0];
@@ -207,7 +208,7 @@
         
     }]);
 
-  cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location){
+  cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location,$rootScope){
         
         $scope.views = 450;
         
@@ -226,8 +227,11 @@
           });
         }
         
-        $scope.irA = function(id){
-            $location.url('/catalogo/'+id);
+        $scope.irA = function(id,title){
+          $rootScope.idSearch = id;
+          var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
+              letra = letra.replace(/ /g,'-');
+          $location.url('/catalogo/'+letra);
         }
 
         $http.defaults.headers.post["Content-Type"] = "application/json";
