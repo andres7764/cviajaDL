@@ -42,15 +42,13 @@
         if(JSON.parse(localStorage.getItem("checkOut")) !== null)
           $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
         var directionsService,directionsDisplay;
-        var activity = $rootScope.idSearch;
+        var activity = ($routeParams.activity.split("_").length === 2 )? $routeParams.activity.split("_") : window.location = "/";
+        var idS = (activity[1].length === 24)?activity[1]:window.location = "/";
         $http.defaults.headers.post["Content-Type"] = "application/json";
-        $http.get('/getActivity?id='+activity).then(function(result){
+        $http.get('/getActivity?id='+idS).then(function(result){
+            
             $rootScope.activity = result.data.activity[0];
             document.title = $rootScope.activity.name;
-//            console.log(document.getElementById("ttleMeta"));
-            $('meta[id=ttleMeta]').attr('content', 'new Meta Description here');
-  
-
             $scope.cantidadReal = $rootScope.activity.availablePersons;
             $scope.reserv.mount = $rootScope.activity.mount;
             $scope.image = $rootScope.activity.image;
@@ -226,7 +224,6 @@
         $scope.contactUs = function() {
           swal({
             title: "<h3>Contactanos!</h3>",
-            //text: "Escribenos a: <br><span>WhatsApp<span> +057 3016227485 ",
             imageUrl: "../img/contacto.jpg"
           });
         }
@@ -235,7 +232,7 @@
           $rootScope.idSearch = id;
           var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
               letra = letra.replace(/ /g,'-');
-          $location.url('/catalogo/'+letra);
+          $location.url('/catalogo/'+letra+"_"+id);
         }
 
         $http.defaults.headers.post["Content-Type"] = "application/json";
