@@ -2,12 +2,8 @@
  <div class="top-bar" style="margin-top: 80px;">
 	<div class="container">
 		<ul class="top-contacts">
-			<li class="top-unhover"><p><span class="fa fa-phone-square" aria-hidden="true"></span> +057 301 6227485</p>
-			<li class="top-hover"><p><span class="fa fa-envelope" aria-hidden="true"></span> <a href="mailto:contacto@dplan.co">contacto@dplan.co</a></p>
-		</ul>
-		<ul class="top-links">
-			<li><a target="_blank" href="https://www.facebook.com/DPl4n/"><i class="fa fa-facebook"></i></a></li>
-			<li><a target="_blank" href="https://twitter.com/dplan_"><i class="fa fa-twitter"></i></a></li>
+			<li class="top-unhover"><p class="res"><span class="fa fa-phone-square" aria-hidden="true"></span> +057 301 6227485</p>
+			<li class="top-hover"><p class="res"><span class="fa fa-envelope" aria-hidden="true"></span> <a href="mailto:contacto@dplan.co">contacto@dplan.co</a></p>
 		</ul>
 		<div class="clearfix"></div>
 	</div>
@@ -80,9 +76,9 @@
 	 </div>
 	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-sm-6 col-xs-12 animated rollIn completeF" style="padding-bottom: 30px;">
 	 <div class="thumbnail wrp" style="min-height: 360px;cursor:pointer" ng-click="irA(activity._id,activity.name)">
-		<img style="width: 300px;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
+		<img style="width: 100%;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
-        <h3 class="title">{{activity.name}}</h3>
+        <h3 class="title"><b>{{activity.name}}</b></h3>
 		<hr class="mini">
         <span class="completeF ptop glyphicon" style="color:#aaa;font-size: 11px!important; height: 60px;overflow: hidden;"> {{activity.description}}</span>
 		<h5 style="position: absolute;left: 10px; bottom: 12px;color: #64dd17;"><b>Desde ${{activity.mount}}</b></h5>
@@ -149,5 +145,5 @@
 			</div>
 		</div>
    </section>
-   <br>
+   <br><br><br><br>
 </div>

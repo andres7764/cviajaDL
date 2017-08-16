@@ -4338,9 +4338,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     width: 100%;
     text-align: center;
 }
+.res {
+  font-size: 12px !important;
+}
 ul.top-contacts {
     float: left;
-    width: 200px;
+    width: 100%;
 }
 ul.top-links {
     float: right;

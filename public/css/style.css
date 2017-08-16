@@ -735,3 +735,38 @@ section.stats p.text-center {
     font-weight:normal;
 }
 /*-- /statistics section --*/
+/*-- footer section --*/
+.footer {
+    padding:10px 0;
+    background-color:#000;
+}
+.footer p {
+    color:#fff;
+    font-size:15px;
+    font-weight:300;
+}
+.footer p a {
+    color:#43a047;
+}
+.footer p a:hover {
+    color:red;
+}
+.col-lg-6.footer-w3ls2 {
+    text-align: right;
+}
+ul.bottom-links {
+    list-style:none;
+    display:-webkit-inline-box;
+}
+ul.bottom-links li {
+    margin-left:20px;
+    display: inline-block;
+}
+ul.bottom-links li a i.fa {
+    color:#fff;
+    font-size:17px;
+} 
+ul.bottom-links li a i.fa:hover {
+    color:#43a047;
+}
+/*-- /footer section --*/
