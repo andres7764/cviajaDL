@@ -225,7 +225,7 @@ var cviaja = angular.module('cviaja',["ngRoute","routes"]);
         $scope.total = 0;
         $rootScope.transaction = {};
         $scope.showBtnPay = false;
-        $scope.key = "154facda17519d661d60dc5384a5681d";
+        $scope.key = "";
         (function(){
             getCheckOut();
         })();
