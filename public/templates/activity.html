@@ -1,44 +1,13 @@
-<!-- Start Homepage -->
-<div class="container-fluid">
- <div class="row sticky theHeader" id="actividades" style="background-color: #64dd17; min-height: 60px">
-    <nav id="mainnav">
-      <div class="container">
-        <div class="row">
-          <div class="span4">
-            <a href="/" class="logo"><img src="./img/cviajaLt.png" style="margin-top: -12px;width: 60px;margin-left: 0px;" alt=""></a>
-          </div>
-          <div class="span8">
-            <ul id="fluid-nav" class="fluid-navigation visible-desktop">
-              <li class="current"><a href="#home">Inicio</a></li>
-              <li><a href="#portfolio">Actividades</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-   </div>
-  <div class="row" style="padding-top:160px">
-     <div class="col-md-1 col-xs-1"></div>
-     <div class="col-md-6 col-xs-11 completeF" style="margin-top: -25px;">
-        <h1>{{activity.name}}</h1>
-        <hr class="mini" style="width: 130px"><br>
-        <p><b>Ubicación:</b> {{activity.location.name}}</p>
-        <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
-        <p style="text-align:justify"><b>Que harás: </b>{{activity.description}}</p>
-        <p><b>Categoría: </b> {{activity.categories}}</p>
-        <!--<p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>-->
-        <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
-        <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
-      </div>
-      <div class="col-md-4 col-xs-10" style="padding-top: 70px;margin-left: 30px;">
+<div class="container-fluid"> 
+  <div class="row" style="padding-top:110px">
+    <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 20px 40px 0px 40px">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-
-        <div ng-if="activity.carousel.length > 0" class="carousel-inner">
+        <div ng-if="activity.carousel.length > 0" class="carousel-inner" style="min-height: 0px">
           <div class="item active">
             <img ng-src="{{activity.carousel[0]}}" alt="descripcion">
           </div>
@@ -61,13 +30,22 @@
           </div>
         </div>
        </div>
-      </div>
-     <div class="col-md-1 col-xs-2"></div>
+    </div>
+     <div class="col-md-6 col-sm-6 col-xs-12 completeF" style="padding: 0px 40px 0px 40px">
+        <h1>{{activity.name}}</h1>
+        <hr class="mini" style="width: 130px"><br>
+        <p><b>Ubicación:</b> {{activity.location.name}}</p>
+        <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
+        <p style="text-align:justify"><b>Que harás: </b>{{activity.description}}</p>
+        <p><b>Categoría: </b> {{activity.categories}}</p>
+        <!--<p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>-->
+        <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
+        <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
+     </div>
   </div>
     <div class="row">
-      <div class="col-md-1 col-xs-1"></div>
-       <div class="col-md-6 col-xs-10" style="margin-top: -35px">
-          <h3>Planes</h3>
+      <div class="col-md-6 col-xs-12" style="margin-top: -15px; padding: 0px 40px 0px 40px">
+        <h3>Planes</h3>
           <hr class="mini" style="width: 120px"><br>
           <div ng-if="activity.options.length > 0" ng-repeat="opts in activity.options track by $index" class="row">
            <h4>{{opts.name}} </h4><h6 id="qty$index" style="color: #9e9e9e"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</h6>
@@ -106,28 +84,15 @@
                 <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;"> Enviar </button>
               </div>
             </div>
-          </div>
-           <div class="col-md-4 col-xs-10" style="margin:30px">
-            <h3>¿Cómo llegar?</h3>
-            <hr class="mini" style="width: 220px"><br><br>
-            <div id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
-           </div>
-          </div>
-        <div class="col-md-2 col-xs-1">
-        </div>
       </div>
-    <!--<div class="row">
-        <div class="col-md-1 col-xs-1"></div> 
-         <div class="col-md-6 col-xs-10">      
-         </div>
-        <div class="col-md-4 col-xs-10" style="margin-top: 80px; margin-left:60px;overflow: scroll;height: 420px;overflow-x: hidden;" id="panel_ruta">
-          <input id="pac-input" class="controls" type="text" placeholder="Digita tu dirección">
-        </div>
-         <div class="col-md-1 col-xs-1"></div>
-        <div class="col-md-1 col-xs-1"></div> 
-    </div>-->
-         <br>
-  <div class="row">
-   <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
-  </div>
+      <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
+        <h3>Información</h3>
+        <hr class="mini" style="width: 220px"><br><br>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">Ten en cuenta</a></li>
+          <li><a href="#">¿Cómo llegar?</a></li>
+        </ul><br>
+        <div id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
+      </div>
+    </div>
 </div>

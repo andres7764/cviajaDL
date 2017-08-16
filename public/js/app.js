@@ -1,31 +1,5 @@
-    var cviaja = angular.module('cviaja',["ngRoute"]);
-
-    cviaja.config(function($routeProvider) {
-      $routeProvider.
-        when('/', {
-          templateUrl: 'templates/home.html',
-          controller: 'activitiesCtrl'
-        })
-        .when('/catalogo/', {
-          templateUrl: 'templates/catalog.html',
-          controller: 'activitiesCtrl'
-        })
-        .when('/catalogo/:activity', {
-          templateUrl: 'templates/activity.html',
-          controller: 'activityCtrl'
-        })
-        .when('/checkout', {
-          templateUrl: 'templates/checkout.html',
-          controller: 'checkoutCtrl'
-        })
-        .when('/response', {
-          templateUrl: 'templates/response.html',
-          controller: 'responseCtrl'
-        })
-        
-        .otherwise({ redirectTo : "/catalogo" });
-    }); 
-    
+var cviaja = angular.module('cviaja',["ngRoute","routes"]);
+   
     cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location','$window',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location,$window) {
         $window.scrollTo(0, 0);
         $rootScope.checkOut = [];
@@ -251,7 +225,7 @@
         $scope.total = 0;
         $rootScope.transaction = {};
         $scope.showBtnPay = false;
-        $scope.key = "54a93a6995c167b0a1bbc32cb5ada5b1";
+        $scope.key = "154facda17519d661d60dc5384a5681d";
         (function(){
             getCheckOut();
         })();

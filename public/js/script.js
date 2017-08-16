@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+document.addEventListener("touchstart", function(){},  {passive: true});
+
+
 	var modalReserve = $("#modalReserve");
 	var campos = ["nombre", "correo"];
 	var camposReserva = ["nombreReserve","correoReserve","activity"];

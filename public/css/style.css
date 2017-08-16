@@ -288,13 +288,450 @@ hr {
     text-align: center;
 }
 
-.carousel-inner {
-    height: 260px !important;
-}
-
 header .container {
     width: 100%;
     background: rgba(10, 10, 10, 0.28);
     padding-left: 40px;
     padding-right: 50px;
 }
+/*-- /top-bar --*/
+/*-- navbar --*/
+.nav-links .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 0;
+}
+.nav-links .navbar {
+    margin-bottom:0px;
+}
+.nav-links .navbar-inverse {
+    background-color:#fff;
+    border:none;
+}
+.nav-links .navbar-inverse .navbar-brand h1 {
+    color: #0A0A0A;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+.nav-links .navbar-brand {
+    height:inherit;
+    padding:24px 0 0;
+}
+.nav-links .navbar-nav>li>a {
+    padding: 30px 25px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 600;
+}
+.nav-links .navbar-inverse .navbar-nav>li>a:focus,.nav-links  .navbar-inverse .navbar-nav>li>a:hover {
+    background-color:#fff;
+    color:#df4914;
+}
+.nav-links .navbar-inverse .navbar-nav>.active>a,.nav-links  .navbar-inverse .navbar-nav>.active>a:focus,.nav-links  .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #df4914;
+    background-color: #FFFFFF;
+}
+ul.nav.navbar-nav.link-effect {
+    margin: 0 0 0 170px !important;
+}
+/*-- Link Effect: bottom border enlarge --*/
+.link-effect a {
+    padding: 0 0 10px;
+}
+.link-effect a::after {
+    position: absolute;
+    top: 94%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background:#df4914;
+    content: '';
+    opacity: 0;
+    -webkit-transition: height 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+    -moz-transition: height 0.3s, opacity 0.3s, -moz-transform 0.3s;
+    transition: height 0.3s, opacity 0.3s, transform 0.3s;
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+.link-effect li.active a::after,
+.link-effect a:hover::after,
+.link-effect a:focus::after {
+    height: 5px;
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px);
+}
+/*-- /Link Effect: bottom border enlarge --*/
+/*-- search button --*/
+form.search-container {
+    position: absolute;
+    right: 150px;
+    top: 20px;
+}
+.search-box {
+  -webkit-transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
+  transition: width 0.6s, border-radius 0.6s, background 0.6s, box-shadow 0.6s;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background: #64dd17;
+}
+.search-box + label .search-icon {
+  color:#fff;
+}
+.search-box:hover {
+  color: white;
+  background: #c8c8c8;
+  box-shadow: 0 0 0 5px #3d4752;
+}
+.search-box:hover + label .search-icon {
+  color: white;
+}
+.search-box:focus {
+    -webkit-transition: width 0.6s cubic-bezier(0, 1.30, 0.66, 1.22), border-radius 0.6s, background 0.6s;
+    transition: width 0.6s cubic-bezier(0, 1.39, 0.66, 1.22), border-radius 0.6s, background 0.6s;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding-left: 15px;
+    padding-right: 40px;
+    cursor: text;
+    font-weight: 500;
+    width: 300px;
+    border-radius: auto;
+    background: #64dd17;
+    color: white;
+}
+.search-box:focus + label .search-icon {
+  color: black;
+}
+.search-box:not(:focus) {
+  text-indent: -5000px;
+}
+#search-submit {
+  position: relative;
+  left: -5000px;
+}
+.search-icon {
+  position: relative;
+  left: -30px;
+  color: white;
+  cursor: pointer;
+}
+button.close {
+    font-size: 55px;
+}   
+h4#myModalLabel {
+    font-size: 30px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    text-transform: uppercase;
+    padding-top:10px;
+}
+p.banner-p1 {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 30px;
+    margin: 1.5em 25px 0px;
+}
+/*-- /search button --*/
+/*-- /navbar --*/
+/*-- banner section --*/
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+a { 
+    text-decoration: none!important; 
+}
+ul { 
+    list-style: outside none none; 
+} 
+.slider-panel img { 
+    width:100%;
+    height:auto;
+}
+.slider-extra {
+    width:100%;
+    height:100%;
+}
+.slider {
+    text-align: center;
+    margin:0px auto;
+    position: relative;
+    width:100%;
+    height:793px;
+}
+.slider-panel, .slider-nav, .slider-pre, .slider-next {
+    position: absolute;
+    z-index: 8;
+}
+.slider-panel { 
+    position: absolute; 
+}
+.slider-panel img { 
+    border: none; 
+}
+.slider-extra { 
+    position: relative; 
+}
+.slider-nav {
+    margin-left: -51px;
+    position: absolute;
+    left: 50%;
+    bottom:10px;
+}
+.slider-nav li {
+    background: #3e3e3e;
+    border-radius: 50%;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 2px;
+    overflow: hidden;
+    text-align: center;
+    display: inline-block;
+    height: 18px;
+    line-height: 18px;
+    width: 18px;
+}
+.slider-nav li p.sl {
+    color:#fff;
+    font-weight:bold;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+.slider-nav .slider-item-selected { 
+    background:#64dd17;
+}
+.slider-nav .slider-item-selected p.sl{ 
+    color:#000; 
+}
+.slider-page a {
+  background: rgba(0, 0, 0, 0.2);
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000, endColorstr=#33000000);
+  color: #fff;
+  text-align: center;
+  display: block;
+  font-family: "simsun";
+  font-size: 22px;
+  width: 28px;
+  height: 62px;
+  line-height: 62px;
+  margin-top: -31px;
+  position: absolute;
+  top: 50%;
+}
+.slider-page a:HOVER { 
+    background: rgba(0, 0, 0, 0.4);  
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
+}
+.slider-next {
+  left: 100%;
+  margin-left: -28px;
+}
+.banner-info {
+    position: absolute;
+    z-index: 9999;
+    text-align: center;
+    top:38%;
+    width: 100%;
+}
+.banner-info h3 {
+    font-size:40px;
+    font-weight:normal;
+    color:#fff;
+    text-align: center;
+    padding-bottom: 75px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+ .banner-info a {
+    color: #fff;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 10px 25px;
+    background-color: #64dd17;
+    border: 1px solid #fff;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+}
+.banner-info a:hover {
+    background-color:#fff;
+    color:red;
+}
+/*-- /banner section --*/
+/*-- services section --*/
+section.service {
+    padding:100px 0;
+}
+section.service h2.text-center {
+    font-size:40px;
+    font-weight:normal;
+    padding-bottom:40px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color:#64dd17;
+}
+section.service p.text-center {
+    font-size: 16px;
+    font-weight: normal;
+    padding-bottom: 75px;
+    line-height: 35px;
+    color: #999;
+}
+.col-lg-4.col-md-4.serv-w3ls {
+    text-align: center;
+    position: relative;
+    padding-right: 5em;
+}
+ span.line1 {
+    position: absolute;
+    background: #646e77;
+    top: 13%;
+    right: -5%;
+    width: 100px;
+    height: 3px;
+}   
+section.service i.fa {
+    color:#64dd17;
+    font-size:60px;
+    margin-bottom:30px;
+}
+section.service .col-lg-4.col-md-4.serv-w3ls:hover i.fa {
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+section.service h4 {
+    font-size: 25px;
+    color: #000;
+    font-weight: normal;
+    padding-bottom: 20px;
+    text-align:justify;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+section.service p.serv-p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 30px;
+    text-align:justify;
+}
+/*-- /services section --*/
+/*-- top bar --*/
+.top-bar {
+    margin:0 auto;
+    padding: 15px 5px 0px 0px;
+    background-color:#64dd17;
+}
+ul.top-contacts , ul.top-links {
+    list-style:none;
+    display:-webkit-inline-box;
+}
+ul.top-contacts {
+    float:left;
+}
+ul.top-links {
+    float:right;
+}
+ul.top-contacts li {
+    margin-right:25px;
+    display:inline-block;
+}
+ul.top-links li {
+    margin-left:5px;
+    display:inline-block;
+}
+.top-bar ul.top-contacts li p , .top-bar ul.top-contacts li p a {
+    color: #000;
+    font-size: 16px;
+    font-weight:400;
+    padding-top:7px;
+}
+.top-bar ul.top-contacts li p span {
+    vertical-align: middle;
+    text-align: center;
+    line-height: 1px;
+    margin-right:5px;
+}
+.top-bar ul.top-contacts li p a:focus, .top-bar ul.top-contacts li p a:hover {
+    color:red;
+}
+.top-bar ul.top-links li a i.fa {
+    color: #000;
+    background-color: #fff;
+    width: 37px;
+    height: 37px;
+    font-size: 15px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    -ms-border-radius: 50%;
+    line-height: 36px;
+    text-align: center;
+    transition:all 0.5s ease-in-out;
+    -webkit-transition:all 0.5s ease-in-out;
+    -moz-transition:all 0.5s ease-in-out;
+    -o-transition:all 0.5s ease-in-out;
+    -ms-transition:all 0.5s ease-in-out;
+} 
+.top-bar ul.top-links li a i.fa:hover {
+    color: #fff;
+    background-color: #fa5d58;
+}
+/*-- /top-bar --*/
+.crsl { min-height: 550px; }
+/*-- statistics section --*/
+section.stats {
+    padding:100px 0;
+    background:url(../img/stats.jpg);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:fixed;
+    background-size:100% 100%;
+    -webkit-background-size:100% 100%;
+    -moz-background-size:100% 100%;
+    -o-background-size:100% 100%;
+    -ms-background-size:100% 100%;
+}
+section.stats p.text-center {
+    font-size: 16px;
+    padding: 0px 0 40px;
+    color: #999;
+}
+.stats-grid {
+    text-align: center;
+}
+.numscroller {
+    font-size: 50px;
+    margin: 0;
+    color: #fff;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight:normal;
+}
+.stats-grid i.fa {
+    font-size:17px;
+    color:#64dd17;
+    padding-bottom:20px;
+}
+.stats-grid h4 {
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight:normal;
+}
+/*-- /statistics section --*/

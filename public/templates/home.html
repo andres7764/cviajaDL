@@ -1,58 +1,84 @@
-	<div class="row">
-			<header id="home">
-				<div class="container">
+<div>
+ <div class="top-bar" style="margin-top: 80px;">
+	<div class="container">
+		<ul class="top-contacts">
+			<li class="top-unhover"><p><span class="fa fa-phone-square" aria-hidden="true"></span> +057 301 6227485</p>
+			<li class="top-hover"><p><span class="fa fa-envelope" aria-hidden="true"></span> <a href="mailto:contacto@dplan.co">contacto@dplan.co</a></p>
+		</ul>
+		<ul class="top-links">
+			<li><a target="_blank" href="https://www.facebook.com/DPl4n/"><i class="fa fa-facebook"></i></a></li>
+			<li><a target="_blank" href="https://twitter.com/dplan_"><i class="fa fa-twitter"></i></a></li>
+		</ul>
+		<div class="clearfix"></div>
+	</div>
+ </div>
+</div>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="../img/banners/b1.jpg" class="crsl" alt="Los Angeles">
+    </div>
+
+    <div class="item">
+      <img src="../img/banners/b2.jpg" class="crsl" alt="Chicago">
+    </div>
+
+    <div class="item">
+      <img src="../img/banners/b3.jpg" class="crsl" alt="New York">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Anterior</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Siguiente</span>
+  </a>
+</div>
+	<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">Hola!</h4>
+				</div>
+				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-2 col-xs-2" style="margin-top: -42px;">
-							<a href="/" class="logo">
-							<img style="width: 80px;height:80px;margin-bottom:20px;margin-top:20px;" src="../img/cviaja.png" alt=""></a>
+						<div class="col-lg-6 col-md-6">
+							<img src="img/stats.jpg" class="img-responsive" alt="Dplan" title="Dplan">
 						</div>
-						<nav id="topnav" class="col-md-10">
-							<ul id="fixed-nav" class="visible-desktop">
-								<li class="current scroll-link"><a href="/">Inicio</a></li>
-								<li><a href="#actividades">Actividades</a></li>
-								<li><a href="" ng-click="contactUs()">Contacto</a></li>
-							</ul>
-						</nav>
-					</div>
-					<div class="row">
-						<div class="span12">
-							<div id="slidecaption">
-								Encuentra sitios y actividades únicas <span class="color-text">cerca </span> a tu ciudad.
-								<div class="sub-caption">Encuentra actividades <span class="color-text"><b>ÚNICAS</b></span> cada semana a menos de 2 horas de Bogotá.</div>
-								<a href="#actividades"  class="btn white scroll-link">Ver actividades</a>
-							</div>
+						<div class="col-lg-6 col-md-6">
+							<p class="banner-p1">Somos DPLAN, una plataforma que permite comprar los mejores planes y actividades únicas con personas como tú, que buscan salir de la rutina del día día, que quieren salir y disfrutar sin perder tiempo buscando y lo mas importante, cerca a tu ubicación  
+							</p>
 						</div>
 					</div>
 				</div>
-			</header>
-	</div>
-<div class="container-fluid">
-  <div class="row" id="actividades" style="margin-top: 550px; background-color: #64dd17; min-height: 60px">
-        <nav id="mainnav">
-			<div class="container">
-				<div class="row">
-					<div class="span4">
-						<a href="index.html" class="logo"><img src="./img/cviajaLt.png" style="margin-top: -12px;width: 60px;margin-left: 0px;" alt=""></a>
-					</div>
-					<div class="span8">
-						<ul id="fluid-nav" class="fluid-navigation visible-desktop">
-							<li class="current"><a href="#home">Inicio</a></li>
-							<li><a href="#portfolio">Actividades</a></li>
-							<li><a href="" ng-click="contactUs()">Contacto</a></li>	
-						</ul>
-					</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-lg btn-success" data-dismiss="modal">Quiero contactarlos</button>
+					<button type="button" class="btn btn-lg btn-success" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
-		</nav>
-  </div>
-<!-- </header>-->
-  <div class="row" style="padding-top: 20px; padding-left: 20px">
-   <div style="padding-left: 15px">
-	<div class="title">Estas son algunas de las actividades que puedes realizar.</div>
-	<hr><br>
-   </div>
-
-	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-xs-12 animated bounceInLeft completeF" style="padding-bottom: 30px;">
+		</div>
+    </div>
+<div id="planes" class="container-fluid">
+  <div class="row" style="padding: 20px 10px 0px 10px">
+	 <div style="padding-left: 15px">
+	   <div class="title">¿Qué plan quieres realizar?</div>
+	   <hr><br>
+	 </div>
+	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-sm-6 col-xs-12 animated rollIn completeF" style="padding-bottom: 30px;">
 	 <div class="thumbnail wrp" style="min-height: 360px;cursor:pointer" ng-click="irA(activity._id,activity.name)">
 		<img style="width: 300px;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
@@ -65,56 +91,63 @@
      </div>
 	</div>
   </div>
-  <section id="team" style="margin-left: 20px">
-	<div class="row">
+   <section id="team" style="margin-top: 30px;margin-left: 30px;margin-right: 30px;">
+	<div class="row" style="width: 98%;">
+	  <div class="col-md-5 col-sm-5 col-xs-12">
+		<h4 style="color:#aaa;">Recibe información semanal de nuevos planes</h4>
+	  </div>
+	  <form>
+	  <div class="col-md-5 col-sm-5 col-xs-12">
+		<input style="height:47px" type="email" class="form-control" placeholder="tu correo" aria-describedby="basic-addon1" required>
+	  </div>
+	  <div class="col-md-1 col-sm-1 col-xs-12">
+		<button class="btn btn-success btn-lg" >
+			Suscribirme <span class="fa fa-send"></span>
+		</button>
+	  </div>
+	</div>
+   </section>
+   <section class="stats" style="margin-top:30px">
+	<div class="container">	
+		<div class="row">
+			<div class="col-md-4 col-sm-4 stats-grid stats-grid-1">
+				<div class="numscroller" data-slno='1' data-min='0' data-max='30' data-delay='3' data-increment="1">40+</div>
+				<i class="fa fa-upload" aria-hidden="true"></i>
+				<h4>Planes cargados</h4>
+			</div>
+			<div class="col-md-4 col-sm-4 stats-grid stats-grid-2">
+				<div class="numscroller" data-slno='1' data-min='0' data-max='770' data-delay='3' data-increment="1">{{views}}+</div>
+				<i class="fa fa-users" aria-hidden="true"></i>
+				<h4>Usuarios activos</h4>
+			</div>
+			<div class="col-md-4 col-sm-4 stats-grid stats-grid-3">
+				<div class="numscroller" data-slno='1' data-min='0' data-max='421' data-delay='3' data-increment="1">80+</div>
+				<i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+				<h4>Planes vendidos</h4>
+			</div>
+		</div>
+	</div>
+</section>
+   <br>
+   <section id="team">
+	<div class="row" style="width: 98%;">
 		  <div class="col-md-12 col-xs-12">
-			<hr>
 			<div class="row">
-					<div class="col-md-4 col-xs-12 profile">
-						<center><h2 class="odometer" id="nearActivities">30+</h2>
-						<p>Actividades cargadas cerca de Bogotá</p></center> 
+					<div class="col-md-3 col-sm-6 col-xs-12">
+					  <h3 style="padding-top: 45px;text-align: center; font-size:15px">Con el  apoyo:</h3>
 					</div>
-					<div class="col-md-4 col-xs-12 profile">
-						<center><h2 class="odometer" id="reserv">200+</h2>
-						<p>Reservas realizadas con exito</p></center>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<center><img style="padding-top: 40px; width:200px" src="https://sitios.apps.co/teamstartupcolombia/images/svg-pegado-17451x51.svg?crc=3837179556" alt="Apps.co"></center>
 					</div>
-					<div class="col-md-4 col-xs-12 profile">
-						<center><h2 class="odometer" id="activeUsers">{{views}}+</h2>
-						<p>Usuarios activos en la aplicación</p></center>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<center><img style="width: 200px;padding-top: 20px;" src="../img/cloudBased.png" alt="Runbikers"></center>
 					</div>												
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<center><img style="width: 200px" src="./img/runbikers.png" alt="Runbikers"></center>
+					</div>
 				</div>
 			</div>
 		</div>
    </section>
    <br>
-   <section id="team" style="margin-left: 20px">
-	<div class="row">
-		  <div class="col-md-12 col-xs-12">
-			<div class="row">
-					<div class="col-md-2 col-xs-12">
-					  <h6 style="padding-top: 45px;padding-left: 10px;text-align: center;">Con el  apoyo:</h6>
-					</div>
-					<div class="col-md-2 col-xs-12">
-						<center><img style="padding-top: 40px;" src="https://sitios.apps.co/teamstartupcolombia/images/svg-pegado-17451x51.svg?crc=3837179556" alt="Apps.co"></center>
-					</div>
-					<div class="col-md-2 col-xs-12">
-						<center><img style="width: 200px" src="../img/runbikers.png" alt="Runbikers"></center>
-					</div>												
-				</div>
-			</div>
-		</div>
-   </section>
-   <br>
-  <div class="row">	
-   <div class="col-md-12 col-xs-12 panel-footer text-center btn-success" style="background: #64dd17 !important"><a href="#">DPlan</a>© 2017. Todos los derechos reservados.</div>
-  </div>
 </div>
-
-<script type="text/javascript"> $(function(){ // document ready 
-	if (!!$('.sticky').offset()) {
-		// make sure ".sticky" element exists
-	var stickyTop = $('.sticky').offset().top; // returns number
-	$(window).scroll(function(){ // scroll event
-	var windowTop = $(window).scrollTop(); // returns number
-	if (stickyTop < windowTop){ $('.sticky').css({ 
-	  position: 'fixed', top: 0 }); }else { $('.sticky').css('position','static'); } }); } }); </script>
