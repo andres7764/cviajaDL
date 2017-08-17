@@ -7,7 +7,7 @@
           <li data-target="#myCarousel" data-slide-to="1"></li>
           <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-        <div ng-if="activity.carousel.length > 0" class="carousel-inner" style="min-height: 0px">
+        <div ng-if="activity.carousel.length > 0" class="carousel-inner" style="min-height: 0px !important">
           <div class="item active">
             <img ng-src="{{activity.carousel[0]}}" alt="descripcion">
           </div>
@@ -72,8 +72,8 @@
               </div>
               <hr style="width: 100%;border: 0;border-bottom: 1px solid #e2e2db;margin: 10px 0;"><br>
             </div>
-            <div ng-if="activity.options.length == 0"  class="row">
-              <div class="col-md-12 col-xs-12">
+        <div ng-if="activity.options.length == 0"  class="row">
+              <!--<div class="col-md-12 col-xs-12">-->
                <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados déjanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
                 <div class="form-group">
                   <label>Su nombre</label>
@@ -83,7 +83,7 @@
                   </div>
                 <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;"> Enviar </button>
               </div>
-            </div>
+            <!--</div>-->
       </div>
       <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
         <h3>Información</h3>
