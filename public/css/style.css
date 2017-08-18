@@ -35,6 +35,15 @@ html, body {
     letter-spacing: 2px;
     line-height: 1.3;
 }
+
+.secure {
+    background-image: url(../img/comodo_secure_seal_100x85_transp.png);
+    height: 65px;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    margin-top: -15px;
+}
+
 /*-------------------------------------------------------- */
 .title { 
     color: #333;

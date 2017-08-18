@@ -186,6 +186,19 @@ var cviaja = angular.module('cviaja',["ngRoute","routes"]);
 
   cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location,$rootScope){
         
+  let activitiesCtrl = {
+    saveContact: function(){
+
+    },
+    return: {
+      saveContac: function(data){
+        saveContact(data);        
+      }
+    }
+,
+
+  }
+
         $scope.views = 450;
         
         (function(){
@@ -195,12 +208,6 @@ var cviaja = angular.module('cviaja',["ngRoute","routes"]);
         })();
       
         $scope.activities = [];
-        $scope.contactUs = function() {
-          swal({
-            title: "<h3>Contactanos!</h3>",
-            imageUrl: "../img/contacto.jpg"
-          });
-        }
         
         $scope.irA = function(id,title){
           $rootScope.idSearch = id;

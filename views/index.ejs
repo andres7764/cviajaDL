@@ -22,7 +22,34 @@
   <link rel="stylesheet" type="text/css" href="../css/animate.css">
   <link rel="stylesheet" type="text/css" href="../css/layout.css">
   <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
-  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1922712468000653'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-100232215-1', 'auto');
+        ga('send', 'pageview');
+ $('#plans').on('click',function (e) {
+      e.preventDefault();
+      var target = this.hash;
+      var $target = $(target);
+
+      $('html, body').stop().animate({
+          'scrollTop': $target.offset().bottom
+      }, 900, 'swing', function () {
+          window.location.hash = target;
+      });
+  });
+</script>
 </head>
 <body class="bkBody">
 <!-- Header -->
@@ -52,10 +79,13 @@
 <!-- footer -->
  <div class="footer">
   <div class="container">
-    <div class="col-lg-6 col-md-6 col-xs-9 footer-w3ls1">
+    <div class="col-lg-6 col-md-6 col-xs-7 footer-w3ls1">
       <p style="text-align: center; padding-top: 10px;">&copy; 2017 DPlan. todos los derechos reservados | por <a href="http://Dplan.com/" target="_blank">Dplan</a></p>
     </div>
-    <div class="col-lg-6 col-md-6 col-xs-3 footer-w3ls2" style="padding:10px 15px 0px 0px">
+    <div class="col-lg-3 col-md-3 col-xs-4 footer-w3ls2">
+    <div class="secure"></div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-xs-1 footer-w3ls2" style="padding:20px 5px 0px 0px">
       <ul class="bottom-links">
         <li><a target="_blank" href="https://www.facebook.com/DPl4n/"><i class="fa fa-facebook"></i></a></li>
         <li><a target="_blank" href="https://twitter.com/dplan_"><i class="fa fa-twitter"></i></a></li>
@@ -78,7 +108,7 @@
           <img src="img/stats.jpg" class="img-responsive" alt="Dplan" title="Dplan">
       </div>
       <div class="col-lg-6 col-md-6">
-        <p class="banner-p1">Somos DPLAN, una plataforma que permite comprar los mejores planes y actividades únicas con personas como tú, que buscan salir de la rutina del día día, que quieren salir y disfrutar sin perder tiempo buscando y lo mas importante, cerca a tu ubicación </p>
+        <p class="banner-p1">Somos DPLAN, una plataforma que te permite comprar los mejores planes y actividades únicas con personas como tú, que buscan salir de la rutina del día día, que quieren salir y disfrutar sin perder tiempo buscando y lo mas importante, cerca a tu ubicación </p>
       </div>
      </div>
     </div>
@@ -93,34 +123,6 @@
 </body>
 
 <script src="../js/jqueryFinal.min.js"></script>
-<script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1922712468000653'); // Insert your pixel ID here.
-    fbq('track', 'PageView');
-
-     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-100232215-1', 'auto');
-        ga('send', 'pageview');
- $('#plans').on('click',function (e) {
-      e.preventDefault();
-      var target = this.hash;
-      var $target = $(target);
-
-      $('html, body').stop().animate({
-          'scrollTop': $target.offset().bottom
-      }, 900, 'swing', function () {
-          window.location.hash = target;
-      });
-  });
-</script>
-
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1922712468000653&ev=PageView&noscript=1"/></noscript>
 <!-- End Facebook Pixel Code -->
 <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5955690e03bcd486" ></script>-->
