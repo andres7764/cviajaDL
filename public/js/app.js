@@ -1,4 +1,4 @@
-var cviaja = angular.module('cviaja',["ngRoute","routes"]);
+var cviaja = angular.module('dplan',["ngRoute","routes","services"]);
    
     cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location','$window',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location,$window) {
         $window.scrollTo(0, 0);
@@ -184,49 +184,19 @@ var cviaja = angular.module('cviaja',["ngRoute","routes"]);
         
     }]);
 
-  cviaja.controller('activitiesCtrl',function($scope,$q,$http,$timeout,$window,$location,$rootScope){
-        
-  let activitiesCtrl = {
-    saveContact: function(){
-
-    },
-    return: {
-      saveContac: function(data){
-        saveContact(data);        
-      }
-    }
-,
-
-  }
-
-        $scope.views = 450;
-        
-        (function(){
-            $http.get('/updateCount').then(function(result){
-                $scope.views = result.data.count;
-            });
-        })();
-      
-        $scope.activities = [];
-        
-        $scope.irA = function(id,title){
-          $rootScope.idSearch = id;
-          var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
-              letra = letra.replace(/ /g,'-');
-          $location.url('/catalogo/'+letra+"_"+id);
-        }
-
-        $http.defaults.headers.post["Content-Type"] = "application/json";
-        $http.get('/getActivities').then(function(result){
-            $scope.activities = result.data.activities; 
-        });
-
-        var modal = document.getElementById('modalReservar');
-        // Get the button that opens the modal
-        var btn = document.getElementById("btnOpenModal");
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];   
+cviaja.controller('activitiesCtrl',function(activities,$scope,$q,$http,$timeout,$window,$location,$rootScope){
+  $scope.activities = [];
+  activities.doRequest('/getActivities','empty',function(res){
+    $scope.activities = res.data.activities;
   });
+  $scope.irA = function(id,title){
+    $rootScope.idSearch = id;
+    var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
+      letra = letra.replace(/ /g,'-');
+      $location.url('/catalogo/'+letra+"_"+id);
+  }
+ 
+});
     
   cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
         $scope.total = 0;

@@ -6600,15 +6600,16 @@ button.close {
  }
  .footer p {
      color: #fff;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 300;
+    margin-top: 5px;
 }
 .secure {
     background-image: url(../img/comodo_secure_seal_100x85_transp.png);
     height: 65px;
     background-size: 80px;
     background-repeat: no-repeat;
-    margin: 0px 0px 0px 15px;
+    margin: 0px 0px 0px 5px;
 }
   .visible-xs {
     display: block !important;

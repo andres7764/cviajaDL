@@ -2,14 +2,10 @@ var mongoose = require('mongoose'),
 
 //User collection
 contacto = new mongoose.Schema({
-  nombre:             { type: String },
+  nombre:             { type: String, Default: "Suscripción" },
   correo:             { type: String },
-  opciones:           { type: Object },
-  suscribirseMail:    { type: Boolean},
-  susCribirsePagos:   { type: Boolean},
   fecha:              { type: Date, default: new Date()},
-  suscripcionActiva:  { type: Boolean},
-  codigo:             { type: String }
+  suscripcionActiva:  { type: Boolean, Default: true}
 });
 
 

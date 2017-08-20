@@ -2,6 +2,17 @@ $(document).ready(function() {
 
 document.addEventListener("touchstart", function(){},  {passive: true});
 
+  $('#plans').on('click',function (e) {
+      e.preventDefault();
+      var target = this.hash;
+      var $target = $(target);
+
+      $('html, body').stop().animate({
+          'scrollTop': $target.offset().bottom
+      }, 900, 'swing', function () {
+          window.location.hash = target;
+      });
+  });
 
 	var modalReserve = $("#modalReserve");
 	var campos = ["nombre", "correo"];

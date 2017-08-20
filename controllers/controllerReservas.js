@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 var ObjectId = mongoose.Schema.ObjectId;
 require('../models/modelReservas');
-require('../models/modelReservasByUser');
+require('../models/modelOrganizators');
 require('../models/modelUsers');
 require('../models/modelActivities')
 var reserva = mongoose.model('reservasmodel');
-var reservaByUser = mongoose.model('reservasbyusermodel');
+var reservaByUser = mongoose.model('organizatorInfo');
 var User = mongoose.model('usuariosmodel');
 var Activities = mongoose.model('activitiesmodel');
 

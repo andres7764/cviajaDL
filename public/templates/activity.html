@@ -3,30 +3,13 @@
     <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 20px 40px 0px 40px">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
+         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+         <li data-target="#myCarousel" data-slide-to="1"></li>
+         <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-        <div ng-if="activity.carousel.length > 0" class="carousel-inner" style="min-height: 0px !important">
+        <div ng-repeat="act in activity.carousel" ng-if="activity.carousel.length > 0" class="carousel-inner" style="min-height: 0px !important">
           <div class="item active">
-            <img ng-src="{{activity.carousel[0]}}" alt="descripcion">
-          </div>
-            <div class="item">
-            <img ng-src="{{activity.carousel[1]}}" alt="descripcion">
-          </div>
-            <div class="item">
-            <img ng-src="{{activity.carousel[2]}}" alt="descripcion">
-          </div>
-        </div>
-        <div ng-if="!activity.carousel.length > 0" class="carousel-inner">
-          <div class="item active">
-            <img ng-src="{{image}}" alt="descripcion">
-          </div>
-            <div class="item">
-            <img ng-src="{{image}}" alt="descripcion">
-          </div>
-            <div class="item">
-            <img ng-src="{{image}}" alt="descripcion">
+            <img ng-src="{{act}}" alt="Images">
           </div>
         </div>
        </div>

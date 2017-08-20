@@ -1,9 +1,9 @@
-require('../models/modelUsers');
-var User = require('mongoose').model('usuariosmodel');
 
 //Autenticacion Apps
+               require('../models/modelUsers');
 var authApps = require('./authSatellizer');
 var middleware = require('./middleware');
+var User = require('mongoose').model('usuariosmodel');
 
 //Include the models and controllers of the app =======================================
 require('../models/modelContact');
@@ -15,7 +15,7 @@ var controllerReservas = require('../controllers/controllerReservas');
 var controllerActivities = require('../controllers/controllerActivities');
 var controllerUsers = require('../controllers/controllerUsers');
 var controllerAdmin = require('../controllers/controllerAdmin');
-var controllerUtils = require('../controllers/controllerUtils')
+var controllerOrganizators = require('../controllers/controllerOrganizators')
 
 var crypto = require('crypto'),
     algorithm = 'aes-256-ctr',
@@ -54,20 +54,20 @@ module.exports = function(app) {
     app.post('/cancelSuscription', controllerContact.cancelSuscription);
     app.post('/updateQtyActivity', controllerActivities.updateQtyActivity);
 
-    // Actividades
+    // Activities
     app.post('/createActivity', controllerActivities.createActivity);
-    app.post('/uploadActivities',controllerActivities.setActivities);
+//    app.post('/uploadActivities',controllerActivities.setActivities);
     app.get('/getActivities',controllerActivities.getActivities);
     app.get('/getActivity',controllerActivities.getActivity);
 
-    // Reservas
+    // Checkouts
     app.post('/saveReserva', controllerReservas.saveReserva);
     app.post('/updateReserva',controllerReservas.updateReserva);
     app.get('/getReservas',controllerReservas.getReservas);
     app.get('/getReserva',controllerReservas.getReserva);
     
-    // Utils
-    app.get('/updateCount',controllerUtils.updateCount);
+    // Organizators
+    app.post('/saveOrganizator',controllerOrganizators.createOrganizator);
     
     // Admin
     app.post('/LoginAdmin',controllerAdmin.LoginAdmin);

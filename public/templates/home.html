@@ -74,7 +74,7 @@
 	   <div class="title">¿Qué plan quieres realizar?</div>
 	   <hr><br>
 	 </div>
-	<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-sm-6 col-xs-12 animated rollIn completeF" style="padding-bottom: 30px;">
+<div ng-repeat="activity in activities | orderBy: 'order'" class="col-md-3 col-sm-6 col-xs-12 animated rollIn completeF" style="padding-bottom: 30px;">
 	 <div class="thumbnail wrp" style="min-height: 360px;cursor:pointer" ng-click="irA(activity._id,activity.name)">
 		<img style="width: 100%;height: 160px;" ng-src="{{activity.image}}" alt="{{activity.description}}">
       <div class="caption">
@@ -94,7 +94,7 @@
 	  </div>
 	  <form>
 	  <div class="col-md-5 col-sm-5 col-xs-12">
-		<input style="height:47px" type="email" class="form-control" ng-model='' placeholder="tu correo" aria-describedby="basic-addon1" required>
+		<input style="height:47px" type="email" class="form-control" ng-model='activities.mail' placeholder="tu correo" aria-describedby="basic-addon1" required>
 	  </div>
 	  <div class="col-md-1 col-sm-1 col-xs-12">
 		<button class="btn btn-success btn-lg" >
@@ -112,7 +112,7 @@
 				<h4>Planes cargados</h4>
 			</div>
 			<div class="col-md-4 col-sm-4 stats-grid stats-grid-2">
-				<div class="numscroller" data-slno='1' data-min='0' data-max='770' data-delay='3' data-increment="1">{{views}}+</div>
+				<div class="numscroller" data-slno='1' data-min='0' data-max='770' data-delay='3' data-increment="1">600+</div>
 				<i class="fa fa-users" aria-hidden="true"></i>
 				<h4>Usuarios activos</h4>
 			</div>

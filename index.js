@@ -9,9 +9,7 @@ var multipart = require('connect-multiparty');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var passport = require('passport');
-
 var http = require('http').Server(app);
-
 var env = process.env.NODE_ENV || 'development';
 var config = require('./config/config')[env];
 
