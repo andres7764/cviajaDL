@@ -11,6 +11,10 @@
           templateUrl: 'templates/catalog.html',
           controller: 'activitiesCtrl'
         })
+        .when('/blog/', {
+          templateUrl: 'templates/blog.html',
+          controller: 'blogCtrl'
+        })
         .when('/catalogo/:activity', {
           templateUrl: 'templates/activity.html',
           controller: 'activityCtrl'

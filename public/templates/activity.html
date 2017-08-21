@@ -3,13 +3,16 @@
     <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 20px 40px 0px 40px">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+         <li data-target="#myCarousel" data-slide-to="0"></li>
          <li data-target="#myCarousel" data-slide-to="1"></li>
          <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
-        <div ng-repeat="act in activity.carousel" ng-if="activity.carousel.length > 0" class="carousel-inner" style="min-height: 0px !important">
+        <div class="carousel-inner" style="min-height: 0px !important">
           <div class="item active">
-            <img ng-src="{{act}}" alt="Images">
+            <img ng-src="{{activity.carousel[2]}}" alt="descripcion">
+          </div>
+          <div ng-repeat="act in activity.carousel track by $index" class="item">
+            <img ng-src="{{act}}" alt="descripcion">
           </div>
         </div>
        </div>
@@ -19,42 +22,33 @@
         <hr class="mini" style="width: 130px"><br>
         <p><b>Ubicación:</b> {{activity.location.name}}</p>
         <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
-        <p style="text-align:justify"><b>Que harás: </b>{{activity.description}}</p>
         <p><b>Categoría: </b> {{activity.categories}}</p>
-        <!--<p><b>Precio desde: </b> {{reserv.mount | currency: $:0}}</p>-->
+        <p><b>Precio: </b> {{activity.mount}}</p>
         <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
-        <!--<button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA()" style="background: #64dd17 !important;">Adquirir tiquetes</button>-->
+        <div class="row">    
+          <div class="form-group col-md-4">
+            <label for="sel1">Selecciona el día:</label>
+            <select class="form-control" id="sel1">
+             <option ng-repeat="weekend in weekends">{{weekend}}</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="sel1">Cupos:</label>
+            <select class="form-control" ng-change="checkCupo($index)" ng-model="vm.cupos[$index]" id="sel1" style="width: 60px">
+             <option ng-repeat="n in range(1,opts.numAvailabe)">{{n}}</option>
+            </select>
+          </div>
+          <div class="col-md-3" style="padding-top: 20px;text-align: right;color: #64dd17">
+           <h4><b>{{vm.price[$index] | currency: $:0}}</b></h4>
+          </div>
+          <div class="col-md-3">
+          <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important; margin-top: 20px">Comprar</button>
+        </div> 
+      </div>
      </div>
   </div>
     <div class="row">
       <div class="col-md-6 col-xs-12" style="margin-top: -15px; padding: 0px 40px 0px 40px">
-        <h3>Planes</h3>
-          <hr class="mini" style="width: 120px"><br>
-          <div ng-if="activity.options.length > 0" ng-repeat="opts in activity.options track by $index" class="row">
-           <h4>{{opts.name}} </h4><h6 id="qty$index" style="color: #9e9e9e"><b>Cúpos disponibles: </b>{{opts.numAvailabe}}</h6>
-            <p style="text-align: justify;"><b>Incluye: </b>{{opts.description}}</p>
-              <div class="row">    
-                  <div class="form-group col-md-4">
-                      <label for="sel1">Selecciona el día:</label>
-                      <select class="form-control" id="sel1">
-                        <option ng-repeat="weekend in weekends">{{weekend}}</option>
-                      </select>
-                    </div>
-                  <div class="col-md-2">
-                    <label for="sel1">Cupos:</label>
-                    <select class="form-control" ng-change="checkCupo($index)" ng-model="vm.cupos[$index]" id="sel1" style="width: 60px">
-                        <option ng-repeat="n in range(1,opts.numAvailabe)">{{n}}</option>
-                      </select>
-                  </div>
-                  <div class="col-md-3" style="padding-top: 20px;text-align: right;color: #64dd17">
-                    <h4><b>{{vm.price[$index] | currency: $:0}}</b></h4>
-                  </div>
-                  <div class="col-md-3">
-                    <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important; margin-top: 20px">Comprar</button>
-                  </div> 
-              </div>
-              <hr style="width: 100%;border: 0;border-bottom: 1px solid #e2e2db;margin: 10px 0;"><br>
-            </div>
         <div ng-if="activity.options.length == 0"  class="row">
               <!--<div class="col-md-12 col-xs-12">-->
                <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados déjanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
@@ -68,14 +62,19 @@
               </div>
             <!--</div>-->
       </div>
-      <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
-        <h3>Información</h3>
+      <div class="col-md-12 col-xs-12" style="padding: 0px 40px 0px 40px">
+        <h3>Detalles</h3>
         <hr class="mini" style="width: 220px"><br><br>
         <ul class="nav nav-tabs">
+          <li class="active"><a href="#">¿Qué haras?</a></li>
           <li class="active"><a href="#">Ten en cuenta</a></li>
           <li><a href="#">¿Cómo llegar?</a></li>
         </ul><br>
-        <div id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
+        <div >
+          <p>{{activity.description}} </p>
+        </div>
+        <div ng-show="true" id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
       </div>
     </div>
 </div>
+<br><br><br><br>

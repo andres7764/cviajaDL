@@ -4,11 +4,9 @@ var contacto =  mongoose.model('contactmodel');
 
 //POST - Insert a new user in the Collection
 exports.saveContact = function(req, res) {
-  var random = "LRDT"+Math.floor(Math.random(8*5)*1000);
     var newUser = new contacto(res.body);
     newUser.save(function(err, newUser) {
         if(err) { return res.status(500).send(err.message); }
-        //sendMail(req.body.nombre,req.body.correo,random);
            return res.status(200).send({token: "Bienvenido a Dplan, te mantendremos informado de todos los planes que tenemos para ti"});
     });
 }

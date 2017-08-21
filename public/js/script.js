@@ -9,7 +9,7 @@ document.addEventListener("touchstart", function(){},  {passive: true});
 
       $('html, body').stop().animate({
           'scrollTop': $target.offset().bottom
-      }, 900, 'swing', function () {
+      }, 1500, 'swing', function () {
           window.location.hash = target;
       });
   });

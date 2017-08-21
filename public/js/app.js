@@ -1,35 +1,71 @@
 var cviaja = angular.module('dplan',["ngRoute","routes","services"]);
    
-    cviaja.controller('activityCtrl', ['$scope','$q','$http','$timeout','$routeParams','$rootScope', '$location','$window',function($scope,$q,$http,$timeout,$routeParams,$rootScope,$location,$window) {
-        $window.scrollTo(0, 0);
+cviaja.controller('activitiesCtrl',['activities','$scope','$q','$http','$timeout','$window','$location','$rootScope',function(activities,$scope,$q,$http,$timeout,$window,$location,$rootScope){
+    document.title = "DPlan, Planes unicos cerca a ti";
+  $scope.activities = [];
+  activities.doRequest('/getActivities',function(res){
+    $scope.activities = res.data.activities;
+  });
+  $scope.irA = function(id,title){
+    $rootScope.idSearch = id;
+    var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
+      letra = letra.replace(/ /g,'-');
+      $location.url('/catalogo/'+letra+"_"+id);
+  }
+  $scope.subscripbeUser = function(){
+    activities.doPostRequest('/saveContact',{'mail': activities.mail},function(response){
+      swal("¡Suscripción exitosa!",response.data.token, "success");
+    })
+  }
+}]);
+
+
+cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParams','$rootScope','$location',function(activities,$scope,$timeout,$routeParams,$rootScope,$location) {
         $rootScope.checkOut = [];
         $scope.reserv = {};
         $scope.reserv.qty0 = 1;
         $scope.reserv.complete = false;
-        $scope.image = '';
-        $rootScope.qtyCheckOut = 0;
-        $scope.vm ={}; 
-        $scope.vm.cupos = [0,0,0];
-        $scope.vm.price = [0,0,0];
-        $scope.weekends = getWeekends();
-        
-        if(JSON.parse(localStorage.getItem("checkOut")) !== null)
-          $rootScope.checkOut = JSON.parse(localStorage.getItem("checkOut"));
-        var directionsService,directionsDisplay;
-        var activity = ($routeParams.activity.split("_").length === 2 )? $routeParams.activity.split("_") : window.location = "/";
-        var idS = (activity[1].length === 24)?activity[1]:window.location = "/";
-        $http.defaults.headers.post["Content-Type"] = "application/json";
-        $http.get('/getActivity?id='+idS).then(function(result){
-            
-            $rootScope.activity = result.data.activity[0];
-            document.title = $rootScope.activity.name;
-            $scope.cantidadReal = $rootScope.activity.availablePersons;
-            $scope.reserv.mount = $rootScope.activity.mount;
-            $scope.image = $rootScope.activity.image;
-            initAutocomplete($scope.activity.location);
+        $scope.vm ={};
+  
+       var directionsService,directionsDisplay;
+       var activity = ($routeParams.activity.split("_").length === 2 )? $routeParams.activity.split("_") : window.location = "/";
+       var idS = (activity[1].length === 24)?activity[1]:window.location = "/";
+  activities.doRequest('/getActivity?id='+idS,function(res){
+    $rootScope.activity = res.data.activity[0];
+    document.title = $rootScope.activity.name;
+    $scope.cantidadReal = $rootScope.activity.availablePersons;
+    $scope.reserv.mount = $rootScope.activity.mount;
+    initAutocomplete($rootScope.activity.location);
+  });
+
+    function initAutocomplete(location) {
+        var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
+            $scope.map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 16,
+              center: latLng
+            });
+            var marker = new google.maps.Marker({
+              position: latLng,
+              map: $scope.map
         });
+
+        // Create the search box and link it to the UI element.
+        /*  var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        $scope.map.addListener('bounds_changed', function() {
+          searchBox.setBounds($scope.map.getBounds());
+        });
+        var markers = [];
+        searchBox.addListener('places_changed', function() {
+          var places = searchBox.getPlaces();
+          directionsService = new google.maps.DirectionsService();
+        directionsDisplay = new google.maps.DirectionsRenderer();
+          $scope.paintRoute(places[0].geometry.location.lat(),places[0].geometry.location.lng());
+        });*/
+    };
         
-        $scope.checkCupo = function(index){
+    $scope.checkCupo = function(index){
             $rootScope.checkOut = [];
             localStorage.setItem("checkOut",null);
             var dateReserv = document.getElementById('sel1').value;
@@ -87,32 +123,7 @@ var cviaja = angular.module('dplan',["ngRoute","routes","services"]);
             });
         }
 
-       function initAutocomplete(location) {
-        var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
-            $scope.map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
-              center: latLng
-            });
-            var marker = new google.maps.Marker({
-              position: latLng,
-              map: $scope.map
-        });
 
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-        $scope.map.addListener('bounds_changed', function() {
-          searchBox.setBounds($scope.map.getBounds());
-        });
-        var markers = [];
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-          directionsService = new google.maps.DirectionsService();
-        directionsDisplay = new google.maps.DirectionsRenderer();
-          $scope.paintRoute(places[0].geometry.location.lat(),places[0].geometry.location.lng());
-        });
-      };
         
         $scope.range = function(min, max, step) {
             step = step || 1;
@@ -130,6 +141,7 @@ var cviaja = angular.module('dplan',["ngRoute","routes","services"]);
                   showCancelButton: false
                 });
         };
+
         $scope.contact = {name: "", mail:"" };
         $scope.suscribir =  function(){
           if($scope.contact.name !== "" && $scope.contact.mail !== ""){
@@ -183,20 +195,6 @@ var cviaja = angular.module('dplan',["ngRoute","routes","services"]);
        }
         
     }]);
-
-cviaja.controller('activitiesCtrl',function(activities,$scope,$q,$http,$timeout,$window,$location,$rootScope){
-  $scope.activities = [];
-  activities.doRequest('/getActivities','empty',function(res){
-    $scope.activities = res.data.activities;
-  });
-  $scope.irA = function(id,title){
-    $rootScope.idSearch = id;
-    var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
-      letra = letra.replace(/ /g,'-');
-      $location.url('/catalogo/'+letra+"_"+id);
-  }
- 
-});
     
   cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
         $scope.total = 0;
@@ -301,6 +299,10 @@ cviaja.controller('activitiesCtrl',function(activities,$scope,$q,$http,$timeout,
        }
     });
     
+    cviaja.controller('blogCtrl',function(){
+
+    });
+
     cviaja.directive('dynamicElement', ['$compile', function ($compile) {
       return { 
         restrict: 'E', 
