@@ -3,16 +3,16 @@
   <div id="theBody" class="row">
       <div ng-if="total == 0" id="emptyCart">
           <img src="../img/cartEmpty.png">
-          <button id="btnGoBack" type="button" class="animated tada btn btn-block" ng-click="goBack()">Volver</button>
+          <button id="btnGoBack" type="button" class="animated bounceInLeft btn btn-block" ng-click="goBack()">Volver</button>
       </div>
       <div ng-if="total !== 0">
         <div>
-            <center><h1>Verfica tu compra en</h1></center>
-            <center><h2>{{activity.name}}</h2></center>
-            <!-- <div id="imgActivity">
-                <img ng-src="{{activity.image}}"> 
-            </div> -->
+            <div id="imgActivity">
+                <img ng-src="{{activity.carousel[0]}}"> 
+            </div>
         </div>
+          <center><h1>Verfica tu compra en</h1></center>
+            <center><h2>{{activity.name}}</h2></center>
         <div class="table-responsive totales">
           <table class="table">
             <thead>
@@ -27,45 +27,24 @@
               </tr>
             </thead>
               <tbody>
-                  <tr ng-repeat="co in checkOut">
-                    <td>{{$index+1}}</td>
-                    <td>{{co.name}}</td>
-                    <td>{{co.description}}</td>
-                    <td>{{co.qtyReserv}}</td>
-                    <td>{{co.valueReal | currency: $:0}}</td>
-                    <td>{{co.price | currency: $:0}}</td>
+                  <tr>
+                    <td>1</td>
+                    <td>{{activity.name}}</td>
+                    <td>{{activity.description}}</td>
+                    <td>{{activity.quotasBuyed}}</td>
+                    <td>{{activity.mount | currency: $:0}}</td>
+                    <td>{{activity.total | currency: $:0}}</td>
                     <td><a ng-click="deletePlan($index)"><span style="color:red"> X </span></a></td>
                   </tr>
                 </tbody>
           </table>
       </div>
-      <!-- <div id="btnPagar" ng-if="!showBtnPay">
-          <form name="infoUser">
-                <label>Su nombre</label>
-                <input type="text" class="form-control" ng-model="user.name" placeholder="" required/><br>
-                <label>Correo</label>
-                <input type="email" class="form-control" ng-model="user.mail" placeholder="p.e juanito@correo.com" required/><br>
-                <button type="button" class="animated tada btn btn-block" ng-click="pay(infoUser.$valid)">Pagar {{total | currency: $:0}}</button>
-          </form>
-      </div> -->
           <div id="btnEpayco">
-            <h3>Total: {{total | currency: $:0}} </h3>
-            <script
-                    src="https://s3-us-west-2.amazonaws.com/epayco/v1.0/checkoutEpayco.js"
-                    class="epayco-button"
-                    data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png"
-                    data-epayco-key="{{key}}"
-                    data-epayco-amount="{{total}}"
-                    data-epayco-name="{{activity.name}}"
-                    data-epayco-description="{{activity.description}}"
-                    data-epayco-currency="cop"
-                    data-epayco-country="co"
-                    data-epayco-test="False"
-                    data-epayco-response="http://dplan.co/#!/response"
-                   >
+            <h3>Total: {{activity.total | currency: $:0}} </h3>
+            <script src="https://s3-us-west-2.amazonaws.com/epayco/v1.0/checkoutEpayco.js"
+              class="epayco-button" data-epayco-button="https://369969691f476073508a-60bf0867add971908d4f26a64519c2aa.ssl.cf5.rackcdn.com/btns/btn4.png" data-epayco-key="{{key}}" data-epayco-amount="{{total}}" data-epayco-name="{{activity.name}}" data-epayco-description="{{activity.description}}" data-epayco-currency="cop" data-epayco-country="co" data-epayco-test="False" data-epayco-response="https://dplan.co/#!/response">
             </script>
-          </div> 
-          
+          </div>
       </div>
     </div>
 </div>

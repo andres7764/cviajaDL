@@ -9,7 +9,7 @@ activities = new mongoose.Schema({
     isActive:               { type: Boolean },
     location:               { type: Object  },
     dateCreated:            { type: Date, default: new Date() },
-    prefixCode:            { type: String  },
+    prefixCode:             { type: String  },
     availablePersons:       { type: Number  },
     categories:             { type: String  },
     carousel:               { type: Array, default: []},

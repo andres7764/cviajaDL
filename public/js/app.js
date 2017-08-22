@@ -23,18 +23,14 @@ cviaja.controller('activitiesCtrl',['activities','$scope','$q','$http','$timeout
 cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParams','$rootScope','$location',function(activities,$scope,$timeout,$routeParams,$rootScope,$location) {
         $rootScope.checkOut = [];
         $scope.reserv = {};
-        $scope.reserv.qty0 = 1;
         $scope.reserv.complete = false;
-        $scope.vm ={};
-  
        var directionsService,directionsDisplay;
        var activity = ($routeParams.activity.split("_").length === 2 )? $routeParams.activity.split("_") : window.location = "/";
        var idS = (activity[1].length === 24)?activity[1]:window.location = "/";
+
   activities.doRequest('/getActivity?id='+idS,function(res){
     $rootScope.activity = res.data.activity[0];
     document.title = $rootScope.activity.name;
-    $scope.cantidadReal = $rootScope.activity.availablePersons;
-    $scope.reserv.mount = $rootScope.activity.mount;
     initAutocomplete($rootScope.activity.location);
   });
 
@@ -65,36 +61,19 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
         });*/
     };
         
-    $scope.checkCupo = function(index){
-            $rootScope.checkOut = [];
-            localStorage.setItem("checkOut",null);
-            var dateReserv = document.getElementById('sel1').value;
-            var checkOption = $rootScope.activity.options[index];
-            //$rootScope.activity.options[index].numAvailabe = checkOption.numAvailabe - $scope.vm.cupos[index];
-            var dataCheck = {
-              name: checkOption.name,
-              numAvailabe: checkOption.numAvailabe - $scope.vm.cupos[index],
-              description: checkOption.description,
-              price: checkOption.price * $scope.vm.cupos[index],
-              qtyReserv: $scope.vm.cupos[index],
-              qtyReal: checkOption.numAvailabe, 
-              valueReal: checkOption.price,
-              dateReserv: dateReserv,
-              _id: activity,
-              index: index,
-              obj: $rootScope.activity.options 
-              };
-
-            $scope.vm.price[index] = dataCheck.price;
-            $rootScope.checkOut.push(dataCheck);
-            localStorage.setItem("checkOut",JSON.stringify(dataCheck));
-        };
-        
+  $scope.checkCupo = function(index){
+    $rootScope.checkOut = [];
+    localStorage.setItem("checkOut",null);
+    $rootScope.activity.quotasBuyed = document.getElementById('sel1').value;
+    $rootScope.activity.dateReserv = document.getElementById('dateR').value;
+    $rootScope.activity.total = $rootScope.activity.mount * $rootScope.activity.quotasBuyed;
+    localStorage.setItem("checkOut",JSON.stringify($rootScope.activity));
+  };
         $scope.reservA = function(value) {
-          if($rootScope.checkOut.length > 0 ){
-               window.location = '/#!/checkout';
+          if($rootScope.activity.dateReserv === undefined || $rootScope.activity.dateReserv === ""){
+           swal("error", "Debes elegir una fecha y el número de cupos a comprar", "error");
           }else{
-               swal("error", "Debes elegir una fecha y el número de cupos a comprar", "error");
+           window.location = '/#!/checkout';
           }
         };
         
@@ -122,8 +101,6 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
               }
             });
         }
-
-
         
         $scope.range = function(min, max, step) {
             step = step || 1;
@@ -135,11 +112,11 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
         };
         
         $scope.openRnt =  function(img){
-            swal({
-                  title: 'Registro Nacional De Turismo',
-                  html: '<img src="'+img+'" style="width: 100%;height: 280px;">',
-                  showCancelButton: false
-                });
+          swal({
+            title: 'Registro Nacional De Turismo',
+            html: '<img src="'+img+'" style="width: 100%;height: 280px;">',
+            showCancelButton: false
+          });
         };
 
         $scope.contact = {name: "", mail:"" };
@@ -150,103 +127,33 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
             swal("error", "Debes ingresar tu nombre y correo", "error");
           }
         };
-
-        function suscribe(){
-          $http.post('/saveContact',{
-                nombre:          $scope.contact.name,
-                correo:          $scope.contact.mail,
-                opciones:        {event: activity},
-                suscribirseMail:   true,
-                susCribirsePagos:  false,
-            })
-            .then(function(result){
-              console.log(result);
-              if(result.status !== 200 ){
-                swal("error", "Ocurrio un error al guardar tu información intenta de nuevo o escribenos a devjs.info@gmail.com", "error");
-              }else{
-                swal("Bien", result.data.token, "success");
-              }
-            });
-        }
-        
-        function daysInMonth(month,year) {
-            return new Date(year, month, 0).getDate();
-        };
-
-        function getWeekends()
-        {
-            var date = new Date();
-            var weekends=[],
-                weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-                month=date.getMonth()+1,
-                year=date.getFullYear();
-            for(var i=date.getDate(),l=daysInMonth(month,year);i<l;i++){
-                var d = new Date(year,month-1,i);
-                if((weekday[d.getDay()] === 'Saturday' || weekday[d.getDay()] === 'Sunday')){
-                    weekends.push(i+' de '+getMonth(month)+' '+year);
-                }    
-            }
-            return weekends;
-        };
-        
-       function getMonth(month){
-           var months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-           return months[month-1];
-       }
-        
     }]);
     
-  cviaja.controller('checkoutCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
-        $scope.total = 0;
-        $rootScope.transaction = {};
-        $scope.showBtnPay = false;
+  cviaja.controller('checkoutCtrl',['$scope','$rootScope','$window',function($scope,$rootScope,$window){
         $scope.key = "";
         (function(){
-            getCheckOut();
+         getCheckOut();
         })();
 
         function getCheckOut() {
-            if(!$rootScope.checkOut && !$rootScope.activity){
-                var checkout = window.localStorage.getItem('checkout');
-                var activity = window.localStorage.getItem('activity');
-                $rootScope.checkOut = checkout ? JSON.parse(checkout) : [];
-                $rootScope.activity = activity ? JSON.parse(activity) : {};
-                calculateTotal();
-            } else {
-                calculateTotal();
-            }
+          if(!$rootScope.activity){
+            $scope.total = 0;
+          } else {
+            $scope.total = 1;
+            checkout = window.localStorage.getItem('checkOut');
+            $rootScope.activity = checkout ? JSON.parse(checkout) : {};
+          }
         };
-        
         $scope.deletePlan = function(index){
-            $rootScope.checkOut.splice(index,1);
-            calculateTotal();
-            updateLocalStorage();
+          swal("Eliminado!", "Plan eliminado correctamente", "success");
+          $rootScope.activity = {};
+          $scope.total = 0;
+          window.localStorage.setItem('checkout', null);
         };
-        
-        function calculateTotal(){
-            if($rootScope.checkOut && $rootScope.checkOut.length > 0 ){
-                for(i in $rootScope.checkOut){
-                    $scope.total += $rootScope.checkOut[i].price;
-                }
-            }else{
-                $scope.total = 0;
-                $rootScope.qtyCheckOut = $rootScope.checkOut ? $rootScope.checkOut.length : 0;
-            } 
-        };
-        
-        function updateLocalStorage(){
-            if($rootScope.checkOut.length === 0){
-                window.localStorage.setItem('checkout', null);
-                window.localStorage.setItem('activity',null);
-            }else{
-                window.localStorage.setItem('checkout', JSON.stringify($rootScope.checkOut));
-            }
-        };
-        
         $scope.goBack = function() {
-            window.history.back();
+          window.history.back();
         };
-    });
+  }]);
 
     cviaja.controller('responseCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
         $scope.resultTransaction = {};
