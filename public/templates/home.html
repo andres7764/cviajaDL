@@ -68,12 +68,12 @@
 	  <div class="col-md-5 col-sm-5 col-xs-12">
 		<h4 style="color:#aaa;">Recibe información semanal de nuevos planes</h4>
 	  </div>
-	  <form>
+	  <form name="subscribeForm">
 	  <div class="col-md-5 col-sm-5 col-xs-12">
 		<input style="height:47px" type="email" class="form-control" ng-model='activities.mail' placeholder="tu correo" aria-describedby="basic-addon1" required>
 	  </div>
 	  <div class="col-md-1 col-sm-1 col-xs-12" style="padding-left: 5px">
-		<button ng-click="subscripbeUser()" class="btn btn-success btn-lg" >
+		<button ng-click="subscripbeUser()" ng-disabled="subscribeForm.$invalid" class="btn btn-success btn-lg" >
 			Suscribirme <span class="fa fa-send"></span>
 		</button>
 	  </div>

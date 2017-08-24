@@ -23,27 +23,36 @@
   <link rel="stylesheet" type="text/css" href="../css/layout.css">
   <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
-  <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1922712468000653'); // Insert your pixel ID here.
-    fbq('track', 'PageView');
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '100840487318857'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=100840487318857&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
 
+  <script>
      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-100232215-1', 'auto');
         ga('send', 'pageview');
+        fbq('track', 'ViewContent');
  </script>
 </head>
 <body class="bkBody">
 <!-- Header -->
   <div class="nav-links" style="position: fixed;top: 1px;z-index: 9;width: 100%;">  
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" style="border-bottom-style: groove;border-bottom-color: #64dd17;">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -72,7 +81,7 @@
       <div class="secure"></div>
     </div>
     <div class="col-lg-6 col-md-6 col-xs-7 footer-w3ls1">
-      <p style="padding-top: 15px;">&copy; 2017 DPlan. todos los derechos reservados | por <a href="http://Dplan.com/" target="_blank">Dplan</a></p>
+      <p style="padding-top: 15px;">&copy; 2017 DPlan. todos los derechos reservados | <a href="https://dplan.co/" target="_blank">Dplan</a></p>
     </div>
     <div class="col-lg-3 col-md-3 col-xs-1 footer-w3ls2" style="padding:20px 5px 0px 0px">
       <ul class="bottom-links">
@@ -89,21 +98,57 @@
   <div class="modal-content">
      <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h4 class="modal-title" id="myModalLabel">Hola!</h4>
      </div>
     <div class="modal-body">
      <div class="row">
       <div class="col-lg-6 col-md-6 ">
-          <img src="img/stats.jpg" class="img-responsive" alt="Dplan" title="Dplan">
+          <img src="img/equipo.jpg" class="img-responsive" alt="Dplan" title="Dplan">
       </div>
       <div class="col-lg-6 col-md-6">
-        <p class="banner-p1">Somos DPLAN, una plataforma que te permite comprar los mejores planes y actividades únicas con personas como tú, que buscan salir de la rutina del día día, que quieren salir y disfrutar sin perder tiempo buscando y lo mas importante, cerca a tu ubicación </p>
+        <p class="banner-p1">Somos DPLAN, una plataforma en la que encontrarás los mejores planes para realizar ya sea salidas familiares, escapes con amigos o salidas con tu pareja. Sal de la rutina semanal. compra tus planes con facilidades de pago y lo mejor de todo, cerca a Bogotá.</p><br>
+        <button style="width: 98%; margin: 10px" type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#formBePart" data-dismiss="modal">Quiero ser parte de DPlan</button>      
       </div>
      </div>
     </div>
-    <div class="modal-footer">
-     <button type="button" class="btn btn-lg btn-success" data-dismiss="modal">Quiero contactarlos</button>
-     <button type="button" class="btn btn-lg btn-success" data-dismiss="modal">Cerrar</button>
+  </div>
+ </div>
+</div>
+<!-- End Modal header -->
+<!-- Modal Contact -->
+<div class="modal fade" id="formBePart" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true" ng-controller="activitiesCtrl">
+ <div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+     </div>
+    <div class="modal-body">
+     <div class="row">
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <p style="font-size: 20px;text-align: center;padding: 10px;">¿Quieres que tus planes aparezcan en Dplan? Déjanos tus datos y en breve nos contactaremos contigo</p>
+      </div>
+      <div class="col-lg-6 col-md-6 col-xs-12" style="padding: 12px">
+      <form name="loginform">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user bigicon"></i></span>
+        <input type="text" ng-model="contact.name" class="form-control" placeholder="Tu nombre" aria-describedby="sizing-addon1" required>
+      </div>
+      <div class="input-group input-group-lg" style="padding-top: 7px">
+        <span class="input-group-addon" id="sizing-addon1">@</span>
+        <input type="email" ng-model="contact.mail" class="form-control" placeholder="Correo" aria-describedby="sizing-addon1" required>
+      </div>
+      <div class="input-group input-group-lg" style="padding-top: 7px">
+        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-phone"></i></span>
+        <input type="text" ng-model="contact.phone" class="form-control" placeholder="Celular (Opcional)" aria-describedby="sizing-addon1">
+      </div>
+      <div class="input-group input-group-lg" style="padding-top: 7px">
+        <span class="input-group-addon" id="sizing-addon1">
+        <i class="fa fa-pencil-square-o bigicon"></i></span>
+        <textarea ng-model="contact.description" style="min-height: 150px" class="form-control" id="message" name="message" placeholder="Escribenos sobre tus actividades" rows="7" required></textarea>
+      </div>
+       <button style="margin-top: 7px; width: 100%" type="submit" ng-disabled="loginform.$invalid" ng-click="sendNewContact()" class="btn btn-primary btn-lg">Contactar <i class="fa fa-paper-plane"></i> </button>
+      </form>
+      </div>
+     </div>
     </div>
   </div>
  </div>
@@ -112,8 +157,6 @@
 </body>
 
 <script src="../js/jqueryFinal.min.js"></script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1922712468000653&ev=PageView&noscript=1"/></noscript>
-<!-- End Facebook Pixel Code -->
 <!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5955690e03bcd486" ></script>-->
 
 <script src="../js/bootstrap.min.js"></script> <!-- Twitter Feed Options -->

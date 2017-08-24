@@ -25,10 +25,10 @@
         <p><b>Categoría: </b> {{activity.categories}}</p>
         <p><b>Precio: </b> {{activity.mount}}</p>
         <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
-        <div class="row">    
+        <div class="row">
           <div class="form-group col-md-4">
             <label for="date">Selecciona el día:</label>
-            <input id="dateR" type="date" name="dateReserv" min="2017-08-22" autofocus="autofocus">
+            <input id="dateR" class="form-control" type="date" name="dateReserv" min="{{validSince}}" autofocus="autofocus">
           </div>
           <div class="col-md-2">
             <label for="sel1">Cupos:</label>
@@ -36,11 +36,11 @@
              <option ng-repeat="n in range(1,activity.availablePersons)">{{n}}</option>
             </select>
           </div>
-          <div class="col-md-3" style="padding-top: 20px;text-align: right;color: #64dd17">
+          <div class="col-md-3" style="padding-top: 20px;text-align: center;color: #64dd17">
            <h4><b>{{activity.total | currency: $:0}}</b></h4>
           </div>
           <div class="col-md-3">
-          <button type="button" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important; margin-top: 20px">Comprar</button>
+          <button type="button" id="clickBP" class="animated tada btn btnReserve btn-block" ng-click="reservA($index)" style="background: #64dd17 !important; margin-top: 20px">Comprar</button>
         </div> 
       </div>
      </div>
@@ -60,19 +60,38 @@
               </div>
             <!--</div>-->
       </div>
-      <div class="col-md-12 col-xs-12" style="padding: 0px 40px 0px 40px">
-        <h3>Detalles</h3>
+      <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
+        <h3>Información</h3>
         <hr class="mini" style="width: 220px"><br><br>
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#">¿Qué haras?</a></li>
-          <li class="active"><a href="#">Ten en cuenta</a></li>
-          <li><a href="#">¿Cómo llegar?</a></li>
+          <li class="active"><a ng-click="showPage(1)">¿Qué haras?</a></li>
+          <li ><a ng-click="showPage(2)">Ten en cuenta</a></li>
         </ul><br>
-        <div >
-          <p>{{activity.description}} </p>
+        <div style="padding: 7px">
+          <p>{{activity.description}} </p><br>
+          <p>{{activity.detailPlan}} </p>
         </div>
+        <div style="padding: 7px">
+          <p>{{activity.LegalInfo}} </p>
+        </div>
+      </div>
+      <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
+        <h3>Ubicación</h3>
+        <hr class="mini" style="width: 220px"><br><br>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#">¿Cómo llegar?</a></li>
+          <li><a href="#">Locación</a></li>
+        </ul><br><br>
         <div ng-show="true" id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
       </div>
     </div>
 </div>
 <br><br><br><br>
+<script type="text/javascript">
+  $("#clickBP").click(function(){
+    fbq('track', 'Purchase', {
+     value: 13000,
+     currency: 'COP',
+     });
+  })
+</script>

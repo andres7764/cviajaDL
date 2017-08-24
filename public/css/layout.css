@@ -39,8 +39,7 @@
 	::selection {background: #64dd17; color: #fff; }
 	
 	a { color: #64dd17;
-		text-decoration: none;
-		border-bottom: 1px solid #64dd17; 
+		text-decoration: none; 
 		-webkit-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 		   -moz-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;
 		    -ms-transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear;

@@ -4,10 +4,10 @@ var contacto =  mongoose.model('contactmodel');
 
 //POST - Insert a new user in the Collection
 exports.saveContact = function(req, res) {
-    var newUser = new contacto(res.body);
+    var newUser = new contacto(req.body);
     newUser.save(function(err, newUser) {
         if(err) { return res.status(500).send(err.message); }
-           return res.status(200).send({token: "Bienvenido a Dplan, te mantendremos informado de todos los planes que tenemos para ti"});
+           return res.status(200).send({token: "Hemos guardado tu correo ahora estarás informado de todos los planes que carguemos para ti"});
     });
 }
 
@@ -36,7 +36,7 @@ var request = sg.emptyRequest({
       }
     ],
     from: {
-      email: 'devjs.info@gmail.com'
+      email: 'contacto@dplan.co'
     },
     content: [
       {

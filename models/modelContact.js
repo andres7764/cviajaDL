@@ -5,7 +5,9 @@ contacto = new mongoose.Schema({
   name:               { type: String, default: "Suscripción" },
   mail:               { type: String },
   date:               { type: Date, default: new Date()},
-  activeSubscription: { type: Boolean, default: true}
+  activeSubscription: { type: Boolean, default: true},
+  description: 		  { type: String },
+  phone: 			  { type: String }
 });
 
 

@@ -3,6 +3,7 @@ var cviaja = angular.module('dplan',["ngRoute","routes","services"]);
 cviaja.controller('activitiesCtrl',['activities','$scope','$q','$http','$timeout','$window','$location','$rootScope',function(activities,$scope,$q,$http,$timeout,$window,$location,$rootScope){
     document.title = "DPlan, Planes unicos cerca a ti";
   $scope.activities = [];
+  $scope.contact = {};
   activities.doRequest('/getActivities',function(res){
     $scope.activities = res.data.activities;
   });
@@ -13,17 +14,27 @@ cviaja.controller('activitiesCtrl',['activities','$scope','$q','$http','$timeout
       $location.url('/catalogo/'+letra+"_"+id);
   }
   $scope.subscripbeUser = function(){
-    activities.doPostRequest('/saveContact',{'mail': activities.mail},function(response){
-      swal("¡Suscripción exitosa!",response.data.token, "success");
+    activities.doPostRequest('/saveContact',{'mail': $scope.activities.mail},function(response){
+      message("¡Suscripción exitosa!",response.data.token);
+      $scope.activities.mail = "";
     })
+  }
+  $scope.sendNewContact = function(){
+    activities.doPostRequest('/saveContact',$scope.contact,function(response){
+      message("¡Bienvenido a DPlan!","Ya guardamos tus datos nos pondremos en contacto contigo.");
+      $scope.contact = {};
+   })
+  }
+  function message(title,comment){
+   swal(title,comment, "success");
   }
 }]);
 
 
 cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParams','$rootScope','$location',function(activities,$scope,$timeout,$routeParams,$rootScope,$location) {
         $rootScope.checkOut = [];
-        $scope.reserv = {};
-        $scope.reserv.complete = false;
+       let a = new Date();
+        $scope.validSince = a.getFullYear()+"-"+a.getMonth()+"-"+a.getDate();
        var directionsService,directionsDisplay;
        var activity = ($routeParams.activity.split("_").length === 2 )? $routeParams.activity.split("_") : window.location = "/";
        var idS = (activity[1].length === 24)?activity[1]:window.location = "/";
@@ -69,6 +80,11 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
     $rootScope.activity.total = $rootScope.activity.mount * $rootScope.activity.quotasBuyed;
     localStorage.setItem("checkOut",JSON.stringify($rootScope.activity));
   };
+
+  $scope.showPage = function(){
+
+  }
+
         $scope.reservA = function(value) {
           if($rootScope.activity.dateReserv === undefined || $rootScope.activity.dateReserv === ""){
            swal("error", "Debes elegir una fecha y el número de cupos a comprar", "error");
@@ -130,7 +146,7 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
     }]);
     
   cviaja.controller('checkoutCtrl',['$scope','$rootScope','$window',function($scope,$rootScope,$window){
-        $scope.key = "";
+        $scope.key = "154facda17519d661d60dc5384a5681d";
         (function(){
          getCheckOut();
         })();
@@ -153,6 +169,7 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
         $scope.goBack = function() {
           window.history.back();
         };
+
   }]);
 
     cviaja.controller('responseCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
