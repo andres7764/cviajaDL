@@ -747,7 +747,7 @@ section.stats p.text-center {
 /*-- footer section --*/
 .footer {
     padding:10px 0;
-    background-color:#000;
+    background-color: rgba(0, 0, 0, 0.82);
 }
 .footer p {
     color:#fff;
