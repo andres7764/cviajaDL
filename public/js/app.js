@@ -11,6 +11,7 @@ cviaja.controller('activitiesCtrl',['activities','$scope','$q','$http','$timeout
     $rootScope.idSearch = id;
     var letra = title.replace(/[^a-zA-Z 0-9.]+/g,'');
       letra = letra.replace(/ /g,'-');
+      $rootScope.urlFinal = '/catalogo/'+letra+"_"+id;
       $location.url('/catalogo/'+letra+"_"+id);
   }
   $scope.subscripbeUser = function(){
@@ -41,14 +42,19 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
 
   activities.doRequest('/getActivity?id='+idS,function(res){
     $rootScope.activity = res.data.activity[0];
+    $scope.tab = 1;
+    $scope.tabs = 1;
     document.title = $rootScope.activity.name;
     initAutocomplete($rootScope.activity.location);
+    $rootScope.activity.legalInfo = $rootScope.activity.legalInfo.split("&");
+     for(a=0;a<$rootScope.activity.legalInfo.length;a++ ){
+    //  $rootScope.activity.legalInfo[a].replace("&"," ");
+     }
   });
-
     function initAutocomplete(location) {
         var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
             $scope.map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 16,
+              zoom: 14,
               center: latLng
             });
             var marker = new google.maps.Marker({
@@ -80,10 +86,6 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
     $rootScope.activity.total = $rootScope.activity.mount * $rootScope.activity.quotasBuyed;
     localStorage.setItem("checkOut",JSON.stringify($rootScope.activity));
   };
-
-  $scope.showPage = function(){
-
-  }
 
         $scope.reservA = function(value) {
           if($rootScope.activity.dateReserv === undefined || $rootScope.activity.dateReserv === ""){

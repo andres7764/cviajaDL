@@ -46,10 +46,10 @@
      </div>
   </div>
     <div class="row">
-      <div class="col-md-6 col-xs-12" style="margin-top: -15px; padding: 0px 40px 0px 40px">
+     <!-- <div class="col-md-6 col-xs-12" style="margin-top: -15px; padding: 0px 40px 0px 40px">
         <div ng-if="activity.options.length == 0"  class="row">
               <!--<div class="col-md-12 col-xs-12">-->
-               <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados déjanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
+         <!--      <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados déjanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
                 <div class="form-group">
                   <label>Su nombre</label>
                     <input type="text" class="form-control" ng-model="contact.name" placeholder=""/><br>
@@ -58,33 +58,39 @@
                   </div>
                 <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;"> Enviar </button>
               </div>
-            <!--</div>-->
-      </div>
+            </div>
+      </div>-->
       <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
         <h3>Información</h3>
         <hr class="mini" style="width: 220px"><br><br>
         <ul class="nav nav-tabs">
-          <li class="active"><a ng-click="showPage(1)">¿Qué haras?</a></li>
-          <li ><a ng-click="showPage(2)">Ten en cuenta</a></li>
+          <li class="active"><a ng-click="tab = 1" data-toggle="tab">¿Qué haras?</a></li>
+          <li><a ng-click="tab = 2" data-toggle="tab">Ten en cuenta</a></li>
         </ul><br>
-        <div style="padding: 7px">
-          <p>{{activity.description}} </p><br>
-          <p>{{activity.detailPlan}} </p>
+       <div class="tab-content">
+        <div class="tab-pane active" ng-show="tab === 1" style="padding: 7px">
+          <div>{{activity.description}} </div><br>
+          <div>El plan incluye {{activity.detailPlan}} </div>
         </div>
-        <div style="padding: 7px">
-          <p>{{activity.LegalInfo}} </p>
+       </div>
+        <div class="tab-pane" ng-show="tab === 2" style="padding: 7px;">
+          <div style="padding-top: 3px; text-align: justify-all;" ng-repeat="items in activity.legalInfo track by $index">{{items}}</div><br>
         </div>
       </div>
       <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
-        <h3>Ubicación</h3>
         <hr class="mini" style="width: 220px"><br><br>
+        <br></br>
         <ul class="nav nav-tabs">
-          <li class="active"><a href="#">¿Cómo llegar?</a></li>
-          <li><a href="#">Locación</a></li>
-        </ul><br><br>
-        <div ng-show="true" id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
+         <li class="active"><a ng-click="tabs = 1" data-toggle="tab">Ubicación</a></li>{{urlFinal}}
+         <li><a ng-click="tabs = 3" data-toggle="tab">¿Cómo llegar?</a></li>
+        </ul><br>
+        <div class="tab-content">
+        <div ng-show="tabs === 1" class="tab-pane active" id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
+        </div>
+        <div ng-show="tabs === 3" class="tab-pane" style="padding: 7px" id="CLlegr">
+          <div> {{activity.arrival}} </div>
+        </div>
       </div>
-    </div>
 </div>
 <br><br><br><br>
 <script type="text/javascript">
