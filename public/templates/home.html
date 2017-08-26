@@ -56,7 +56,7 @@
         <h3 class="title"><b>{{activity.name}}</b></h3>
 		<hr class="mini">
         <span class="completeF ptop glyphicon" style="color:#aaa;font-size: 11px!important; height: 60px;overflow: hidden;"> {{activity.description}}</span>
-		<h5 style="position: absolute;left: 10px; bottom: 12px;color: #64dd17;"><b>Desde ${{activity.mount}}</b></h5>
+		<h5 style="position: absolute;left: 10px; bottom: 12px;color: #64dd17;"><b>Desde {{activity.mount | currency: $:0}}</b></h5>
 		<button ng-click="irA(activity._id,activity.name)" type="button" class="btn" style="position: absolute;right: 10px; bottom: 12px">Ver más</button>
       </div>
      </div>

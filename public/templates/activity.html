@@ -23,7 +23,7 @@
         <p><b>Ubicación:</b> {{activity.location.name}}</p>
         <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
         <p><b>Categoría: </b> {{activity.categories}}</p>
-        <p><b>Precio: </b> {{activity.mount}}</p>
+        <p><b>Precio:</b>&nbsp; {{activity.mount | currency: $:0}}</p>
         <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
         <div class="row">
           <div class="form-group col-md-4">
@@ -68,12 +68,12 @@
           <li><a ng-click="tab = 2" data-toggle="tab">Ten en cuenta</a></li>
         </ul><br>
        <div class="tab-content">
-        <div class="tab-pane active" ng-show="tab === 1" style="padding: 7px">
+        <div class="tab-pane active" ng-show="tab === 1" style="padding: 7px;text-align: justify;">
           <div>{{activity.description}} </div><br>
           <div>El plan incluye {{activity.detailPlan}} </div>
         </div>
        </div>
-        <div class="tab-pane" ng-show="tab === 2" style="padding: 7px;">
+        <div class="tab-pane" ng-show="tab === 2" style="padding: 7px;text-align: justify;">
           <div style="padding-top: 3px; text-align: justify-all;" ng-repeat="items in activity.legalInfo track by $index">{{items}}</div><br>
         </div>
       </div>
@@ -81,13 +81,13 @@
         <hr class="mini" style="width: 220px"><br><br>
         <br></br>
         <ul class="nav nav-tabs">
-         <li class="active"><a ng-click="tabs = 1" data-toggle="tab">Ubicación</a></li>{{urlFinal}}
+         <li class="active"><a ng-click="tabs = 1" data-toggle="tab">Ubicación</a></li>
          <li><a ng-click="tabs = 3" data-toggle="tab">¿Cómo llegar?</a></li>
         </ul><br>
         <div class="tab-content">
         <div ng-show="tabs === 1" class="tab-pane active" id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
         </div>
-        <div ng-show="tabs === 3" class="tab-pane" style="padding: 7px" id="CLlegr">
+        <div ng-show="tabs === 3" class="tab-pane" style="padding: 7px;text-align: justify;" id="CLlegr">
           <div> {{activity.arrival}} </div>
         </div>
       </div>

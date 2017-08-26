@@ -8,33 +8,12 @@ var reserva = mongoose.model('reservasmodel');
 var reservaByUser = mongoose.model('organizatorInfo');
 var User = mongoose.model('usuariosmodel');
 var Activities = mongoose.model('activitiesmodel');
-
 var sendMail = require('../config/sendMail');
 var mensaje = 'Gracias por adquirir tu plan con nosotros, <p>DPlan</p> el mejor lugar para estar al tanto de las actividades unicas que puedes realizar a menos de 2 horas de tu ubicación';
 
-//POST - Insert a new user in the Collection
-/*
-
-    req.body = {
-        
-        nombre:     {type: String},
-        correo:     {type: String},
-        event: 		{type: Schema.ObjectId, ref: 'activitiesmodel'},
-        fecha:      {type: Date, default: new Date()},
-        quantity: 	{type: Number},
-        mount: 		   {type: Number},
-        typePayment:   {type: String},
-        wasPayment:    {type: Boolean, default: false},
-        status:        {type: String},
-        options:       {type: Array, default: []}
-    
-    }
-    
-*/
-
-exports.saveReserva = function(req, res) {
+exports.saveBooking = function(req, res) {
     console.log(req.body);
-	saveReserva(req.body, function(result) {
+	saveBooking(req.body, function(result) {
 		console.log(result);
 		if (!result.err) {
 			return res.status(200).send(result);
@@ -104,7 +83,7 @@ function addReservation(correo, reserva, next) {
 	});
 };
 
-function saveReserva(objectReserv, cb) {
+function saveBooking(objectReserv, cb) {
 	var newReserv = new reserva(objectReserv);
 	newReserv.save(function(err, newreserva) {
 			if (err) {

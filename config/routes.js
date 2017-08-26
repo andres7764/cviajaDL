@@ -61,7 +61,7 @@ module.exports = function(app) {
     app.get('/getActivity',controllerActivities.getActivity);
 
     // Checkouts
-    app.post('/saveReserva', controllerReservas.saveReserva);
+    app.post('/saveBooking', controllerReservas.saveBooking);
     app.post('/updateReserva',controllerReservas.updateReserva);
     app.get('/getReservas',controllerReservas.getReservas);
     app.get('/getReserva',controllerReservas.getReserva);

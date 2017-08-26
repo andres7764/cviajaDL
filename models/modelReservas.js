@@ -8,13 +8,12 @@ reservas = new mongoose.Schema({
     dateCreated:     {type: Date, default: new Date()},
     mount:           {type: Number},
     quantity:        {type: Number},
-    codes:           {type: Object},
+    codes:           {type: Array, default: []},
     typePayment:     {type: String},
     wasPayment:      {type: Boolean, default: false},
     statusPayment:   {type: String},
     codeTransaction: {type: String},
-    dateReserv:      {type: String},
-    options:         {type: Array, default: []}
+    dateReserv:      {type: String}
 });
 
 module.exports = mongoose.model('reservasmodel',reservas);

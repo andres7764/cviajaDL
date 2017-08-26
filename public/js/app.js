@@ -46,10 +46,12 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
     $scope.tabs = 1;
     document.title = $rootScope.activity.name;
     initAutocomplete($rootScope.activity.location);
-    $rootScope.activity.legalInfo = $rootScope.activity.legalInfo.split("&");
+    if ($rootScope.activity.legalInfo !== undefined) {
+      $rootScope.activity.legalInfo.split("&");
      for(a=0;a<$rootScope.activity.legalInfo.length;a++ ){
-    //  $rootScope.activity.legalInfo[a].replace("&"," ");
+       // $rootScope.activity.legalInfo[a].replace("&"," ");
      }
+    }
   });
     function initAutocomplete(location) {
         var latLng  = {lat: parseFloat(location.lat), lng: parseFloat(location.lng)};
@@ -81,9 +83,9 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
   $scope.checkCupo = function(index){
     $rootScope.checkOut = [];
     localStorage.setItem("checkOut",null);
-    $rootScope.activity.quotasBuyed = document.getElementById('sel1').value;
+    $rootScope.activity.qtyBuyed = document.getElementById('sel1').value;
     $rootScope.activity.dateReserv = document.getElementById('dateR').value;
-    $rootScope.activity.total = $rootScope.activity.mount * $rootScope.activity.quotasBuyed;
+    $rootScope.activity.total = $rootScope.activity.mount * $rootScope.activity.qtyBuyed;
     localStorage.setItem("checkOut",JSON.stringify($rootScope.activity));
   };
 
@@ -145,7 +147,7 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
             swal("error", "Debes ingresar tu nombre y correo", "error");
           }
         };
-    }]);
+}]);
     
   cviaja.controller('checkoutCtrl',['$scope','$rootScope','$window',function($scope,$rootScope,$window){
         $scope.key = "154facda17519d661d60dc5384a5681d";
@@ -171,79 +173,39 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
         $scope.goBack = function() {
           window.history.back();
         };
-
   }]);
 
-    cviaja.controller('responseCtrl',function($scope,$rootScope,$q,$http,$timeout,$window,$location){
+  cviaja.controller('responseCtrl',['payment','$scope','$window','$location', function(payment,$scope,$window,$location){
         $scope.resultTransaction = {};
         let info = JSON.parse(localStorage.getItem("checkOut"));
         var ref_payco = $location.search().ref_payco;
-        //Url Rest Metodo get, se pasa la llave y la ref_payco como paremetro
-        var urlapp = "https://api.secure.payco.co/validation/v1/reference/" + ref_payco;
-        $http.defaults.headers.post["Content-Type"] = "application/json";
-        $http.get(urlapp).then(function(result) {
-            $scope.resultTransaction = result.data.data;
-            if($scope.resultTransaction.x_cod_response === 1){
-                createReserve($scope.resultTransaction);
-                updateQty();
-                swal("¡Compra exitosa!","Tu transacción ha sido satisfactoria, a tu correo hemos enviado la información completa sobre tu actividad, Disfrútala!!", "success");
-            } else if ($scope.resultTransaction.x_cod_response === 2) {
-                swal("¡Compra rechazada!","Tu transacción ha sido rechazada, valida esta información con tu banco y vuelve a intentarlo, no te quedes con las ganas de hacer este plan.", "error");
-            } else if ($scope.resultTransaction.x_cod_response === 3) {
-                swal("¡Compra Pendiente!","Tu transacción está en estado Pendiente, te informaremos a vuelta de correo una vez cambie el estado de tu compra.", "warning");
-            } else {
-                swal("¡Compra fallida!","Ha ocurrido un error con tu compra, verifica con tu entidad financiera para mas información", "error");
-            }
-        });
-        
+        payment.getInfoTransaction(ref_payco,function(response){
+          $scope.resultTransaction = response;
+          if($scope.resultTransaction.x_cod_response === 1){
+            codes = generateCodes(info.qtyBuyed);
+            payment.createBooking({ name: response.x_business, mail: response.x_customer_email, idActivity:  info._id, mount: response.x_amount, quantity: info.qtyBuyed, codes: codes, wasPayment: true, statusPayment: response.x_response, codeTransaction: response.x_id_invoice, dateReserv: info.dateReserv });
+            swal("¡Compra exitosa!","Tu transacción ha sido satisfactoria, a tu correo hemos enviado la información completa sobre tu actividad, Disfrútala!!", "success");
+          } else if ($scope.resultTransaction.x_cod_response === 2) {
+            swal("¡Compra rechazada!","Tu transacción ha sido rechazada, valida esta información con tu banco y vuelve a intentarlo, no te quedes con las ganas de hacer este plan.", "error");
+          } else if ($scope.resultTransaction.x_cod_response === 3) {
+            swal("¡Compra Pendiente!","Tu transacción está en estado Pendiente, te informaremos a vuelta de correo una vez cambie el estado de tu compra.", "warning");
+          } else {
+            swal("¡Compra fallida!","Ha ocurrido un error con tu compra, verifica con tu entidad financiera para mas información", "error");
+          }
+        })        
         $scope.goBack = function() {
           localStorage.setItem("checkOut",null);
             window.history.back();
         };
         
-        function createReserve(transaction){
-            $http.post('/saveReserva',{
-                nombre: transaction.x_business,
-                correo: transaction.x_customer_email,
-                event:  info._id,
-                quantity: info.qtyReserv,
-                mount: transaction.x_amount,
-                status: transaction.x_response,
-                wasPayment: true,
-                options: info,
-                codeTransaction: transaction.x_id_invoice,
-                dateReserv: info.dateReserv
-            })
-            .then(function(result){
-            });
+        function generateCodes(op){
+          var codes = [];
+          for(a=0;a<op;a++){
+            codes.push(info.prefixCode+Math.floor(Math.random()*1000))
+          }
+          return codes;
         }
-        function updateQty(){
-          $http.post('/updateQtyActivity',{
-              id: info._id,
-              obj: info.obj
-          }).then(function(response){})
-       }
-    });
-    
-    cviaja.controller('blogCtrl',function(){
+    }]);
 
-    });
-
-    cviaja.directive('dynamicElement', ['$compile', function ($compile) {
-      return { 
-        restrict: 'E', 
-        scope: {
-            message: "="
-        },
-        replace: true,
-        link: function(scope, element, attrs) {
-            var template = $compile(scope.message)(scope);
-            element.replaceWith(template);               
-        },
-        controller: ['$scope', function($scope) {
-           $scope.clickMe = function(){
-                alert("hi")
-           };
-        }]
-      }
-  }]);
+  cviaja.controller('blogCtrl',function(){
+  });
