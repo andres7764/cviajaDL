@@ -47,9 +47,9 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
     document.title = $rootScope.activity.name;
     initAutocomplete($rootScope.activity.location);
     if ($rootScope.activity.legalInfo !== undefined) {
-      $rootScope.activity.legalInfo.split("&");
+      $rootScope.activity.legalInfo = $rootScope.activity.legalInfo.split("&");
      for(a=0;a<$rootScope.activity.legalInfo.length;a++ ){
-       // $rootScope.activity.legalInfo[a].replace("&"," ");
+       $rootScope.activity.legalInfo[a].replace("&"," ");
      }
     }
   });

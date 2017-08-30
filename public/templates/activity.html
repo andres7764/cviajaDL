@@ -1,6 +1,6 @@
 <div class="container-fluid"> 
   <div class="row" style="padding-top:110px">
-    <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 20px 40px 0px 40px">
+    <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 10px 10px 0px 20px">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
          <li data-target="#myCarousel" data-slide-to="0"></li>
@@ -20,10 +20,10 @@
      <div class="col-md-6 col-sm-6 col-xs-12 completeF" style="padding: 0px 40px 0px 40px">
         <h1>{{activity.name}}</h1>
         <hr class="mini" style="width: 130px"><br>
-        <p><b>Ubicación:</b> {{activity.location.name}}</p>
-        <p><b>Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
-        <p><b>Categoría: </b> {{activity.categories}}</p>
-        <p><b>Precio:</b>&nbsp; {{activity.mount | currency: $:0}}</p>
+        <p><i class="fa fa-road"></i><b> Ubicación:</b> {{activity.location.name}}</p>
+        <p><i class="fa fa-clock-o"></i><b> Tiempo aprox: </b> {{activity.distanceTime}} saliendo por la {{activity.exitBy}}</p>
+        <p><i class="fa fa-sort"></i><b> Categoría: </b> {{activity.categories}}</p>
+        <p><i class="fa fa-usd"></i><b> Precio:</b>&nbsp; {{activity.mount | currency: $:0}}</p>
         <p ng-if="activity.rnt !== ''" ng-click="openRnt(activity.imgRnt)"><b>RNT:</b> <abbr title="Registro nacional de turismo">{{activity.rnt}}</abbr> </p>
         <div class="row">
           <div class="form-group col-md-4">
@@ -46,26 +46,13 @@
      </div>
   </div>
     <div class="row">
-     <!-- <div class="col-md-6 col-xs-12" style="margin-top: -15px; padding: 0px 40px 0px 40px">
-        <div ng-if="activity.options.length == 0"  class="row">
-              <!--<div class="col-md-12 col-xs-12">-->
-         <!--      <p style="text-align: justify;">Los cupos para los planes de esta actividad, ya están agotados déjanos tus datos y  te informaremos una vez hallan cupos disponibles.</p>
-                <div class="form-group">
-                  <label>Su nombre</label>
-                    <input type="text" class="form-control" ng-model="contact.name" placeholder=""/><br>
-                    <label>Correo</label>
-                    <input type="email" class="form-control" ng-model="contact.mail" placeholder="p.e juanito@correo.com"/><br>
-                  </div>
-                <button type="button" class="animated tada btn btnReserve btn-block" ng-click="suscribir($index)" style="background: #64dd17 !important;"> Enviar </button>
-              </div>
-            </div>
-      </div>-->
-      <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
+      <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 20px">
         <h3>Información</h3>
         <hr class="mini" style="width: 220px"><br><br>
         <ul class="nav nav-tabs">
           <li class="active"><a ng-click="tab = 1" data-toggle="tab">¿Qué haras?</a></li>
           <li><a ng-click="tab = 2" data-toggle="tab">Ten en cuenta</a></li>
+          <li><a ng-click="tab = 4" data-toggle="tab">¿Cómo llegar?</a></li>
         </ul><br>
        <div class="tab-content">
         <div class="tab-pane active" ng-show="tab === 1" style="padding: 7px;text-align: justify;">
@@ -76,19 +63,16 @@
         <div class="tab-pane" ng-show="tab === 2" style="padding: 7px;text-align: justify;">
           <div style="padding-top: 3px; text-align: justify-all;" ng-repeat="items in activity.legalInfo track by $index">{{items}}</div><br>
         </div>
+        <div ng-show="tab === 4" class="tab-pane" style="padding: 7px;text-align: justify;" id="CLlegr">
+          <div> {{activity.arrival}} </div>
+        </div>
       </div>
       <div class="col-md-6 col-xs-12" style="padding: 0px 40px 0px 40px">
-        <hr class="mini" style="width: 220px"><br><br>
-        <br></br>
-        <ul class="nav nav-tabs">
-         <li class="active"><a ng-click="tabs = 1" data-toggle="tab">Ubicación</a></li>
-         <li><a ng-click="tabs = 3" data-toggle="tab">¿Cómo llegar?</a></li>
-        </ul><br>
-        <div class="tab-content">
-        <div ng-show="tabs === 1" class="tab-pane active" id="map" style="width: 100% !important;height: 250px !important;margin-bottom: 20px;"></div>
-        </div>
-        <div ng-show="tabs === 3" class="tab-pane" style="padding: 7px;text-align: justify;" id="CLlegr">
-          <div> {{activity.arrival}} </div>
+        
+        <ul style="padding-top: 100px" class="nav nav-tabs">
+          <li class="active"><a>Ubicación</a></li>
+        </ul>
+        <div class="tab-pane active" id="map" style="width: 100% !important;height: 300px !important;margin-bottom: 20px;padding-top: 15px"></div>
         </div>
       </div>
 </div>

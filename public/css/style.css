@@ -2,6 +2,17 @@
  height: 40%;
 }
 
+.tabMain {
+ position: absolute;
+ right: 3px;
+ padding:5px;
+ width: 100px;
+ height: 30px;
+ background-color: #66dd17;
+ z-index: 9999;
+ border-radius: 0px 0px 0px 10px;
+ color: #fff;
+}
 /* preloader */
 #preloader {
 position: fixed;
