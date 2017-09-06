@@ -65,7 +65,7 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
         });
 
         // Create the search box and link it to the UI element.
-        /*  var input = document.getElementById('pac-input');
+        var input = document.getElementById('pac-input');
         var searchBox = new google.maps.places.SearchBox(input);
         $scope.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
         $scope.map.addListener('bounds_changed', function() {
@@ -77,7 +77,7 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
           directionsService = new google.maps.DirectionsService();
         directionsDisplay = new google.maps.DirectionsRenderer();
           $scope.paintRoute(places[0].geometry.location.lat(),places[0].geometry.location.lng());
-        });*/
+        });
     };
         
   $scope.checkCupo = function(index){

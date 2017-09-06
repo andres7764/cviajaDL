@@ -180,12 +180,13 @@ hr {
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
-    font-weight: 300;    
+    font-weight: 300;
     text-overflow: ellipsis;
     width: 300px;
     position: absolute;
     left: 10px !important;
     z-index: 1 !important;
+    top: 10px !important;
 }
 
       #pac-input:focus {
