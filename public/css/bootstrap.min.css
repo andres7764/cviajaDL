@@ -4622,7 +4622,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #9d9d9d;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #9d9d9d;
+  color: #000000;
 }
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
@@ -6259,7 +6259,7 @@ button.close {
   position: relative;
   width: 100%;
   overflow: hidden;
-  min-height: 550px;
+  min-height: 350px;
 }
 .carousel-inner > .item {
   position: relative;

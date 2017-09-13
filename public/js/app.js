@@ -42,6 +42,7 @@ cviaja.controller('activityCtrl', ['activities','$scope','$timeout','$routeParam
 
   activities.doRequest('/getActivity?id='+idS,function(res){
     $rootScope.activity = res.data.activity[0];
+    $rootScope.lengthPagerImages = $rootScope.activity.carousel.length;
     $scope.tab = 1;
     $scope.tabs = 1;
     document.title = $rootScope.activity.name;

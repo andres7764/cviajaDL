@@ -3,16 +3,15 @@
     <div class="col-md-6 col-sm-6 col-xs-12" style="padding: 10px 10px 0px 20px">
        <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-         <li data-target="#myCarousel" data-slide-to="0"></li>
-         <li data-target="#myCarousel" data-slide-to="1"></li>
-         <li data-target="#myCarousel" data-slide-to="2"></li>
+         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+         <li ng-repeat="act in activity.carousel track by $index" data-target="#myCarousel" data-slide-to="{{$index+1}}"></li>
         </ol>
         <div class="carousel-inner" style="min-height: 0px !important">
           <div class="item active">
-            <img ng-src="{{activity.carousel[2]}}" alt="descripcion">
-          </div>
+           <div style="background-image: url({{activity.carousel[0]}});background-size:cover;width: 100%; height: 350px"></div>
+           </div>
           <div ng-repeat="act in activity.carousel track by $index" class="item">
-            <img ng-src="{{act}}" alt="descripcion">
+            <div style="background-image: url({{act}}); background-size: cover;width: 100%; height: 350px"></div>
           </div>
         </div>
        </div>

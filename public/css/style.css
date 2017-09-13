@@ -52,7 +52,8 @@ html, body {
     height: 65px;
     background-repeat: no-repeat;
     margin-left: 15px;
-    margin-top: -15px;
+    margin-top: -4px;
+    background-size: 85px;
 }
 
 /*-------------------------------------------------------- */
@@ -758,7 +759,6 @@ section.stats p.text-center {
 /*-- /statistics section --*/
 /*-- footer section --*/
 .footer {
-    padding:10px 0;
     background-color: rgba(0, 0, 0, 0.82);
 }
 .footer p {
